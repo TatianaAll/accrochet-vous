@@ -1,0 +1,23 @@
+{% extends 'admin/adminBase.html.twig' %}
+
+{% block title %} Liste des admins {% endblock %}
+
+{% block body %}
+
+    <ul>
+        {% for admin in admins %}
+        <li>{{ admin.email }},
+            <ul> Est :
+                {% for role in admin.roles %}
+                <li>
+                    {{ role }}
+                </li>
+                {% endfor %}
+            </ul>
+        </li>
+
+
+        {% endfor %}
+    </ul>
+
+{% endblock %}

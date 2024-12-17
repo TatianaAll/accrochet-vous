@@ -4,6 +4,7 @@ namespace App\Controller\admin;
 
 use App\Entity\Admin;
 use App\Form\AdminType;
+use App\Repository\AdminRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,7 +16,7 @@ use Symfony\Component\ExpressionLanguage\Expression;
 
 class AdminRightController extends AbstractController
 {
-    #[Route(path:'/superAdmin/rights/create_admin', name: 'superAdmin_admin_create', methods: ['GET', 'POST'])]
+    #[Route(path:'/admin/rights/create_admin', name: 'admin_admin_create', methods: ['GET', 'POST'])]
     //add restriction access to this method only for SUPER_ADMIN
     #[IsGranted(new Expression('is_granted("ROLE_SUPER_ADMIN")'))]
     public function adminCreateAdmin(Request $request,
@@ -36,7 +37,7 @@ class AdminRightController extends AbstractController
 
             if (!$plaintextPassword) {
                 $this->addFlash('error', 'Veuillez rentrer un mot de passe');
-                return $this->redirectToRoute('superAdmin_admin_create');
+                return $this->redirectToRoute('admin_admin_create');
             }
             //je hash le tout
             $hashedPassword = $passwordHasher->hashPassword(
@@ -52,7 +53,15 @@ class AdminRightController extends AbstractController
             $this->addFlash('success', 'Un nouvel admin a été créé');
             //return $this->redirectToRoute('admin_dashboard');
         }
-        return $this->render('superAdmin/rights/create_admin.html.twig', ['formView' => $formView]);
+        return $this->render('admin/rights/create_admin.html.twig', ['formView' => $formView]);
 
     }
+
+    #[Route(path:'/admin/rights/list_admin', name: 'admin_admin_list', methods: ['GET'])]
+    public function listAdmin(AdminRepository $adminRepository) : Response
+    {
+        $admins = $adminRepository->findAll();
+        return $this->render('admin/rights/list_admin.html.twig', ['admins' => $admins]);
+    }
+
 }
