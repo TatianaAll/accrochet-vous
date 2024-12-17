@@ -26,6 +26,12 @@ class Comment
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
 
+    //relation with USER
+    //M2O ==> one comment for 1 user, but many comment for 1 user
+    #[ORM\ManyToOne(inversedBy: "comments")]
+    #[ORM\JoinColumn(nullable: false)]
+    private User $user;
+
     public function getId(): ?int
     {
         return $this->id;
