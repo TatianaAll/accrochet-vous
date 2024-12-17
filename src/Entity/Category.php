@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\CategoryRepository;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -19,6 +20,11 @@ class Category
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
+
+    // relation with Article
+    // 1Category to Many Articles ==> O2M
+    #[ORM\OneToMany(targetEntity: Article::class, mappedBy: 'category', cascade:['remove'])]
+    private Collection $articles;
 
     public function getId(): ?int
     {
@@ -46,6 +52,18 @@ class Category
     {
         $this->description = $description;
 
+        return $this;
+    }
+
+    // adding the getters and setter for the Articles
+    public function getArticles(): Collection
+    {
+        return $this->articles;
+    }
+
+    public function setArticle(Collection $articles): static
+    {
+        $this->articles = $articles;
         return $this;
     }
 }

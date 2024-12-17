@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\ArticleRepository;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -22,6 +23,18 @@ class Article
 
     #[ORM\Column(length: 255)]
     private ?string $image = null;
+
+    //Join table of Article/Tags ==> M2M
+    #[ORM\ManyToMany(targetEntity: Tag::class)]
+    #[ORM\JoinTable(name:'article_tag')]
+    private Collection $tags;
+
+    // 1 article have 1 category
+    //1 category can have many articles
+    // Article ==> M2O
+    #[ORM\ManyToOne(inversedBy: 'articles')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Category $category = null;
 
     public function getId(): ?int
     {
@@ -63,4 +76,15 @@ class Article
 
         return $this;
     }
+
+    public function getTags () : Collection
+    {
+        return $this->tags;
+    }
+    public function setTags(Collection $tags): static
+    {
+        $this->tags = $tags;
+        return $this;
+    }
+
 }
