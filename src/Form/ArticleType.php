@@ -9,6 +9,7 @@ use App\Entity\Tag;
 use App\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -20,16 +21,17 @@ class ArticleType extends AbstractType
         $builder
             ->add('title')
             ->add('description')
-            ->add('image')
+            ->add('image',FileType::class, ['mapped'=>false,])
 //            ->add('tags', EntityType::class, [
 //                'class' => Tag::class,
 //                'choice_label' => 'id',
 //                'multiple' => true,
 //            ])
-//            ->add('category', EntityType::class, [
-//                'class' => Category::class,
-//                'choice_label' => 'id',
-//            ])
+            ->add('category', EntityType::class, [
+                'class' => Category::class,
+                'choice_label' => 'name',
+            ])
+
             ->add('enregistrer', SubmitType::class)
         ;
     }

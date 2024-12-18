@@ -1,0 +1,30 @@
+{% extends 'admin/adminBase.html.twig' %}
+
+{% block title %} {{ article.title }} {% endblock %}
+
+{% block body %}
+
+    <section class="container">
+
+        <h2>{{ article.title }}</h2>
+        <div>
+            <img src="{{ asset('assets/uploads/' ~ article.image) }}" alt="{{ article.title }}">
+        </div>
+        <div>
+            <p>{{ article.title }} écrit par
+                {% if article.adminId %}
+                    {{ article.adminId.email }}
+                {% else %}
+                    {{ article.user.username }}
+                {% endif %}
+            </p>
+            <p>Description : {{ article.description }}</p>
+
+
+            <a href="{{ path('admin_article_update', {id: article.id}) }}" class="btn btn-warning mt-1">Modifier</a>
+{#            <a href="{{ path("admin_article_delete", {id: article.id}) }}" class="btn btn-danger mt-1">Supprimer</a>#}
+        </div>
+
+    </section>
+
+{% endblock %}

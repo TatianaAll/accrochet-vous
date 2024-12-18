@@ -3,11 +3,14 @@
 namespace App\Entity;
 
 use App\Repository\ArticleRepository;
+use App\Entity\Category;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
+#[UniqueEntity('title')]
 class Article
 {
     #[ORM\Id]
@@ -15,7 +18,7 @@ class Article
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 100)]
+    #[ORM\Column(length: 100, unique: true)]
     private ?string $title = null;
 
     #[ORM\Column(type: Types::TEXT)]
@@ -45,6 +48,9 @@ class Article
     #[ORM\ManyToOne(inversedBy: 'articles')]
     #[ORM\JoinColumn(nullable: true)]
     private ?User $user = null;
+
+    #[ORM\ManyToOne(inversedBy: 'articles')]
+    private ?Admin $admin_id = null;
 
     public function getId(): ?int
     {
@@ -121,18 +127,6 @@ class Article
         return $this;
     }
 
-    public function getUserId(): ?User
-    {
-        return $this->user;
-    }
-
-    public function setUserId(?User $user_id): static
-    {
-        $this->user = $user_id;
-
-        return $this;
-    }
-
     public function getUser(): ?User
     {
         return $this->user;
@@ -141,6 +135,30 @@ class Article
     public function setUser(?User $user): static
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): static
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    public function getAdminId(): ?Admin
+    {
+        return $this->admin_id;
+    }
+
+    public function setAdminId(?Admin $admin_id): static
+    {
+        $this->admin_id = $admin_id;
 
         return $this;
     }

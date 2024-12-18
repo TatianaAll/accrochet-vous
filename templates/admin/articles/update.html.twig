@@ -1,0 +1,16 @@
+{% extends 'admin/adminBase.html.twig' %}
+
+{% block title %}
+    Modifier {{ articleToUpdate.title }}
+{% endblock %}
+
+{% block body %}
+    <section class="container">
+
+        <h2>{{ articleToUpdate.title }}</h2>
+
+    {{ form(formView) }}
+
+    </section>
+
+{% endblock %}
