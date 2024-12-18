@@ -10,6 +10,7 @@
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Titre</th>
+                <th scope="col">Statut</th>
                 <th scope="col">Date de création</th>
                 <th scope="col">Date de modification</th>
                 <th scope="col">Auteur (admin)</th>
@@ -24,6 +25,7 @@
                 <tr>
                     <th scope="row">{{ article.id }}</th>
                     <td>{{ article.title }}</td>
+                    <td>{{ article.status.id }}</td>
                     <td>{{ article.createdAt | date('d-m-Y H:i') }}</td>
                     {% if article.updateAt %}
                         <td>{{ article.updateAt | date('d-m-Y H:i') }}</td>

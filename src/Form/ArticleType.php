@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Admin;
 use App\Entity\Article;
 use App\Entity\Category;
+use App\Entity\Status;
 use App\Entity\Tag;
 use App\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -21,7 +22,8 @@ class ArticleType extends AbstractType
         $builder
             ->add('title')
             ->add('description')
-            ->add('image',FileType::class, ['mapped'=>false,])
+            ->add('image',FileType::class, ['mapped'=>false,
+                'required' => false,])
 //            ->add('tags', EntityType::class, [
 //                'class' => Tag::class,
 //                'choice_label' => 'id',
@@ -29,6 +31,10 @@ class ArticleType extends AbstractType
 //            ])
             ->add('category', EntityType::class, [
                 'class' => Category::class,
+                'choice_label' => 'name',
+            ])
+            ->add('status', EntityType::class, [
+                'class' => Status::class,
                 'choice_label' => 'name',
             ])
 
