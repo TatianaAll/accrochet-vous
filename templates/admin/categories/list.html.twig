@@ -1,0 +1,35 @@
+{% extends 'admin/adminBase.html.twig' %}
+
+{% block title %} Catégories {% endblock %}
+
+{% block body %}
+    <section class="container">
+
+        <table class="table table-borderless">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Voir la catégorie</th>
+                <th scope="col">Modifier</th>
+                <th scope="col">Supprimer</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for category in categories %}
+                <tr>
+                    <th scope="row">{{ category.id}}</th>
+                    <td>{{ category.name}}</td>
+                    <td><a href="{{ path("admin_category_show", {id: category.id}) }}" class="btn btn-primary mt-1">Voir</a></td>
+                    <td><a href="{{path("admin_category_update", {id: category.id}) }}" class="btn btn-warning mt-1">Modifier</a></td>
+                    <td><a href="{{path("admin_category_delete", {id: category.id}) }}" class="btn btn-danger mt-1">Supprimer</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+
+        <a href="{{ path('admin_category_create') }}" class="btn btn-primary">Ajouter une catégorie</a>
+
+
+    </section>
+
+{% endblock %}

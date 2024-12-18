@@ -1,0 +1,21 @@
+{% extends 'admin/adminBase.html.twig' %}
+
+{% block title %} {{ category.name}} {% endblock %}
+
+{% block body %}
+
+    <section class="container">
+
+        <h2>{{ category.name }}</h2>
+
+        <div>
+            <p>Nom de la catégorie : {{ category.name }}</p>
+            <p>Description : {{ category.description }}</p>
+
+            <a href="{{path('admin_category_update', {id: category.id})}}" class="btn btn-warning mt-1">Modifier</a>
+            <a href="{{path("admin_category_delete", {id: category.id}) }}" class="btn btn-danger mt-1">Supprimer</a>
+        </div>
+
+    </section>
+
+{% endblock %}

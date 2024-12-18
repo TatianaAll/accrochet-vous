@@ -46,10 +46,6 @@ class Article
     #[ORM\JoinColumn(nullable: true)]
     private ?User $user = null;
 
-    #[ORM\ManyToOne(inversedBy: 'articles')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Admin $admin_id = null;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -148,17 +144,4 @@ class Article
 
         return $this;
     }
-
-    public function getAdminId(): ?Admin
-    {
-        return $this->admin_id;
-    }
-
-    public function setAdminId(?Admin $admin_id): static
-    {
-        $this->admin_id = $admin_id;
-
-        return $this;
-    }
-
 }
