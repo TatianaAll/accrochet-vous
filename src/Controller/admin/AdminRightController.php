@@ -16,12 +16,12 @@ use Symfony\Component\ExpressionLanguage\Expression;
 
 class AdminRightController extends AbstractController
 {
-    #[Route(path:'/admin/rights/create_admin', name: 'admin_admin_create', methods: ['GET', 'POST'])]
+    #[Route(path: '/admin/rights/create_admin', name: 'admin_admin_create', methods: ['GET', 'POST'])]
     //add restriction access to this method only for SUPER_ADMIN
     #[IsGranted(new Expression('is_granted("ROLE_SUPER_ADMIN")'))]
-    public function adminCreateAdmin(Request $request,
+    public function adminCreateAdmin(Request                     $request,
                                      UserPasswordHasherInterface $passwordHasher,
-                                     EntityManagerInterface $entityManager) : Response
+                                     EntityManagerInterface      $entityManager): Response
     {
         $admin = new Admin();
 
@@ -57,11 +57,37 @@ class AdminRightController extends AbstractController
 
     }
 
-    #[Route(path:'/admin/rights/list_admin', name: 'admin_admin_list', methods: ['GET'])]
-    public function listAdmin(AdminRepository $adminRepository) : Response
+    #[Route(path: '/admin/rights/list_admin', name: 'admin_admin_list', methods: ['GET'])]
+    public function listAdmin(AdminRepository $adminRepository): Response
     {
         $admins = $adminRepository->findAll();
         return $this->render('admin/rights/list_admin.html.twig', ['admins' => $admins]);
+    }
+
+    #[Route(path: "/admin/rights/{id}/update", name: "admin_admin_update", requirements: ["id"=>"\d+"], methods: ["GET","POST"])]
+    public function updateAdminRights(int $id, AdminRepository $adminRepository,
+                                      EntityManagerInterface $entityManager): Response
+    {
+        $adminToUpdate = $adminRepository->find($id);
+
+        if(!$adminToUpdate){
+            $this->addFlash("error", "Cet administrateur n'existe pas");
+            return $this->redirectToRoute("admin_admin_list");
+        }
+
+        $form = $this->createForm(AdminType::class, $adminToUpdate);
+        $formView = $form->createView();
+
+        if($form->isSubmitted())
+        {
+            $entityManager->persist($adminToUpdate);
+            $entityManager->flush();
+
+            $this->addFlash("succes", "Droit de l'admin modifiés");
+            return $this->redirectToRoute("admin_admin_list");
+        }
+
+        return $this->render("admin/rights/update.html.twig", ["admin"=>$adminToUpdate, "formView"=>$formView]);
     }
 
 }
