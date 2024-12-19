@@ -9,6 +9,10 @@
     <div>
         <p>{{ user.email }}</p>
         <p>{{ user.biography }}</p>
+
+        {% if app.user.id is same as user.id %}
+            <a href="{{ path("user_profile_update") }}">Modifier le mot de passe</a>
+        {% endif %}
     </div>
 </main>
 {% endblock %}

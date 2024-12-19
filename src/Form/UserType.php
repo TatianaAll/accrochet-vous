@@ -17,7 +17,7 @@ class UserType extends AbstractType
             ->add('password')
             ->add('username')
             ->add('biography')
-            ->add('inscription', SubmitType::class)
+            ->add('enregistrer', SubmitType::class)
 
         ;
     }
