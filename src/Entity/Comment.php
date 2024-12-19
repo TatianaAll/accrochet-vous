@@ -32,6 +32,10 @@ class Comment
     #[ORM\JoinColumn(nullable: false)]
     private User $user;
 
+    #[ORM\ManyToOne(inversedBy: 'comments')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Status $status = null;
+
     public function getId(): ?int
     {
         return $this->id;

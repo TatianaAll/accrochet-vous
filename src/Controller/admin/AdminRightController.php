@@ -58,7 +58,7 @@ class AdminRightController extends AbstractController
     }
 
     #[Route(path: '/admin/rights/list_admin', name: 'admin_admin_list', methods: ['GET'])]
-    #[IsGranted(new Expression('is_granted("ROLE_SUPER_ADMIN, ROLE_ADMIN")'))]
+    #[IsGranted(new Expression('is_granted("ROLE_SUPER_ADMIN") or is_granted("ROLE_ADMIN")'))]
     public function listAdmin(AdminRepository $adminRepository): Response
     {
         $admins = $adminRepository->findAll();

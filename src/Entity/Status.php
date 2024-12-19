@@ -24,6 +24,9 @@ class Status
     #[ORM\OneToMany(targetEntity: Article::class, mappedBy: 'status')]
     private Collection $articles;
 
+    #[ORM\OneToMany(targetEntity: Comment::class, mappedBy: 'status')]
+    private Collection $comments;
+
     public function __construct()
     {
         $this->articles = new ArrayCollection();
@@ -73,6 +76,11 @@ class Status
         }
 
         return $this;
+    }
+
+    public function getComments(): Collection
+    {
+        return $this->comments;
     }
 
 }
