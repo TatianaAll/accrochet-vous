@@ -24,6 +24,7 @@ security:
         admin:
             lazy: true
             provider: app_admin_provider
+            pattern: ^/admin
 
             form_login:
                 login_path: login_admin
@@ -33,9 +34,10 @@ security:
             logout:
                 path: admin_logout
 
-        main:
+        user:
             lazy: true
             provider: app_user_provider
+            pattern: ^/user
 
             form_login:
                 login_path: login
@@ -54,7 +56,10 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        - { path: ^/admin, roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        - { path: ^/admin(?!/login), roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
+        - { path: ^/user(?!/login), roles: [ ROLE_USER ] }
+
+        #- { path: ^/user/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         # - { path: ^/profile, roles: ROLE_USER }
 
 when@test:

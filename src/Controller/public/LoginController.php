@@ -9,13 +9,15 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class LoginController extends AbstractController
 {
-    #[Route(path: '/logout', name: 'logout')]
+    #[Route(path: '/user/logout', name: 'user_logout')]
     public function logout(): void
     {
         //route utilisée par symfony pour se décnnecter, c'est magique un peu
@@ -23,7 +25,7 @@ class LoginController extends AbstractController
     }
 
 
-    #[Route(path: '/login', name: 'login')]
+    #[Route(path: '/user/login', name: 'login')]
     public function loginUser(AuthenticationUtils $authenticationUtils): Response
     {
         $error = $authenticationUtils->getLastAuthenticationError();
@@ -36,49 +38,63 @@ class LoginController extends AbstractController
     }
 
     #[Route(path: "/inscription", name: "user_inscription")]
-    public function userInscription(UserRepository          $userRepository, UserType $userType,
-                                Request                     $request,
-                                EntityManagerInterface      $entityManager,
-                                UserPasswordHasherInterface $passwordHasher): Response
-{
-    $user = new User();
-    //vérifier si le nom est dispo
-    //vérifier si l'adresse mail est déjà utilisé
-    //lui donner la date de créa
-    //lui assigner le role user
-    $form = $this->createForm(UserType::class, $user);
-    $formView = $form->createView();
+    public function userInscription(UserRepository              $userRepository,
+                                    Request                     $request,
+                                    EntityManagerInterface      $entityManager,
+                                    UserPasswordHasherInterface $passwordHasher, MailerInterface $mailer): Response
+    {
+        $user = new User();
 
-    $form->handleRequest($request);
+        $form = $this->createForm(UserType::class, $user);
+        $formView = $form->createView();
 
-    if ($form->isSubmitted() && $form->isValid()) {
-        $user->setCreationDate(new \DateTime());
-        $user->setRoles(["ROLE_USER"]);
+        $form->handleRequest($request);
 
-        //il faut que je récupère le mdp rentré et que je le hache
-        $plaintextPassword = $form->get('password')->getData();
+        if ($form->isSubmitted() && $form->isValid()) {
 
-        if (!$plaintextPassword) {
-            $this->addFlash('error', 'Veuillez rentrer un mot de passe');
-            return $this->redirectToRoute('admin_admin_create');
+            //vérifier si le nom est dispo
+            //vérifier si l'adresse mail est déjà utilisé
+            $user->setCreationDate(new \DateTime());
+            $user->setRoles(["ROLE_USER"]);
+
+            //il faut que je récupère le mdp rentré et que je le hache
+            $plaintextPassword = $form->get('password')->getData();
+
+            if (!$plaintextPassword) {
+                $this->addFlash('error', 'Veuillez rentrer un mot de passe');
+                return $this->redirectToRoute('admin_admin_create');
+            }
+            //je hash le tout
+            $hashedPassword = $passwordHasher->hashPassword(
+                $user,
+                $plaintextPassword
+            );
+            $user->setPassword($hashedPassword);
+            //dd($hashedPassword);
+
+            $entityManager->persist($user);
+            $entityManager->flush();
+
+            $email = new Email();
+
+            //je fais un template avec mon mail
+            //je lui fais passer ma vue et je lui donne les valeur de contact récup dans le form
+            $emailTemplate = $this->renderView('mails/inscription.html.twig', ['user' => $user]);
+
+            //j'envoie avec mailer
+            $mailer->send(
+                $email->from('noreply@accrochetvous.com')
+                    -> to($user->getEmail())
+                    -> subject('Inscription')
+                    -> html($emailTemplate)
+            );
+
+            $this->addFlash('success', 'Votre compte a bien été créé');
+            return $this->redirectToRoute('home');
         }
-        //je hash le tout
-        $hashedPassword = $passwordHasher->hashPassword(
-            $user,
-            $plaintextPassword
-        );
-        $user->setPassword($hashedPassword);
-        //dd($hashedPassword);
 
-        $entityManager->persist($user);
-        $entityManager->flush();
-
-        $this->addFlash('success', 'Votre compte a bien été créé');
-        return $this->redirectToRoute('home');
+        return $this->render('public/inscription.html.twig', [
+            "formView" => $formView
+        ]);
     }
-
-    return $this->render('public/inscription.html.twig', [
-        "formView" => $formView
-    ]);
-}
 }
