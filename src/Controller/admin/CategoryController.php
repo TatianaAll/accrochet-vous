@@ -16,6 +16,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 class CategoryController extends AbstractController
 {
     #[Route(path: '/admin/category/create', name: 'admin_category_create', methods:['POST', 'GET'])]
+    #[IsGranted(new Expression('is_granted("ROLE_SUPER_ADMIN, ROLE_ADMIN")'))]
     public function createCategory(Request $request, EntityManagerInterface $entityManager): Response
     {
         $category = new Category();
@@ -39,6 +40,7 @@ class CategoryController extends AbstractController
     }
 
     #[Route(path: '/admin/categories/list', name: 'admin_category_list', methods:['GET'])]
+    #[IsGranted(new Expression('is_granted("ROLE_SUPER_ADMIN, ROLE_ADMIN")'))]
     public function listCategories(CategoryRepository $categoryRepository): Response
     {
         $categories = $categoryRepository->findAll();
@@ -48,6 +50,7 @@ class CategoryController extends AbstractController
     }
 
     #[Route(path: '/admin/category/{id}/show', name: 'admin_category_show', requirements: ['id'=>'\d+'] ,methods:['GET'])]
+    #[IsGranted(new Expression('is_granted("ROLE_SUPER_ADMIN, ROLE_ADMIN")'))]
     public function showCategory(int $id, CategoryRepository $categoryRepository): Response
     {
         $category = $categoryRepository->find($id);
@@ -56,6 +59,7 @@ class CategoryController extends AbstractController
     }
 
     #[Route(path:'/admin/category/{id}/update', name: 'admin_category_update', requirements: ['id'=>'\d+'], methods:['POST', 'GET'])]
+    #[IsGranted(new Expression('is_granted("ROLE_SUPER_ADMIN, ROLE_ADMIN")'))]
     public function updateCategory(int $id,Request $request,
                                    CategoryRepository $categoryRepository,
                                    EntityManagerInterface $entityManager): Response

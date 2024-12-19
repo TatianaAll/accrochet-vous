@@ -13,6 +13,8 @@
                     {{ role }}
                 </li>
                 {% endfor %}
+                <li><a href="{{ path("admin_admin_update", {id: admin.id}) }}" class="btn btn-warning mt-1">Modifier</a></li>
+                <li><a href="{{ path("admin_admin_delete", {id: admin.id}) }}" class="btn btn-danger mt-1">Supprimer</a></li>
             </ul>
         </li>
 

@@ -19,6 +19,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 class AdminArticlesController extends AbstractController
 {
     #[Route(path: '/admin/article/create', name: 'admin_article_create', methods:['POST', 'GET'])]
+    #[IsGranted(new Expression('is_granted("ROLE_SUPER_ADMIN, ROLE_ADMIN")'))]
     public function createArticle(Request $request, EntityManagerInterface $entityManager,
                                   UniqueFileNameGenerator $uniqueFileNameGenerator,
                                   ParameterBagInterface $parameterBag) : Response
@@ -72,6 +73,7 @@ class AdminArticlesController extends AbstractController
     }
 
     #[Route(path:'/admin/articles/list', name: 'admin_articles_list', methods:['GET'])]
+    #[IsGranted(new Expression('is_granted("ROLE_SUPER_ADMIN, ROLE_ADMIN")'))]
     public function adminListArticles(ArticleRepository $articleRepository) : Response
     {
         $articles = $articleRepository->findAll();
@@ -94,6 +96,7 @@ class AdminArticlesController extends AbstractController
     }
 
     #[Route(path: "/admin/article/{id}/update", name: "admin_article_update", requirements: ["id"=>"\d+"], methods: ["GET", "POST"])]
+    #[IsGranted(new Expression('is_granted("ROLE_SUPER_ADMIN, ROLE_ADMIN")'))]
     public function updateArticle(int $id, ArticleRepository $articleRepository,
                                   Request $request, UniqueFileNameGenerator $uniqueFileNameGenerator,
                                   ParameterBagInterface $parameterBag,

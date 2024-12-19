@@ -3,8 +3,10 @@
 namespace App\Controller\admin;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\ExpressionLanguage\Expression;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class DashboardController extends AbstractController
 {
@@ -16,6 +18,7 @@ class DashboardController extends AbstractController
     }
 
     #[Route(path:'/admin', name:'admin_dashboard', methods: ['GET'])]
+    #[IsGranted(new Expression('is_granted("ROLE_SUPER_ADMIN, ROLE_ADMIN")'))]
     public function adminDashboard(): Response
     {
         return $this->render('admin/dashboard.html.twig');
