@@ -22,7 +22,7 @@ class UserController extends AbstractController
             return $this->redirectToRoute("home");
         }
 
-        return $this->render('users/profile.html.twig', ["user" => $user]);
+        return $this->render('users/profile/profile.html.twig', ["user" => $user]);
     }
 
     #[Route(path: "/user/my-profile", name: "user_current_profile", methods: ["GET", "POST"])]
@@ -36,7 +36,7 @@ class UserController extends AbstractController
             return $this->redirectToRoute("home");
         }
 
-        return $this->render('users/profile.html.twig', ["user" => $user]);
+        return $this->render('users/profile/profile.html.twig', ["user" => $user]);
     }
 
     #[Route(path: "/user/my-profile/update-password", name: "user_profile_update", methods: ["POST", "GET"])]
@@ -63,7 +63,7 @@ class UserController extends AbstractController
             }
 
         }
-        return $this->render("users/update_password.html.twig");
+        return $this->render("users/profile/update_password.html.twig");
 
     }
 

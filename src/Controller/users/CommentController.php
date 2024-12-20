@@ -3,10 +3,8 @@
 namespace App\Controller\users;
 
 use App\Entity\Comment;
-use App\Entity\Status;
 use App\Form\CommentType;
 use App\Repository\ArticleRepository;
-use App\Repository\StatusRepository;
 use App\Services\UniqueFileNameGenerator;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -22,12 +20,11 @@ class CommentController extends AbstractController
     #[Route(path: "user/article/{articleId}/comment", name: "user_article_add_comment", requirements: ['articleId'=>'\d+'], methods: ['POST', 'GET'])]
     #[IsGranted(new Expression('is_granted("ROLE_USER") or is_granted("ROLE_REDACTOR")'))]
     public function addComment(int $articleId,
-                               ArticleRepository $articleRepository, StatusRepository $statusRepository,
+                               ArticleRepository $articleRepository,
                                Request $request, EntityManagerInterface $entityManager,
                                UniqueFileNameGenerator $uniqueFileNameGenerator,
                                ParameterBagInterface $parameterBag) :Response
     {
-        //dd("tesroute");
         $article = $articleRepository->find($articleId);
         $comment = new Comment();
 
@@ -40,10 +37,9 @@ class CommentController extends AbstractController
         {
             $comment->setUser($this->getUser());
             $comment->setArticle($article);
-
-            $statusComment = $statusRepository->findOneBy(["name"=>"à modérer"]);
+            ;
             //dd($statusComment);
-            $comment->setStatus($statusComment);
+            $comment->setStatus("to moderate");
 
             $comment->setCreatedAt(new \DateTime());
             $comment->setLinkedRate(false);
@@ -69,4 +65,6 @@ class CommentController extends AbstractController
 
         return $this->render("users/comments/create.html.twig", ["article" => $article, "formView"=>$formView]);
     }
+
+
 }

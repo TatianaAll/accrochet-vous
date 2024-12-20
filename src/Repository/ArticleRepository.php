@@ -15,6 +15,21 @@ class ArticleRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Article::class);
     }
+    public function searchArticles(string $search){
+        return $this->createQueryBuilder('a')
+            //start the SQL request with the where
+            ->where('a.title LIKE :search')
+            //a second condition for search in the content
+            ->orWhere('a.content LIKE :search')
+            //parametring the variable 'search'
+            ->setParameter('search', '%'.$search.'%')
+            //construct the query
+            ->getQuery()
+            //get the result filtrered by the DB
+            ->getResult();
+
+        // SELECT * FROM article AS WHERE a.title LIKE %search% OR WHERE a.content LIKE %search%
+    }
 
     //    /**
     //     * @return Article[] Returns an array of Article objects

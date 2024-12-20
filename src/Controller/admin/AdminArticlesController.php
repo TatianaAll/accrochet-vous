@@ -169,10 +169,9 @@ class AdminArticlesController extends AbstractController
 
     #[Route(path:"/admin/articles/list/toModerate", name:"admin_article_delete", requirements: ['id'=>'\d+'], methods: ["GET"])]
     #[IsGranted(new Expression('is_granted("ROLE_SUPER_ADMIN") or is_granted("ROLE_ADMIN")'))]
-    public function listToModerateArticle(ArticleRepository $articleRepository, StatusRepository $statusRepository) : Response
+    public function listToModerateArticle(ArticleRepository $articleRepository) : Response
     {
-        $statusToModerate = $statusRepository->findBy(["name"=>"à modérer"]);
-        $articles = $articleRepository->findBy(['status' => $statusToModerate]);
+        $articles = $articleRepository->findBy(['status' => "to moderate"]);
         //dd($articles);
         return $this->render('admin/articles/list_toModerate.html.twig', ['articles'=>$articles]);
     }

@@ -3,7 +3,7 @@
 namespace App\Controller\public;
 
 use App\Repository\ArticleRepository;
-use App\Repository\StatusRepository;
+use App\Repository\CommentRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -11,11 +11,10 @@ use Symfony\Component\Routing\Attribute\Route;
 class ArticlesController extends AbstractController
 {
     #[Route(path: '/articles', name: 'articles_list', methods: ['GET'])]
-    public function articlesPublishedList(ArticleRepository $articleRepository, StatusRepository $statusRepository) : Response
+    public function articlesPublishedList(ArticleRepository $articleRepository) : Response
     {
         //dd('test');
-        $statusPublished = $statusRepository->findBy(["name"=>"publié"]);
-        $articles = $articleRepository->findBy(['status' => $statusPublished]);
+        $articles = $articleRepository->findBy(['status' => "published"]);
 
         return $this->render('public/articles/list.html.twig', ['articles'=>$articles]);
     }
@@ -24,15 +23,25 @@ class ArticlesController extends AbstractController
     public function articlePublishedShow(int $id, ArticleRepository $articleRepository) : Response
     {
         $article = $articleRepository->find($id);
+        $allComments = $article->getComments();
+        //dd($allComments);
+        $commentsPublished = [];
+        foreach ($allComments as $comment) {
+
+            if($comment->getStatus() === "published")
+            {
+                $commentsPublished[] = $comment;
+            }
+        }
+        //dd($commentsPublished);
         $articleStatus = $article->getStatus();
-        $articleStatus = $articleStatus->getName();
-        if($articleStatus !== "publié" || !$article)
+        if($articleStatus !== "published" || !$article)
         {
             $this->addFlash('error', "Cet article n'existe pas.");
 
             return $this->redirectToRoute('articles_list');
         }
 
-        return $this->render('public/articles/show.html.twig', ['article'=>$article]);
+        return $this->render('public/articles/show.html.twig', ['article'=>$article, "comments"=>$commentsPublished]);
     }
 }

@@ -37,8 +37,6 @@ security:
         user:
             lazy: true
             provider: app_user_provider
-            pattern: ^/user
-
             form_login:
                 login_path: login
                 check_path: login
@@ -57,7 +55,6 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         - { path: ^/admin(?!/login), roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
-        - { path: ^/user(?!/login), roles: [ ROLE_USER ] }
 
         #- { path: ^/user/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         # - { path: ^/profile, roles: ROLE_USER }

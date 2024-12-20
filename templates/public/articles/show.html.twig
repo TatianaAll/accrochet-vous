@@ -3,7 +3,6 @@
 {% block title %} {{ article.title }} {% endblock %}
 
 {% block body %}
-
     <section class="container">
 
         <h2>{{ article.title }}</h2>
@@ -21,5 +20,19 @@
         </div>
 
     </section>
-
+    <section>
+        <h2>Commentaires</h2>
+        {% if app.user %}
+            {% for comment in comments %}
+                <article>
+                    <h3>{{ comment.title }}</h3>
+                    <p>{{ comment.content }}</p>
+                </article>
+            {% endfor %}
+            <a href="{{ path('user_article_add_comment', {articleId: article.id}) }}">Ajouter un commentaire</a>
+        {% else %}
+            <p>Connectez-vous pour voir les commentaires ;)</p>
+            <a href="{{ path("login") }}">Se connecter</a>
+        {% endif %}
+    </section>
 {% endblock %}

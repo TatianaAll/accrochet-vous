@@ -27,6 +27,11 @@
                     <li>
                         <a href="{{ path("user_logout") }}">Deconnexion</a>
                     </li>
+                    <li>
+                        <form method="get" action="{{ path("user_search") }}">
+                            <input type="text" placeholder="Rechercher" name="search" id="search">
+                        </form>
+                    </li>
                 </ul>
             </nav>
         </header>
