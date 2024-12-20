@@ -18,7 +18,7 @@ class DashboardController extends AbstractController
     }
 
     #[Route(path:'/admin', name:'admin_dashboard', methods: ['GET'])]
-    #[IsGranted(new Expression('is_granted("ROLE_SUPER_ADMIN, ROLE_ADMIN")'))]
+    #[IsGranted(new Expression('is_granted("ROLE_SUPER_ADMIN") or is_granted("ROLE_ADMIN")'))]
     public function adminDashboard(): Response
     {
         return $this->render('admin/dashboard.html.twig');

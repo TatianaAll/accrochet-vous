@@ -127,16 +127,13 @@ class AdminArticlesController extends AbstractController
                 $imageExtension = $imageToUpdate->getClientOriginalExtension();
                 //2- rename with a service class
                 $newImageName = $uniqueFileNameGenerator->generateUniqueFileName($nameImage, $imageExtension);
-                //dd($newImageName);
                 // 3- get, with ParameterBag class, the path to the project's root directory
                 $rootDir = $parameterBag->get('kernel.project_dir');
-                //dd($rootDir);
                 // 4- generate the path to the 'uploads' directory (in public directory)
                 $uploadsDir = $rootDir . '/public/assets/uploads';
                 //5- move the image to the target directory
                 //rename with the new name (second argument)
                 $imageToUpdate->move($uploadsDir, $newImageName);
-
                 // 6- stock new image in the entity instance with the new name
                 $articleToUpdate->setImage($newImageName);
             }
