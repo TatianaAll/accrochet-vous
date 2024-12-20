@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ article.title }} {% endblock %}
+
+{% block body %}
+
+    <section class="container">
+
+        <h2>{{ article.title }}</h2>
+        <div>
+            <img src="{{ asset('assets/uploads/' ~ article.image) }}" alt="{{ article.title }}">
+        </div>
+        <div>
+            {% if article.user %}
+                <p>{{ article.title }} écrit par
+                    {{ article.user.username }}
+                </p>
+            {% endif %}
+            <p>Description : {{ article.description }}</p>
+
+        </div>
+
+    </section>
+
+{% endblock %}

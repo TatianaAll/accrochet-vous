@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Articles {% endblock %}
+
+{% block body %}
+    <section class="container">
+
+        <table class="table table-borderless">
+            <thead>
+            <tr>
+                <th scope="col">Titre</th>
+                <th scope="col">Date de création</th>>
+                <th scope="col">Auteur</th>
+                <th scope="col">Voir l'article</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for article in articles %}
+                <tr>
+                    <td>{{ article.title }}</td>
+                    <td>{{ article.createdAt | date('d-m-Y H:i') }}</td>
+                    {% if article.user %}
+                        <td>{{ article.user.username }}</td>
+                    {% else %}
+                        <td></td>
+                    {% endif %}
+                    <td><a href="{{ path("article_show", {id: article.id}) }}">Voir</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+
+
+    </section>
+
+{% endblock %}

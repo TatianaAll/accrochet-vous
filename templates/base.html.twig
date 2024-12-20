@@ -12,6 +12,37 @@
         {% endblock %}
     </head>
     <body>
+        <header>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="{{ path("articles_list") }}">Les modèles</a>
+                    </li>
+                    <li>
+                        <a href="{{ path("user_current_profile") }}">Mon profil</a>
+                    </li>
+                    <li>
+                        <a href="{{ path("login") }}">Login</a>
+                    </li>
+                    <li>
+                        <a href="{{ path("user_logout") }}">Deconnexion</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success" role="alert">
+                {{message}}
+            </div>
+        {% endfor %}
+
+        {% for message in app.flashes('error') %}
+            <div class="alert alert-danger" role="alert">
+                {{message}}
+            </div>
+        {% endfor %}
+
         {% block body %}{% endblock %}
     </body>
 </html>
