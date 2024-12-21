@@ -148,7 +148,7 @@ class AdminArticlesController extends AbstractController
         return $this->redirectToRoute("admin_articles_list");
     }
 
-    #[Route(path:"/admin/articles/list/to_moderate", name:"admin_articles_moderate", requirements: ['id'=>'\d+'], methods: ["GET"])]
+    #[Route(path:"/admin/articles/list/to_moderate", name:"admin_articles_moderate", methods: ["GET"])]
     #[IsGranted(new Expression('is_granted("ROLE_SUPER_ADMIN") or is_granted("ROLE_ADMIN")'))]
     public function listToModerateArticle(ArticleRepository $articleRepository) : Response
     {

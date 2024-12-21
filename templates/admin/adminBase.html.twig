@@ -28,7 +28,26 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a class="dropdown-item" href="{{ path("admin_admin_list") }}">Liste des admin</a>
+                                <a class="dropdown-item" href="{{ path("admin_admin_list") }}">
+                                    Liste des admin
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="{{ path("admin_articles_list") }}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Les articles
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="{{ path('admin_articles_list') }}">
+                                    Tous les articles
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="{{ path('admin_article_create') }}">
+                                    Ajouter un article
+                                </a>
                             </li>
                         </ul>
                     </li>
@@ -44,7 +63,7 @@
                                 <hr class="dropdown-divider">
                             </li>
                             <li>
-                                <a class="dropdown-item" href="#">Commentaires</a>
+                                <a class="dropdown-item" href="{{ path("admin_comments_moderate") }}">Commentaires</a>
                             </li>
                         </ul>
                     </li>
