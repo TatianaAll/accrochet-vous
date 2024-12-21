@@ -5,6 +5,7 @@ namespace App\Controller\users;
 use App\Entity\Comment;
 use App\Form\CommentType;
 use App\Repository\ArticleRepository;
+use App\Services\ImageImporter;
 use App\Services\UniqueFileNameGenerator;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -22,39 +23,30 @@ class CommentController extends AbstractController
     public function addComment(int $articleId,
                                ArticleRepository $articleRepository,
                                Request $request, EntityManagerInterface $entityManager,
-                               UniqueFileNameGenerator $uniqueFileNameGenerator,
-                               ParameterBagInterface $parameterBag) :Response
+                               ImageImporter $imageImporter) :Response
     {
         $article = $articleRepository->find($articleId);
         $comment = new Comment();
 
-        $form = $this->createForm(CommentType::class, $comment);
-        $formView = $form->createView();
+        $formNewComment = $this->createForm(CommentType::class, $comment);
+        $formView = $formNewComment->createView();
 
-        $form->handleRequest($request);
+        $formNewComment->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid())
-        {
+        if($formNewComment->isSubmitted() && $formNewComment->isValid()) {
             $comment->setUser($this->getUser());
             $comment->setArticle($article);
-            ;
-            //dd($statusComment);
+
             $comment->setStatus("to moderate");
 
             $comment->setCreatedAt(new \DateTime());
             $comment->setLinkedRate(false);
 
-            $imageComment = $form->get('image')->getData();
-            if($imageComment)
-            {
-                $nameImage = $imageComment->getClientOriginalName();
-                $imageExtension = $imageComment->getClientOriginalExtension();
-                $newImageName = $uniqueFileNameGenerator->generateUniqueFileName($nameImage, $imageExtension);
-                $rootDir = $parameterBag->get('kernel.project_dir');
-                $uploadsDir = $rootDir . '/public/assets/uploads';
-                $imageComment->move($uploadsDir, $newImageName);
-                // 6- stock new image in the entity instance with the new name
-                $comment->setImage($newImageName);
+            $imageImported = $formNewComment->get('image')->getData();
+
+            if ($imageImported) {
+                $newImageName = $imageImporter->importImage($imageImported);
+                $article->setImage($newImageName);
             }
             $entityManager->persist($comment);
             $entityManager->flush();

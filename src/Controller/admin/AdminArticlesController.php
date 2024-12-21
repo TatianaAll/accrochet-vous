@@ -71,6 +71,7 @@ class AdminArticlesController extends AbstractController
     }
 
     #[Route(path:'/admin/article/{id}/show', name: 'admin_article_show', requirements: ['id'=>'\d+'], methods:['GET'])]
+    #[IsGranted(new Expression('is_granted("ROLE_SUPER_ADMIN") or is_granted("ROLE_ADMIN")'))]
     public function adminArticleShow(int $id, ArticleRepository $articleRepository) : Response
     {
         $article = $articleRepository->find($id);
@@ -87,11 +88,9 @@ class AdminArticlesController extends AbstractController
     #[Route(path: "/admin/article/{id}/update", name: "admin_article_update", requirements: ["id"=>"\d+"], methods: ["GET", "POST"])]
     #[IsGranted(new Expression('is_granted("ROLE_SUPER_ADMIN") or is_granted("ROLE_ADMIN")'))]
     public function updateArticle(int $id, ArticleRepository $articleRepository,
-                                  Request $request, UniqueFileNameGenerator $uniqueFileNameGenerator,
-                                  ParameterBagInterface $parameterBag,
-                                  EntityManagerInterface $entityManager) : Response
+                                  Request $request, ImageImporter $imageImporter,
+                                  EntityManagerInterface $entityManager, ParameterBagInterface $parameterBag) : Response
     {
-        //dd('test');
         $articleToUpdate = $articleRepository->find($id);
 
         if(!$articleToUpdate){
@@ -101,28 +100,18 @@ class AdminArticlesController extends AbstractController
 
         $form = $this->createForm(ArticleType::class, $articleToUpdate);
         $formView = $form->createView();
-
         $form->handleRequest($request);
-
-        if($form->isSubmitted() && $form->isValid())
-        {
+        if($form->isSubmitted() && $form->isValid()) {
             $articleToUpdate->setUpdateAt(new \DateTime());
 
             $imageToUpdate = $form->get('image')->getData();
-
             if ($imageToUpdate) {
-                $nameImage = $imageToUpdate->getClientOriginalName();
-                $imageExtension = $imageToUpdate->getClientOriginalExtension();
-                //2- rename with a service class
-                $newImageName = $uniqueFileNameGenerator->generateUniqueFileName($nameImage, $imageExtension);
-                // 3- get, with ParameterBag class, the path to the project's root directory
+                $oldImage = $articleToUpdate->getImage();
                 $rootDir = $parameterBag->get('kernel.project_dir');
-                // 4- generate the path to the 'uploads' directory (in public directory)
                 $uploadsDir = $rootDir . '/public/assets/uploads';
-                //5- move the image to the target directory
-                //rename with the new name (second argument)
-                $imageToUpdate->move($uploadsDir, $newImageName);
-                // 6- stock new image in the entity instance with the new name
+                @unlink($uploadsDir . '/' . $oldImage);
+
+                $newImageName = $imageImporter->importImage($imageToUpdate);
                 $articleToUpdate->setImage($newImageName);
             }
             $entityManager->persist($articleToUpdate);
@@ -138,7 +127,7 @@ class AdminArticlesController extends AbstractController
     #[Route(path:"/admin/article/{id}/delete", name:"admin_article_delete", requirements: ['id'=>'\d+'], methods: ["GET"])]
     #[IsGranted(new Expression('is_granted("ROLE_SUPER_ADMIN")'))]
     public function deleteArticle(int $id, ArticleRepository $articleRepository,
-                                  EntityManagerInterface $entityManager) : Response
+                                  EntityManagerInterface $entityManager, ParameterBagInterface $parameterBag) : Response
     {
         $articleToDelete = $articleRepository->find($id);
 
@@ -146,6 +135,11 @@ class AdminArticlesController extends AbstractController
             $this->addFlash('error', "Cet article n'existe pas :(");
             return $this->redirectToRoute("admin_articles_list");
         }
+
+        $imageToDelete = $articleToDelete->getImage();
+        $rootDir = $parameterBag->get('kernel.project_dir');
+        $uploadsDir = $rootDir . '/public/assets/uploads';
+        @unlink($uploadsDir . '/' . $imageToDelete);
 
         $entityManager->remove($articleToDelete);
         $entityManager->flush();
