@@ -7,6 +7,7 @@ use App\Entity\Status;
 use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
 use App\Repository\StatusRepository;
+use App\Services\ImageImporter;
 use App\Services\UniqueFileNameGenerator;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -20,10 +21,9 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 class AdminArticlesController extends AbstractController
 {
     #[Route(path: '/admin/article/create', name: 'admin_article_create', methods:['POST', 'GET'])]
-    #[IsGranted(new Expression('is_granted("ROLE_SUPER_ADMIN") or is_granted("ROLE_ADMIN")'))]
+    #[IsGranted(new Expression('is_granted("ROLE_SUPER_ADMIN")'))]
     public function createArticle(Request $request, EntityManagerInterface $entityManager,
-                                  UniqueFileNameGenerator $uniqueFileNameGenerator,
-                                  ParameterBagInterface $parameterBag) : Response
+                                  ImageImporter $imageImporter) : Response
     {
         //dd("test");
         //new instance of article
@@ -43,21 +43,9 @@ class AdminArticlesController extends AbstractController
             $imageImported = $formAdminCreateArticle->get('image')->getData();
 
             if ($imageImported) {
-                $nameImage = $imageImported->getClientOriginalName();
-                $imageExtension = $imageImported->getClientOriginalExtension();
-                //2- rename with a service class
-                $newImageName = $uniqueFileNameGenerator->generateUniqueFileName($nameImage, $imageExtension);
-                //dd($newImageName);
-                // 3- get, with ParameterBag class, the path to the project's root directory
-                $rootDir = $parameterBag->get('kernel.project_dir');
-                //dd($rootDir);
-                // 4- generate the path to the 'uploads' directory (in public directory)
-                $uploadsDir = $rootDir . '/public/assets/uploads';
-                //5- move the image to the target directory
-                //rename with the new name (second argument)
-                $imageImported->move($uploadsDir, $newImageName);
-
-                // 6- stock new image in the entity instance with the new name
+                //calling the service class for importation
+                $newImageName = $imageImporter->importImage($imageImported);
+                // stock new image in the entity instance with the new name
                 $article->setImage($newImageName);
             }
             //set the author to admin
@@ -154,8 +142,7 @@ class AdminArticlesController extends AbstractController
     {
         $articleToDelete = $articleRepository->find($id);
 
-        if(!$articleToDelete)
-        {
+        if(!$articleToDelete) {
             $this->addFlash('error', "Cet article n'existe pas :(");
             return $this->redirectToRoute("admin_articles_list");
         }
@@ -167,7 +154,7 @@ class AdminArticlesController extends AbstractController
         return $this->redirectToRoute("admin_articles_list");
     }
 
-    #[Route(path:"/admin/articles/list/toModerate", name:"admin_article_delete", requirements: ['id'=>'\d+'], methods: ["GET"])]
+    #[Route(path:"/admin/articles/list/to_moderate", name:"admin_articles_moderate", requirements: ['id'=>'\d+'], methods: ["GET"])]
     #[IsGranted(new Expression('is_granted("ROLE_SUPER_ADMIN") or is_granted("ROLE_ADMIN")'))]
     public function listToModerateArticle(ArticleRepository $articleRepository) : Response
     {

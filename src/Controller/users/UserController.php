@@ -58,7 +58,7 @@ class UserController extends AbstractController
                 $entityManager->persist($user);
                 $entityManager->flush();
 
-                $this->addFlash("succes", "Mot de passe modifié");
+                $this->addFlash("success", "Mot de passe modifié");
                 return $this->redirectToRoute("user_current_profile");
             }
 
