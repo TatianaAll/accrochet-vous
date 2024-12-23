@@ -1,0 +1,12 @@
+# Ignorer le dossier vendor
+/vendor/* linguist-vendored
+
+# Marquer les fichiers de configuration comme non analysables
+*.yml linguist-documentation
+*.md linguist-documentation
+*.json linguist-documentation
+
+# Inclure les principaux langages pour l'analyse
+*.php linguist-language=PHP
+*.twig linguist-language=Twig
+*.scss linguist-language=SCSS
