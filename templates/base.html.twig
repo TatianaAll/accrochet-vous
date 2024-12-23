@@ -1,53 +1,75 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="{{ asset('assets/images/logoCouleur.svg') }}" type="image/svg+xml">
-        {% block stylesheets %}
-        {% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="icon" href="{{ asset('assets/images/logoCouleur.svg') }}" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Sniglet:wght@400;800&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/styles/style.css') }}">
+    {% block javascripts %}
+        {% block importmap %}{{ importmap('app') }}{% endblock %}
+    {% endblock %}
+</head>
+<body>
+<header class="isRelative">
+    <div class="isFlex">
+        <div class="isAbsolute logoHeader">
+            <img src="{{ asset("assets/images/logoCouleur.svg") }}" class="w100" alt="Logo du site">
+        </div>
+        <div>
+            <h1 class="mainTitle">Accrochet-vous</h1>
+            <h2 class="titleH2">Modèle de crochet gratuit</h2>
+        </div>
+        <div>
+            {% if app.user %}
+                <a href="{{ path("user_current_profile", {id: app.user.id}) }}" class="buttonHeader">
+                    Voir mon profil
+                </a>
+            {% else %}
+                <a href="{{ path("login") }}">
+                    Se connecter
+                </a>
+            {% endif %}
+        </div>
+    </div>
+    <nav class="headerNavBar">
+        <ul>
+            <li class="">
+                <a href="{{ path("articles_list") }}">Les modèles</a>
+            </li>
+            <li>
+                <a href="{{ path("user_current_profile") }}">Mon profil</a>
+            </li>
+            <li>
+                <a href="{{ path("login") }}">Login</a>
+            </li>
+            <li>
+                <a href="{{ path("user_logout") }}">Deconnexion</a>
+            </li>
+            {#                    <li> #}
+            {#                        <form method="get" action="{{ path("user_search") }}"> #}
+            {#                            <input type="text" placeholder="Rechercher" name="search" id="search"> #}
+            {#                        </form> #}
+            {#                    </li> #}
+        </ul>
+    </nav>
+</header>
 
-        {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
-    </head>
-    <body>
-        <header>
-            <nav>
-                <ul>
-                    <li>
-                        <a href="{{ path("articles_list") }}">Les modèles</a>
-                    </li>
-                    <li>
-                        <a href="{{ path("user_current_profile") }}">Mon profil</a>
-                    </li>
-                    <li>
-                        <a href="{{ path("login") }}">Login</a>
-                    </li>
-                    <li>
-                        <a href="{{ path("user_logout") }}">Deconnexion</a>
-                    </li>
-{#                    <li>#}
-{#                        <form method="get" action="{{ path("user_search") }}">#}
-{#                            <input type="text" placeholder="Rechercher" name="search" id="search">#}
-{#                        </form>#}
-{#                    </li>#}
-                </ul>
-            </nav>
-        </header>
+{% for message in app.flashes('success') %}
+    <div class="alert alert-success" role="alert">
+        {{ message }}
+    </div>
+{% endfor %}
 
-        {% for message in app.flashes('success') %}
-            <div class="alert alert-success" role="alert">
-                {{message}}
-            </div>
-        {% endfor %}
+{% for message in app.flashes('error') %}
+    <div class="alert alert-danger" role="alert">
+        {{ message }}
+    </div>
+{% endfor %}
 
-        {% for message in app.flashes('error') %}
-            <div class="alert alert-danger" role="alert">
-                {{message}}
-            </div>
-        {% endfor %}
-
-        {% block body %}{% endblock %}
-    </body>
+{% block body %}{% endblock %}
+</body>
 </html>

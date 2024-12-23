@@ -13,7 +13,6 @@ class ArticlesController extends AbstractController
     #[Route(path: '/articles', name: 'articles_list', methods: ['GET'])]
     public function articlesPublishedList(ArticleRepository $articleRepository) : Response
     {
-        //dd('test');
         $articles = $articleRepository->findBy(['status' => "published"]);
 
         return $this->render('public/articles/list.html.twig', ['articles'=>$articles]);
@@ -24,7 +23,6 @@ class ArticlesController extends AbstractController
     {
         $article = $articleRepository->find($id);
         $allComments = $article->getComments();
-        //dd($allComments);
         $commentsPublished = [];
         foreach ($allComments as $comment) {
 
@@ -33,7 +31,6 @@ class ArticlesController extends AbstractController
                 $commentsPublished[] = $comment;
             }
         }
-        //dd($commentsPublished);
         $articleStatus = $article->getStatus();
         if($articleStatus !== "published" || !$article)
         {
