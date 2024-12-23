@@ -20,9 +20,13 @@
             </p>
             <p>Description : {{ article.description }}</p>
 
+            {% if article.status is same as 'to moderate' %}
+                <a href="{{ path("admin_article_moderate_published", {id: article.id}) }}" class="btn btn-success">Publier l'article</a>
+                <a href="{{ path("admin_article_moderate_blocked", {id: article.id}) }}" class="btn btn-danger">Bloquer l'article</a>
+            {% endif %}
 
             <a href="{{ path('admin_article_update', {id: article.id}) }}" class="btn btn-warning mt-1">Modifier</a>
-{#            <a href="{{ path("admin_article_delete", {id: article.id}) }}" class="btn btn-danger mt-1">Supprimer</a>#}
+
         </div>
 
     </section>

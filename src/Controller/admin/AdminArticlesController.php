@@ -3,12 +3,9 @@
 namespace App\Controller\admin;
 
 use App\Entity\Article;
-use App\Entity\Status;
 use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
-use App\Repository\StatusRepository;
 use App\Services\ImageImporter;
-use App\Services\UniqueFileNameGenerator;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
@@ -25,7 +22,6 @@ class AdminArticlesController extends AbstractController
     public function createArticle(Request $request, EntityManagerInterface $entityManager,
                                   ImageImporter $imageImporter) : Response
     {
-        //dd("test");
         //new instance of article
         $article = new Article();
 
@@ -39,7 +35,7 @@ class AdminArticlesController extends AbstractController
         {
             $article->setCreatedAt(new \DateTime());
             //management of the images imported
-            //1- get them from the form
+            //get them from the form
             $imageImported = $formAdminCreateArticle->get('image')->getData();
 
             if ($imageImported) {
@@ -51,7 +47,6 @@ class AdminArticlesController extends AbstractController
             //set the author to admin
             $article->setAdminId($this->getUser());
 
-            //dd($article);
             $entityManager->persist($article);
             $entityManager->flush();
 
@@ -153,8 +148,44 @@ class AdminArticlesController extends AbstractController
     public function listToModerateArticle(ArticleRepository $articleRepository) : Response
     {
         $articles = $articleRepository->findBy(['status' => "to moderate"]);
-        //dd($articles);
         return $this->render('admin/articles/list_toModerate.html.twig', ['articles'=>$articles]);
+    }
+
+    #[Route(path:"/admin/article/{id}/to_moderate/published", name:"admin_article_moderate_published")]
+    #[IsGranted(new Expression('is_granted("ROLE_SUPER_ADMIN") or is_granted("ROLE_ADMIN")'))]
+    public function publishedComment(int $id, ArticleRepository $articleRepository, EntityManagerInterface $entityManager) : Response
+    {
+        $articleToPublished = $articleRepository->find($id);
+        if(!$articleToPublished){
+            $this->addFlash("error", "Article non trouvé");
+            return $this->redirectToRoute("admin_articles_moderate");
+        }
+
+        $articleToPublished->setStatus("published");
+        $entityManager->persist($articleToPublished);
+        $entityManager->flush();
+
+        $this->addFlash("success", "Article '" . $articleToPublished->getTitle() . "' accepté et publié !");
+        return $this->redirectToRoute('admin_articles_moderate');
+    }
+
+    #[Route(path:"/admin/article/{id}/to_moderate/blocked", name:"admin_article_moderate_blocked")]
+    #[IsGranted(new Expression('is_granted("ROLE_SUPER_ADMIN") or is_granted("ROLE_ADMIN")'))]
+    public function blockedComment(int $id, ArticleRepository $articleRepository, EntityManagerInterface $entityManager) : Response
+    {
+        $articleToBlocked = $articleRepository->find($id);
+        if(!$articleToBlocked){
+            $this->addFlash("error", "Article non trouvé");
+            return $this->redirectToRoute("admin_articles_moderate");
+        }
+
+        $articleToBlocked->setStatus("blocked");
+
+        $entityManager->persist($articleToBlocked);
+        $entityManager->flush();
+
+        $this->addFlash("success", "Article '" . $articleToBlocked->getTitle() . "' bloqué !");
+        return $this->redirectToRoute('admin_articles_moderate');
     }
 
 }
