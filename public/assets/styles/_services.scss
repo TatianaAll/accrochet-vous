@@ -1,0 +1,29 @@
+@mixin fontTitle ($color ,$size){
+  color: $color;
+  font-size: $size;
+  font-family: "Nunito", serif;
+  text-align: center;
+}
+
+$black: #181F1C;
+$white: #EEEEEE;
+
+$lightGreen: #AFC294;
+$darkGreen: #6F7762;
+
+$lightLilac: #A589C6;
+$darkLilac: #5F4B64;
+
+.isRelative{
+  position: relative;
+}
+.isAbsolute{
+  position: absolute;
+}
+.isFlex{
+  display: flex;
+}
+
+.w100{
+  width: 100%;
+}

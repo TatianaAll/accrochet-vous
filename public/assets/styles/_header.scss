@@ -1,0 +1,18 @@
+@import "_services.scss";
+header{
+  .mainTitle{
+    @include fontTitle($black, 50px);
+    padding-top:3rem;
+  }
+  .titleH2{
+    @include fontTitle($black, 18px);
+  }
+  .isAbsolute.logoHeader{
+    width: 10%;
+    top: 3px;
+    left: 40px;
+  }
+  .headerNavBar{
+    width: 80%;
+  }
+}
