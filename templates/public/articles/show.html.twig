@@ -26,6 +26,7 @@
             {% for comment in comments %}
                 <article>
                     <h3>{{ comment.title }}</h3>
+                    <p>Publié le {{ comment.createdAt | date('d-m-Y H:i') }}</p>
                     <p>{{ comment.content }}</p>
                 </article>
             {% endfor %}

@@ -34,21 +34,25 @@ class ArticleType extends AbstractType
                 'class' => Category::class,
                 'choice_label' => 'name',
             ])
-            ->add('status', ChoiceType::class, [
-                'choices'  => [
-                    'Publié' => 'published',
-                    'A modérer' => 'to moderate',
-                ],
-            ])
 
             ->add('enregistrer', SubmitType::class)
         ;
+        //for manage the status I need distinction between admin and users
+        if ($options['is_admin']) {
+            $builder->add('status', ChoiceType::class, [
+                'choices' => [
+                    'Publié' => 'published',
+                    'A modérer' => 'to moderate',
+                ],
+            ]);
+        }
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => Article::class,
+            'is_admin' => false,
         ]);
     }
 }

@@ -51,7 +51,7 @@ class CommentController extends AbstractController
             $entityManager->persist($comment);
             $entityManager->flush();
 
-            $this->addFlash("succes", "Commentaire ajouté !");
+            $this->addFlash("success", "Commentaire ajouté, il sera lu par nos administrateurs avant d'apparaitre !");
             return $this->redirectToRoute('article_show', ['id' => $articleId]);
         }
 

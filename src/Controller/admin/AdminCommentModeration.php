@@ -55,7 +55,7 @@ class AdminCommentModeration extends AbstractController
         $entityManager->persist($comment);
         $entityManager->flush();
 
-        $this->addFlash("success", "Commentaire de" . $comment->getUser()->getUsername() . "accepté et publié !");
+        $this->addFlash("success", "Commentaire de" . $comment->getUser()->getUsername() . " accepté et publié !");
         return $this->redirectToRoute('admin_comments_moderate');
     }
 

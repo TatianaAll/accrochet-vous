@@ -17,22 +17,23 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class AdminArticlesController extends AbstractController
 {
-    #[Route(path: '/admin/article/create', name: 'admin_article_create', methods:['POST', 'GET'])]
-    #[IsGranted(new Expression('is_granted("ROLE_SUPER_ADMIN")'))]
-    public function createArticle(Request $request, EntityManagerInterface $entityManager,
-                                  ImageImporter $imageImporter) : Response
+    #[Route(path: '/admin/article/create', name: 'admin_article_create', methods: ['POST', 'GET'])]
+    #[IsGranted(new Expression('is_granted("ROLE_SUPER_ADMIN") or is_granted("ROLE_ADMIN")'))]
+    public function createArticle(Request       $request, EntityManagerInterface $entityManager,
+                                  ImageImporter $imageImporter): Response
     {
         //new instance of article
         $article = new Article();
 
         //calling the form
-        $formAdminCreateArticle = $this->createForm(ArticleType::class, $article);
+        $formAdminCreateArticle = $this->createForm(ArticleType::class, $article, [
+            'is_admin' => $this->isGranted('ROLE_ADMIN'),
+        ]);
         $formAdminView = $formAdminCreateArticle->createView();
 
         $formAdminCreateArticle->handleRequest($request);
 
-        if($formAdminCreateArticle->isSubmitted() && $formAdminCreateArticle->isValid())
-        {
+        if ($formAdminCreateArticle->isSubmitted() && $formAdminCreateArticle->isValid()) {
             $article->setCreatedAt(new \DateTime());
             //management of the images imported
             //get them from the form
@@ -53,42 +54,41 @@ class AdminArticlesController extends AbstractController
             $this->addFlash("success", "Modèle ajouté ;)");
             return $this->redirectToRoute('admin_articles_list');
         }
-        return $this->render('admin/articles/create.html.twig', ['formView'=>$formAdminView]);
+        return $this->render('admin/articles/create.html.twig', ['formView' => $formAdminView]);
     }
 
-    #[Route(path:'/admin/articles/list', name: 'admin_articles_list', methods:['GET'])]
+    #[Route(path: '/admin/articles/list', name: 'admin_articles_list', methods: ['GET'])]
     #[IsGranted(new Expression('is_granted("ROLE_SUPER_ADMIN") or is_granted("ROLE_ADMIN")'))]
-    public function adminListArticles(ArticleRepository $articleRepository) : Response
+    public function adminListArticles(ArticleRepository $articleRepository): Response
     {
         $articles = $articleRepository->findAll();
 
-        return $this->render('admin/articles/list.html.twig', ['articles'=>$articles]);
+        return $this->render('admin/articles/list.html.twig', ['articles' => $articles]);
     }
 
-    #[Route(path:'/admin/article/{id}/show', name: 'admin_article_show', requirements: ['id'=>'\d+'], methods:['GET'])]
+    #[Route(path: '/admin/article/{id}/show', name: 'admin_article_show', requirements: ['id' => '\d+'], methods: ['GET'])]
     #[IsGranted(new Expression('is_granted("ROLE_SUPER_ADMIN") or is_granted("ROLE_ADMIN")'))]
-    public function adminArticleShow(int $id, ArticleRepository $articleRepository) : Response
+    public function adminArticleShow(int $id, ArticleRepository $articleRepository): Response
     {
         $article = $articleRepository->find($id);
 
-        if(!$article)
-        {
+        if (!$article) {
             $this->addFlash("error", "Cet article n'existe pas");
             return $this->redirectToRoute("admin_articles_list");
         }
 
-        return $this->render('admin/articles/show.html.twig', ['article'=>$article]);
+        return $this->render('admin/articles/show.html.twig', ['article' => $article]);
     }
 
-    #[Route(path: "/admin/article/{id}/update", name: "admin_article_update", requirements: ["id"=>"\d+"], methods: ["GET", "POST"])]
+    #[Route(path: "/admin/article/{id}/update", name: "admin_article_update", requirements: ["id" => "\d+"], methods: ["GET", "POST"])]
     #[IsGranted(new Expression('is_granted("ROLE_SUPER_ADMIN") or is_granted("ROLE_ADMIN")'))]
-    public function updateArticle(int $id, ArticleRepository $articleRepository,
-                                  Request $request, ImageImporter $imageImporter,
-                                  EntityManagerInterface $entityManager, ParameterBagInterface $parameterBag) : Response
+    public function updateArticle(int                    $id, ArticleRepository $articleRepository,
+                                  Request                $request, ImageImporter $imageImporter,
+                                  EntityManagerInterface $entityManager, ParameterBagInterface $parameterBag): Response
     {
         $articleToUpdate = $articleRepository->find($id);
 
-        if(!$articleToUpdate){
+        if (!$articleToUpdate) {
             $this->addFlash("error", "Cet article n'existe pas :(");
             return $this->redirectToRoute("admin_articles_list");
         }
@@ -96,7 +96,7 @@ class AdminArticlesController extends AbstractController
         $form = $this->createForm(ArticleType::class, $articleToUpdate);
         $formView = $form->createView();
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $articleToUpdate->setUpdateAt(new \DateTime());
 
             $imageToUpdate = $form->get('image')->getData();
@@ -116,17 +116,17 @@ class AdminArticlesController extends AbstractController
             return $this->redirectToRoute("admin_articles_list");
         }
 
-        return $this->render("admin/articles/update.html.twig", ["formView"=>$formView, "articleToUpdate"=>$articleToUpdate]);
+        return $this->render("admin/articles/update.html.twig", ["formView" => $formView, "articleToUpdate" => $articleToUpdate]);
     }
 
-    #[Route(path:"/admin/article/{id}/delete", name:"admin_article_delete", requirements: ['id'=>'\d+'], methods: ["GET"])]
+    #[Route(path: "/admin/article/{id}/delete", name: "admin_article_delete", requirements: ['id' => '\d+'], methods: ["GET"])]
     #[IsGranted(new Expression('is_granted("ROLE_SUPER_ADMIN")'))]
-    public function deleteArticle(int $id, ArticleRepository $articleRepository,
-                                  EntityManagerInterface $entityManager, ParameterBagInterface $parameterBag) : Response
+    public function deleteArticle(int                    $id, ArticleRepository $articleRepository,
+                                  EntityManagerInterface $entityManager, ParameterBagInterface $parameterBag): Response
     {
         $articleToDelete = $articleRepository->find($id);
 
-        if(!$articleToDelete) {
+        if (!$articleToDelete) {
             $this->addFlash('error', "Cet article n'existe pas :(");
             return $this->redirectToRoute("admin_articles_list");
         }
@@ -143,20 +143,20 @@ class AdminArticlesController extends AbstractController
         return $this->redirectToRoute("admin_articles_list");
     }
 
-    #[Route(path:"/admin/articles/list/to_moderate", name:"admin_articles_moderate", methods: ["GET"])]
+    #[Route(path: "/admin/articles/list/to_moderate", name: "admin_articles_moderate", methods: ["GET"])]
     #[IsGranted(new Expression('is_granted("ROLE_SUPER_ADMIN") or is_granted("ROLE_ADMIN")'))]
-    public function listToModerateArticle(ArticleRepository $articleRepository) : Response
+    public function listToModerateArticle(ArticleRepository $articleRepository): Response
     {
         $articles = $articleRepository->findBy(['status' => "to moderate"]);
-        return $this->render('admin/articles/list_toModerate.html.twig', ['articles'=>$articles]);
+        return $this->render('admin/articles/list_toModerate.html.twig', ['articles' => $articles]);
     }
 
-    #[Route(path:"/admin/article/{id}/to_moderate/published", name:"admin_article_moderate_published")]
+    #[Route(path: "/admin/article/{id}/to_moderate/published", name: "admin_article_moderate_published")]
     #[IsGranted(new Expression('is_granted("ROLE_SUPER_ADMIN") or is_granted("ROLE_ADMIN")'))]
-    public function publishedComment(int $id, ArticleRepository $articleRepository, EntityManagerInterface $entityManager) : Response
+    public function publishedComment(int $id, ArticleRepository $articleRepository, EntityManagerInterface $entityManager): Response
     {
         $articleToPublished = $articleRepository->find($id);
-        if(!$articleToPublished){
+        if (!$articleToPublished) {
             $this->addFlash("error", "Article non trouvé");
             return $this->redirectToRoute("admin_articles_moderate");
         }
@@ -169,12 +169,12 @@ class AdminArticlesController extends AbstractController
         return $this->redirectToRoute('admin_articles_moderate');
     }
 
-    #[Route(path:"/admin/article/{id}/to_moderate/blocked", name:"admin_article_moderate_blocked")]
+    #[Route(path: "/admin/article/{id}/to_moderate/blocked", name: "admin_article_moderate_blocked")]
     #[IsGranted(new Expression('is_granted("ROLE_SUPER_ADMIN") or is_granted("ROLE_ADMIN")'))]
-    public function blockedComment(int $id, ArticleRepository $articleRepository, EntityManagerInterface $entityManager) : Response
+    public function blockedComment(int $id, ArticleRepository $articleRepository, EntityManagerInterface $entityManager): Response
     {
         $articleToBlocked = $articleRepository->find($id);
-        if(!$articleToBlocked){
+        if (!$articleToBlocked) {
             $this->addFlash("error", "Article non trouvé");
             return $this->redirectToRoute("admin_articles_moderate");
         }
