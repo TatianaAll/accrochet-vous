@@ -1,8 +1,13 @@
-*{
+@import "_header.scss";
+@import "_services.scss";
+
+
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-@import "_header.scss";
-@import "_services.scss";
+body {
+  background-color: $white;
+}

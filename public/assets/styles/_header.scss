@@ -1,18 +1,79 @@
 @import "_services.scss";
-header{
-  .mainTitle{
-    @include fontTitle($black, 50px);
-    padding-top:3rem;
+
+header.isRelative {
+  div.w80 {
+    margin: auto;
+
+    div.titleContainer {
+      text-align: center;
+      margin-bottom: 1.5rem;
+
+      .mainTitle {
+        @include fontTitle($black, 48px);
+        padding-top: 3rem;
+      }
+
+      .titleH2 {
+        @include fontTitle($black, 16px);
+      }
+    }
+
+    div.buttonContainer.isAbsolute {
+      @include buttonStyle($lightGreen);
+      padding-top: 1rem;
+      text-align: center;
+      transition: all 0.5s;
+      top: 40%;
+      right: 78px;
+      transform: translate(-50%, -50%);
+
+      a.buttonHeader {
+        text-decoration: none;
+        color: $white;
+        font-family: "Nunito", serif;
+      }
+
+      &:hover {
+        background-color: $darkGreen;
+      }
+    }
+
+    .isAbsolute.logoHeader {
+      width: 12%;
+      top: 5px;
+      left: 7%;
+    }
   }
-  .titleH2{
-    @include fontTitle($black, 18px);
-  }
-  .isAbsolute.logoHeader{
-    width: 10%;
-    top: 3px;
-    left: 40px;
-  }
-  .headerNavBar{
+
+  nav.headerNavBar {
+    margin: auto;
     width: 80%;
+    background-color: $lightGreen;
+    height: 60px;
+    padding-top: 18px;
+
+    ul.isFlex {
+      justify-content: space-evenly;
+      align-items: center;
+
+      li.liNav {
+        font-family: "Nunito", serif;
+        font-size: 20px;
+        list-style: none;
+
+        a.linkNav {
+          color: $black;
+          text-decoration: none;
+          transition: all 0.5s;
+
+          &:hover {
+            color: $white;
+            font-size: 21px;
+          }
+        }
+
+      }
+    }
   }
+
 }

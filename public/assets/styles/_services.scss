@@ -5,6 +5,13 @@
   text-align: center;
 }
 
+@mixin buttonStyle ($backgroundColor) {
+  background-color: $backgroundColor;
+  width: 120px;
+  height: 50px;
+}
+
+
 $black: #181F1C;
 $white: #EEEEEE;
 
@@ -24,6 +31,9 @@ $darkLilac: #5F4B64;
   display: flex;
 }
 
-.w100{
+.w80 {
+  width: 80%;
+}
+.w100 {
   width: 100%;
 }
