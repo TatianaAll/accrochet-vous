@@ -3,9 +3,35 @@
 {% block title %} Inscription {% endblock %}
 
 {% block body %}
-    <section class="container">
+    <section class="formContainer">
 
-        {{ form(formView) }}
+        <h2 class="titleH2">Créer un compte</h2>
+        {{ form_start(formView) }}
+        <div>
+            {{ form_label(formView.username, 'Pseudo', {'attr': {'class': 'labelForm'}}) }}
+            {{ form_widget(formView.username, {'attr': {'class': 'inputForm'}}) }}
+            {{ form_errors(formView.username) }}
+        </div>
+        <div>
+            {{ form_label(formView.email, 'Adresse mail', {'attr': {'class': 'labelForm'}}) }}
+            {{ form_widget(formView.email, {'attr': {'class': 'inputForm'}}) }}
+            {{ form_errors(formView.email) }}
+        </div>
+        <div>
+            {{ form_label(formView.password, 'Mot de passe', {'attr': {'class': 'labelForm'}}) }}
+            {{ form_widget(formView.password, {'attr': {'class': 'inputForm'}}) }}
+            {{ form_errors(formView.password) }}
+        </div>
+        <div>
+            {{ form_label(formView.passwordConfirmation, 'Vérification du mot de passe', {'attr': {'class': 'labelForm'}}) }}
+            {{ form_widget(formView.passwordConfirmation, {'attr': {'class': 'inputForm'}}) }}
+            {{ form_errors(formView.passwordConfirmation) }}
+        </div>
+
+        <div>
+            {{ form_widget(formView.enregistrer) }}
+        </div>
+        {{ form_end(formView) }}
 
     </section>
 

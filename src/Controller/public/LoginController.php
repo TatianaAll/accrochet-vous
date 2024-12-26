@@ -52,45 +52,49 @@ class LoginController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            //vérifier si le nom est dispo
-            //vérifier si l'adresse mail est déjà utilisé
-            $user->setCreationDate(new \DateTime());
-            $user->setRoles(["ROLE_USER"]);
-
-            //il faut que je récupère le mdp rentré et que je le hache
             $plaintextPassword = $form->get('password')->getData();
 
             if (!$plaintextPassword) {
                 $this->addFlash('error', 'Veuillez rentrer un mot de passe');
                 return $this->redirectToRoute('admin_admin_create');
             }
-            //je hash le tout
-            $hashedPassword = $passwordHasher->hashPassword(
-                $user,
-                $plaintextPassword
-            );
-            $user->setPassword($hashedPassword);
-            //dd($hashedPassword);
+            $confirmPassword = $form->get('confirmPassword')->getData();
+            if ($plaintextPassword === $confirmPassword) {
+                $hashedPassword = $passwordHasher->hashPassword(
+                    $user,
+                    $plaintextPassword
+                );
+                $user->setPassword($hashedPassword);
 
-            $entityManager->persist($user);
-            $entityManager->flush();
+                //vérifier si le nom est dispo
+                //vérifier si l'adresse mail est déjà utilisé
 
-            $email = new Email();
+                $user->setCreationDate(new \DateTime());
+                $user->setRoles(["ROLE_USER"]);
 
-            //je fais un template avec mon mail
-            //je lui fais passer ma vue et je lui donne les valeur de contact récup dans le form
-            $emailTemplate = $this->renderView('mails/inscription.html.twig', ['user' => $user]);
 
-            //j'envoie avec mailer
-            $mailer->send(
-                $email->from('noreply@accrochetvous.com')
-                    -> to($user->getEmail())
-                    -> subject('Inscription')
-                    -> html($emailTemplate)
-            );
+                $entityManager->persist($user);
+                $entityManager->flush();
 
-            $this->addFlash('success', 'Votre compte a bien été créé');
-            return $this->redirectToRoute('home');
+                $email = new Email();
+
+                //je fais un template avec mon mail
+                //je lui fais passer ma vue et je lui donne les valeur de contact récup dans le form
+                $emailTemplate = $this->renderView('mails/inscription.html.twig', ['user' => $user]);
+
+                //j'envoie avec mailer
+                $mailer->send(
+                    $email->from('noreply@accrochetvous.com')
+                        ->to($user->getEmail())
+                        ->subject('Inscription')
+                        ->html($emailTemplate)
+                );
+
+                $this->addFlash('success', 'Votre compte a bien été créé');
+                return $this->redirectToRoute('home');
+            } else {
+                $this->addFlash('error', 'Les mots de passes ne correspondent pas');
+            }
         }
 
         return $this->render('public/inscription.html.twig', [

@@ -22,18 +22,24 @@ class ArticlesController extends AbstractController
     public function articlePublishedShow(int $id, ArticleRepository $articleRepository) : Response
     {
         $article = $articleRepository->find($id);
-        $allComments = $article->getComments();
+        if (!$article){
+            $this->addFlash("error", "Article inexistant");
+            return $this->redirectToRoute('articles_list');
+        }
+
+        @$allComments = $article->getComments();
         $commentsPublished = [];
+
         foreach ($allComments as $comment) {
 
-            if($comment->getStatus() === "published")
-            {
+            if($comment->getStatus() === "published") {
                 $commentsPublished[] = $comment;
             }
         }
+
         $articleStatus = $article->getStatus();
-        if($articleStatus !== "published" || !$article)
-        {
+
+        if($articleStatus !== "published" || !$article) {
             $this->addFlash('error', "Cet article n'existe pas.");
 
             return $this->redirectToRoute('articles_list');

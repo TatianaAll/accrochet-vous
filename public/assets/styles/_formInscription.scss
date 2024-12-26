@@ -1,0 +1,10 @@
+@import "_services.scss";
+
+section.formContainer {
+  margin-top: 2rem;
+  @include formContainer($lightGreen, 10px);
+
+  h2.titleH2 {
+    @include fontTitle($black, 24px)
+  }
+}

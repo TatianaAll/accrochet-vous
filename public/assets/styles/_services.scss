@@ -1,14 +1,23 @@
-@mixin fontTitle ($color ,$size){
+@mixin fontTitle($color ,$size) {
   color: $color;
   font-size: $size;
   font-family: "Nunito", serif;
   text-align: center;
 }
 
-@mixin buttonStyle ($backgroundColor) {
+@mixin buttonStyle($backgroundColor) {
   background-color: $backgroundColor;
   width: 120px;
   height: 50px;
+}
+
+@mixin formContainer($backgroundColor, $borderRadius) {
+  width: 80%;
+  background-color: $backgroundColor;
+  border-top-right-radius: $borderRadius;
+  border-bottom-left-radius: $borderRadius;
+  margin: auto;
+  padding: 1rem;
 }
 
 
@@ -21,19 +30,51 @@ $darkGreen: #6F7762;
 $lightLilac: #A589C6;
 $darkLilac: #5F4B64;
 
-.isRelative{
+$lightRed: #F06449;
+$darkRed: #772014;
+$successBorder: #76B041;
+$successBg: #DAEFB3;
+
+.isRelative {
   position: relative;
 }
-.isAbsolute{
+
+.isAbsolute {
   position: absolute;
 }
-.isFlex{
+
+.isFlex {
   display: flex;
 }
 
 .w80 {
   width: 80%;
 }
+
 .w100 {
   width: 100%;
+}
+
+.messageFlash {
+  margin-top: 2rem;
+  padding-top: 0.5rem;
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: 20px;
+  height: 50px;
+  text-align: center;
+  font-family: "Nunito Sans", serif;
+}
+
+.error {
+  background-color: $lightRed;
+  border: $darkRed 1px solid;
+  color: $white;
+}
+
+.success {
+  background-color: $successBg;
+  border: $successBorder 1px solid;
+  color: $black;
 }

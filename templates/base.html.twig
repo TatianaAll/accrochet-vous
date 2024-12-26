@@ -8,6 +8,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Sniglet:wght@400;800&display=swap"
           rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Sniglet:wght@400;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/styles/style.css') }}">
     {% block javascripts %}
         {% block importmap %}{{ importmap('app') }}{% endblock %}
@@ -44,7 +47,7 @@
                 <a class="linkNav">Recherche</a>
             </li>
             <li class="liNav">
-                <a href="{{ path("user_logout") }}" class="linkNav">Deconnexion</a>
+                <a href="{{ path("user_logout") }}" class="linkNav">Déconnexion</a>
             </li>
             {#                    <li> #}
             {#                        <form method="get" action="{{ path("user_search") }}"> #}
@@ -56,13 +59,13 @@
 </header>
 
 {% for message in app.flashes('success') %}
-    <div class="alert alert-success" role="alert">
+    <div class="messageFlash success" role="alert">
         {{ message }}
     </div>
 {% endfor %}
 
 {% for message in app.flashes('error') %}
-    <div class="alert alert-danger" role="alert">
+    <div class="messageFlash error" role="alert">
         {{ message }}
     </div>
 {% endfor %}
