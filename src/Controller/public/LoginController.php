@@ -58,7 +58,7 @@ class LoginController extends AbstractController
                 $this->addFlash('error', 'Veuillez rentrer un mot de passe');
                 return $this->redirectToRoute('admin_admin_create');
             }
-            $confirmPassword = $form->get('confirmPassword')->getData();
+            $confirmPassword = $form->get('passwordConfirmation')->getData();
             if ($plaintextPassword === $confirmPassword) {
                 $hashedPassword = $passwordHasher->hashPassword(
                     $user,

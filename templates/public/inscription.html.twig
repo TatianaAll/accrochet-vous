@@ -6,33 +6,34 @@
     <section class="formContainer">
 
         <h2 class="titleH2">Créer un compte</h2>
-        {{ form_start(formView) }}
-        <div>
-            {{ form_label(formView.username, 'Pseudo', {'attr': {'class': 'labelForm'}}) }}
-            {{ form_widget(formView.username, {'attr': {'class': 'inputForm'}}) }}
-            {{ form_errors(formView.username) }}
-        </div>
-        <div>
-            {{ form_label(formView.email, 'Adresse mail', {'attr': {'class': 'labelForm'}}) }}
-            {{ form_widget(formView.email, {'attr': {'class': 'inputForm'}}) }}
-            {{ form_errors(formView.email) }}
-        </div>
-        <div>
-            {{ form_label(formView.password, 'Mot de passe', {'attr': {'class': 'labelForm'}}) }}
-            {{ form_widget(formView.password, {'attr': {'class': 'inputForm'}}) }}
-            {{ form_errors(formView.password) }}
-        </div>
-        <div>
-            {{ form_label(formView.passwordConfirmation, 'Vérification du mot de passe', {'attr': {'class': 'labelForm'}}) }}
-            {{ form_widget(formView.passwordConfirmation, {'attr': {'class': 'inputForm'}}) }}
-            {{ form_errors(formView.passwordConfirmation) }}
-        </div>
+        <div class="formWrapper">
+            {{ form_start(formView) }}
+            <div class="formField">
+                {{ form_label(formView.username, 'Pseudo', {'label_attr': {'class': 'labelForm'}}) }}
+                {{ form_widget(formView.username, {'attr': {'class': 'inputForm'}}) }}
+                {{ form_errors(formView.username) }}
+            </div>
+            <div class="formField">
+                {{ form_label(formView.email, 'Adresse mail', {'label_attr': {'class': 'labelForm'}}) }}
+                {{ form_widget(formView.email, {'attr': {'class': 'inputForm'}}) }}
+                {{ form_errors(formView.email) }}
+            </div>
+            <div class="formField">
+                {{ form_label(formView.password, 'Mot de passe', {'label_attr': {'class': 'labelForm'}}) }}
+                {{ form_widget(formView.password, {'attr': {'class': 'inputForm'}}) }}
+                {{ form_errors(formView.password) }}
+            </div>
+            <div class="formField">
+                {{ form_label(formView.passwordConfirmation, 'Vérification du mot de passe', {'label_attr': {'class': 'labelForm'}}) }}
+                {{ form_widget(formView.passwordConfirmation, {'attr': {'class': 'inputForm'}}) }}
+                {{ form_errors(formView.passwordConfirmation) }}
+            </div>
 
-        <div>
-            {{ form_widget(formView.enregistrer) }}
+            <div class="center">
+                {{ form_widget(formView.enregistrer, {'attr' : {'class' : 'buttonContainer'}}) }}
+            </div>
+            {{ form_end(formView) }}
         </div>
-        {{ form_end(formView) }}
-
     </section>
 
 {% endblock %}

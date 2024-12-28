@@ -1,0 +1,46 @@
+@import "_services.scss";
+
+section.formContainer {
+  margin-top: 2.5rem;
+  @include formContainer($lightGreen, 10px);
+
+  h2.titleH2 {
+    @include fontTitle($black, 26px)
+  }
+  .formWrapper {
+    .buttonContainer {
+      @include buttonStyle($darkGreen);
+      color: $white;
+      font-family: "Nunito Sans", sans-serif;
+      border: none;
+      font-size: 16px;
+    }
+  }
+}
+
+.formWrapper {
+  width: 50%;
+  margin: auto;
+
+  .formField {
+    margin-bottom: 0.8rem;
+    .labelForm {
+      font-family: "Nunito Sans", serif;
+      color: $black;
+      margin: 0.5rem 0;
+    }
+
+    .inputForm {
+      font-family: "Nunito Sans", serif;
+      color: $black;
+      background-color: $white;
+      border-radius: 10px;
+      border: none;
+      width: 100%;
+      height: 40px;
+      margin: 0.4rem 0;
+      padding: 0 1rem;
+    }
+  }
+}
+

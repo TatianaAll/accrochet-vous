@@ -16,7 +16,8 @@
   background-color: $backgroundColor;
   border-top-right-radius: $borderRadius;
   border-bottom-left-radius: $borderRadius;
-  margin: auto;
+  margin-right: auto;
+  margin-left: auto;
   padding: 1rem;
 }
 
@@ -53,6 +54,10 @@ $successBg: #DAEFB3;
 
 .w100 {
   width: 100%;
+}
+
+.center {
+  text-align: center;
 }
 
 .messageFlash {

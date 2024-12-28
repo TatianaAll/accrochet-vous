@@ -18,6 +18,10 @@
   width: 100%;
 }
 
+.center {
+  text-align: center;
+}
+
 .messageFlash {
   margin-top: 2rem;
   padding-top: 0.5rem;
@@ -132,6 +136,10 @@ header.isRelative nav.headerNavBar ul.isFlex li.liNav a.linkNav:hover {
   width: 100%;
 }
 
+.center {
+  text-align: center;
+}
+
 .messageFlash {
   margin-top: 2rem;
   padding-top: 0.5rem;
@@ -176,6 +184,10 @@ header.isRelative nav.headerNavBar ul.isFlex li.liNav a.linkNav:hover {
   width: 100%;
 }
 
+.center {
+  text-align: center;
+}
+
 .messageFlash {
   margin-top: 2rem;
   padding-top: 0.5rem;
@@ -201,19 +213,53 @@ header.isRelative nav.headerNavBar ul.isFlex li.liNav a.linkNav:hover {
 }
 
 section.formContainer {
-  margin-top: 2rem;
+  margin-top: 2.5rem;
   width: 80%;
   background-color: #AFC294;
   border-top-right-radius: 10px;
   border-bottom-left-radius: 10px;
-  margin: auto;
+  margin-right: auto;
+  margin-left: auto;
   padding: 1rem;
 }
 section.formContainer h2.titleH2 {
   color: #181F1C;
-  font-size: 24px;
+  font-size: 26px;
   font-family: "Nunito", serif;
   text-align: center;
+}
+section.formContainer .formWrapper .buttonContainer {
+  background-color: #6F7762;
+  width: 120px;
+  height: 50px;
+  color: #EEEEEE;
+  font-family: "Nunito Sans", sans-serif;
+  border: none;
+  font-size: 16px;
+}
+
+.formWrapper {
+  width: 50%;
+  margin: auto;
+}
+.formWrapper .formField {
+  margin-bottom: 0.8rem;
+}
+.formWrapper .formField .labelForm {
+  font-family: "Nunito Sans", serif;
+  color: #181F1C;
+  margin: 0.5rem 0;
+}
+.formWrapper .formField .inputForm {
+  font-family: "Nunito Sans", serif;
+  color: #181F1C;
+  background-color: #EEEEEE;
+  border-radius: 10px;
+  border: none;
+  width: 100%;
+  height: 40px;
+  margin: 0.4rem 0;
+  padding: 0 1rem;
 }
 
 * {
