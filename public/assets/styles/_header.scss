@@ -50,16 +50,19 @@ header.isRelative {
     width: 80%;
     background-color: $lightGreen;
     height: 60px;
-    padding-top: 18px;
+    align-items: center;
 
     ul.isFlex {
       justify-content: space-evenly;
       align-items: center;
+      height: 100%;
 
       li.liNav {
         font-family: "Nunito", serif;
         font-size: 20px;
         list-style: none;
+        width: 25%;
+        text-align: center;
 
         a.linkNav {
           color: $black;

@@ -104,16 +104,19 @@ header.isRelative nav.headerNavBar {
   width: 80%;
   background-color: #AFC294;
   height: 60px;
-  padding-top: 18px;
+  align-items: center;
 }
 header.isRelative nav.headerNavBar ul.isFlex {
   justify-content: space-evenly;
   align-items: center;
+  height: 100%;
 }
 header.isRelative nav.headerNavBar ul.isFlex li.liNav {
   font-family: "Nunito", serif;
   font-size: 20px;
   list-style: none;
+  width: 25%;
+  text-align: center;
 }
 header.isRelative nav.headerNavBar ul.isFlex li.liNav a.linkNav {
   color: #181F1C;
@@ -239,25 +242,25 @@ header.isRelative nav.headerNavBar ul.isFlex li.liNav a.linkNav:hover {
   color: #181F1C;
 }
 
-section.formContainerGreen {
+section.containerGreen {
   margin-top: 2.5rem;
   width: 80%;
   background-color: #AFC294;
-  border-top-right-radius: 10px;
-  border-bottom-left-radius: 10px;
+  border-top-right-radius: 2vmax;
+  border-bottom-left-radius: 2vmax;
   border-bottom-right-radius: 0;
   border-top-left-radius: 0;
   margin-right: auto;
   margin-left: auto;
   padding: 1rem;
 }
-section.formContainerGreen h2.titleH2 {
+section.containerGreen h2.titleH2 {
   color: #181F1C;
   font-size: 26px;
   font-family: "Nunito", serif;
   text-align: center;
 }
-section.formContainerGreen .formWrapper .buttonContainer {
+section.containerGreen .formWrapper .buttonContainer {
   background-color: #6F7762;
   width: 120px;
   height: 50px;
@@ -267,7 +270,7 @@ section.formContainerGreen .formWrapper .buttonContainer {
   font-size: 16px;
 }
 
-section.formContainerLilac {
+section.containerLilac {
   margin-top: 2.5rem;
   width: 80%;
   background-color: #A589C6;
@@ -279,13 +282,13 @@ section.formContainerLilac {
   margin-left: auto;
   padding: 1rem;
 }
-section.formContainerLilac h2.titleH2 {
+section.containerLilac h2.titleH2 {
   color: #181F1C;
   font-size: 26px;
   font-family: "Nunito", serif;
   text-align: center;
 }
-section.formContainerLilac .formWrapper .buttonContainer {
+section.containerLilac .formWrapper .buttonContainer {
   background-color: #6F7762;
   width: 120px;
   height: 50px;
@@ -294,12 +297,12 @@ section.formContainerLilac .formWrapper .buttonContainer {
   border: none;
   font-size: 16px;
 }
-section.formContainerLilac .textForm {
+section.containerLilac .textForm {
   font-family: "Nunito Sans", serif;
   text-align: center;
   margin-top: 1.5rem;
 }
-section.formContainerLilac .textForm .linkForm {
+section.containerLilac .textForm .linkForm {
   color: #EEEEEE;
 }
 

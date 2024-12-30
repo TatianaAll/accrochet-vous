@@ -1,8 +1,8 @@
 @import "_services.scss";
 
-section.formContainerGreen {
+section.containerGreen {
   margin-top: 2.5rem;
-  @include formContainer($lightGreen, 10px, 0);
+  @include formContainer($lightGreen, 2vmax, 0);
 
   h2.titleH2 {
     @include fontTitle($black, 26px)
@@ -18,7 +18,7 @@ section.formContainerGreen {
   }
 }
 
-section.formContainerLilac {
+section.containerLilac {
   margin-top: 2.5rem;
   @include formContainer($lightLilac,0, 2vmax);
 

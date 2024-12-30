@@ -30,9 +30,11 @@ class LoginController extends AbstractController
     {
         $error = $authenticationUtils->getLastAuthenticationError();
         $lastUsername = $authenticationUtils->getLastUsername();
+        $errorMessage = "Adresse mail ou mot de passe incorrect";
 
         return $this->render('public/login.html.twig', [
             'error' => $error,
+            'errorMessage' => $errorMessage,
             'lastUsername' => $lastUsername
         ]);
     }
