@@ -50,7 +50,6 @@ class LoginController extends AbstractController
 
         $form->handleRequest($request);
 
-
         if ($form->isSubmitted() && $form->isValid()) {
             $plaintextPassword = $form->get('password')->getData();
             $confirmPassword = $form->get('passwordConfirmation')->getData();

@@ -76,6 +76,15 @@ $successBg: #DAEFB3;
   background-color: $lightRed;
   border: $darkRed 1px solid;
   color: $white;
+  list-style: none;
+}
+
+.errorContainer {
+  margin-top: 0.4rem;
+  padding: 0.5rem;
+  text-align: center;
+  border-radius: 20px;
+  font-family: "Nunito Sans", serif;
 }
 
 .success {

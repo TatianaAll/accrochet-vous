@@ -38,6 +38,15 @@
   background-color: #F06449;
   border: #772014 1px solid;
   color: #EEEEEE;
+  list-style: none;
+}
+
+.errorContainer {
+  margin-top: 0.4rem;
+  padding: 0.5rem;
+  text-align: center;
+  border-radius: 20px;
+  font-family: "Nunito Sans", serif;
 }
 
 .success {
@@ -156,6 +165,15 @@ header.isRelative nav.headerNavBar ul.isFlex li.liNav a.linkNav:hover {
   background-color: #F06449;
   border: #772014 1px solid;
   color: #EEEEEE;
+  list-style: none;
+}
+
+.errorContainer {
+  margin-top: 0.4rem;
+  padding: 0.5rem;
+  text-align: center;
+  border-radius: 20px;
+  font-family: "Nunito Sans", serif;
 }
 
 .success {
@@ -204,6 +222,15 @@ header.isRelative nav.headerNavBar ul.isFlex li.liNav a.linkNav:hover {
   background-color: #F06449;
   border: #772014 1px solid;
   color: #EEEEEE;
+  list-style: none;
+}
+
+.errorContainer {
+  margin-top: 0.4rem;
+  padding: 0.5rem;
+  text-align: center;
+  border-radius: 20px;
+  font-family: "Nunito Sans", serif;
 }
 
 .success {

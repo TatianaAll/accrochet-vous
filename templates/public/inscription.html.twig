@@ -8,33 +8,38 @@
         <h2 class="titleH2">Créer un compte</h2>
         <div class="formWrapper">
             {{ form_start(formView) }}
-            <h1 style="color: pink; font-weight: bolder;">{{ form_errors(formView) }}</h1>
             <div class="formField">
                 {{ form_label(formView.username, 'Pseudo', {'label_attr': {'class': 'labelForm'}}) }}
                 {{ form_widget(formView.username, {'attr': {'class': 'inputForm'}}) }}
-                <div>
-{#                    {{ form_errors(formView.username) }}#}
+                {# If an error appears i give the class message flash for tihe error container #}
+                <div class="errorContainer {{ formView.username.vars.errors|length > 0 ? 'error' }}">
+                    {{ form_errors(formView.username) }}
                 </div>
             </div>
             <div class="formField">
                 {{ form_label(formView.email, 'Adresse mail', {'label_attr': {'class': 'labelForm'}}) }}
                 {{ form_widget(formView.email, {'attr': {'class': 'inputForm'}}) }}
-                {{ form_errors(formView.email) }}
+                <div class="errorContainer {{ formView.email.vars.errors|length > 0 ? 'error' }}">
+                    {{ form_errors(formView.email) }}
+                </div>
             </div>
             <div class="formField">
                 {{ form_label(formView.password, 'Mot de passe', {'label_attr': {'class': 'labelForm'}}) }}
                 {{ form_widget(formView.password, {'attr': {'class': 'inputForm'}}) }}
-                {{ form_errors(formView.password) }}
+                <div class="errorContainer {{ formView.password.vars.errors|length > 0 ? 'error' }}">
+                    {{ form_errors(formView.password) }}
+                </div>
             </div>
             <div class="formField">
                 {{ form_label(formView.passwordConfirmation, 'Vérification du mot de passe', {'label_attr': {'class': 'labelForm'}}) }}
                 {{ form_widget(formView.passwordConfirmation, {'attr': {'class': 'inputForm'}}) }}
-                {{ form_errors(formView.passwordConfirmation) }}
+                <div class="errorContainer {{ formView.passwordConfirmation.vars.errors|length > 0 ? 'error' }}">
+                    {{ form_errors(formView.passwordConfirmation) }}
+                </div>
             </div>
 
             <div class="center">
-                {{  form_row(formView.save, { 'label' :'Enregistrer' })}}
-{#                {{ form_widget(formView.save, {'attr' : {'class' : 'buttonContainer'}   }) }}#}
+                {{ form_row(formView.save, { 'label' :'Enregistrer', 'attr' : {'class' : 'buttonContainer'} }) }}
             </div>
             {{ form_end(formView) }}
         </div>
