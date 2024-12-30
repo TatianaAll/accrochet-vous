@@ -20,13 +20,11 @@ class UserType extends AbstractType
             ->add('username', TextType::class)
             ->add('email', EmailType::class)
             ->add('password', passwordType::class)
-//            ->add('biography', TextAreaType::class)
             ->add('passwordConfirmation', PasswordType::class, [ // Unlink form input
                 'label' => 'Validation du mot de passe',
                 'mapped' => false,
             ])
             ->add('save', SubmitType::class)
-
         ;
     }
 

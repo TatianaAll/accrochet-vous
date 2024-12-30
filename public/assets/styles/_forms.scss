@@ -1,8 +1,8 @@
 @import "_services.scss";
 
-section.formContainer {
+section.formContainerGreen {
   margin-top: 2.5rem;
-  @include formContainer($lightGreen, 10px);
+  @include formContainer($lightGreen, 10px, 0);
 
   h2.titleH2 {
     @include fontTitle($black, 26px)
@@ -16,6 +16,33 @@ section.formContainer {
       font-size: 16px;
     }
   }
+}
+
+section.formContainerLilac {
+  margin-top: 2.5rem;
+  @include formContainer($lightLilac,0, 2vmax);
+
+  h2.titleH2 {
+    @include fontTitle($black, 26px)
+  }
+  .formWrapper {
+    .buttonContainer {
+      @include buttonStyle($darkGreen);
+      color: $white;
+      font-family: "Nunito Sans", sans-serif;
+      border: none;
+      font-size: 16px;
+    }
+  }
+  .textForm {
+    font-family: "Nunito Sans", serif;
+    text-align: center;
+    margin-top: 1.5rem;
+    .linkForm {
+      color: $white;
+    }
+  }
+
 }
 
 .formWrapper {

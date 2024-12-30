@@ -239,23 +239,25 @@ header.isRelative nav.headerNavBar ul.isFlex li.liNav a.linkNav:hover {
   color: #181F1C;
 }
 
-section.formContainer {
+section.formContainerGreen {
   margin-top: 2.5rem;
   width: 80%;
   background-color: #AFC294;
   border-top-right-radius: 10px;
   border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 0;
   margin-right: auto;
   margin-left: auto;
   padding: 1rem;
 }
-section.formContainer h2.titleH2 {
+section.formContainerGreen h2.titleH2 {
   color: #181F1C;
   font-size: 26px;
   font-family: "Nunito", serif;
   text-align: center;
 }
-section.formContainer .formWrapper .buttonContainer {
+section.formContainerGreen .formWrapper .buttonContainer {
   background-color: #6F7762;
   width: 120px;
   height: 50px;
@@ -263,6 +265,42 @@ section.formContainer .formWrapper .buttonContainer {
   font-family: "Nunito Sans", sans-serif;
   border: none;
   font-size: 16px;
+}
+
+section.formContainerLilac {
+  margin-top: 2.5rem;
+  width: 80%;
+  background-color: #A589C6;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 2vmax;
+  border-top-left-radius: 2vmax;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 1rem;
+}
+section.formContainerLilac h2.titleH2 {
+  color: #181F1C;
+  font-size: 26px;
+  font-family: "Nunito", serif;
+  text-align: center;
+}
+section.formContainerLilac .formWrapper .buttonContainer {
+  background-color: #6F7762;
+  width: 120px;
+  height: 50px;
+  color: #EEEEEE;
+  font-family: "Nunito Sans", sans-serif;
+  border: none;
+  font-size: 16px;
+}
+section.formContainerLilac .textForm {
+  font-family: "Nunito Sans", serif;
+  text-align: center;
+  margin-top: 1.5rem;
+}
+section.formContainerLilac .textForm .linkForm {
+  color: #EEEEEE;
 }
 
 .formWrapper {

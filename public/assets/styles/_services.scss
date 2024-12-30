@@ -11,11 +11,13 @@
   height: 50px;
 }
 
-@mixin formContainer($backgroundColor, $borderRadius) {
+@mixin formContainer($backgroundColor, $borderRadiusRL, $borderRadiusLR) {
   width: 80%;
   background-color: $backgroundColor;
-  border-top-right-radius: $borderRadius;
-  border-bottom-left-radius: $borderRadius;
+  border-top-right-radius: $borderRadiusRL;
+  border-bottom-left-radius: $borderRadiusRL;
+  border-bottom-right-radius: $borderRadiusLR;
+  border-top-left-radius: $borderRadiusLR;
   margin-right: auto;
   margin-left: auto;
   padding: 1rem;

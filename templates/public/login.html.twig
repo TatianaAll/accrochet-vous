@@ -3,22 +3,29 @@
 {% block title %} Connexion {% endblock %}
 
 {% block body %}
-    <section class="container">
+    <section class="formContainerLilac">
 
-        <form action="{{ path('login') }}" method="POST">
-            <div>
-                <label for="_username">Adresse mail</label>
-                <input type="email" name="_username" value="{{ lastUsername }}"
-                       placeholder="Entrer votre adresse mail"/>
+        <h2 class="titleH2">Connexion</h2>
+        <div class="formWrapper">
+            <form action="{{ path('login') }}" method="POST">
+                <div class="formField">
+                    <label for="_username" class="labelForm">Adresse mail</label>
+                    <input type="email" name="_username" value="{{ lastUsername }}"
+                           placeholder="Entrer votre adresse mail" class="inputForm"/>
+                </div>
+                <div class="formField">
+                    <label for="_password" class="labelForm">Mot de passe</label>
+                    <input type="password" name="_password" placeholder="Entrez votre mot de passe" class="inputForm"/>
+                </div>
 
-            </div>
-            <div>
-                <label for="_password">Mot de passe</label>
-                <input type="password" name="_password" placeholder="Mot de passe"/>
-            </div>
-
-            <button type="submit">Se connecter</button>
-        </form>
+                <div class="center">
+                    <button type="submit" class="buttonContainer">Se connecter</button>
+                </div>
+            </form>
+        </div>
+        <p class="textForm">Sinon créer un compte en vous
+            <a href="{{ path("user_inscription") }}" class="linkForm">
+                inscrivant ici</a></p>
     </section>
 
 {% endblock %}

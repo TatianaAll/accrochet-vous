@@ -10,7 +10,8 @@
           rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Sniglet:wght@400;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Sniglet:wght@400;800&display=swap"
+          rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/styles/style.css') }}">
     {% block javascripts %}
         {% block importmap %}{{ importmap('app') }}{% endblock %}
@@ -25,8 +26,8 @@
         </div>
         <div class="buttonContainer isAbsolute">
             {% if app.user %}
-                <a href="{{ path("user_current_profile", {id: app.user.id}) }}" class="buttonHeader">
-                    Voir mon profil
+                <a href="{{ path("user_logout") }}" class="buttonHeader">
+                    Déconnexion
                 </a>
             {% else %}
                 <a href="{{ path("login") }}" class="buttonHeader">
@@ -46,9 +47,19 @@
             <li class="liNav">
                 <a class="linkNav">Recherche</a>
             </li>
+
             <li class="liNav">
-                <a href="{{ path("user_logout") }}" class="linkNav">Déconnexion</a>
+                {% if app.user %}
+                    <a href="{{ path("user_current_profile", {id: app.user.id}) }}" class="linkNav">
+                        Voir mon profil
+                    </a>
+                {% else %}
+                    <a href="{{ path("user_inscription")}}" class="linkNav">
+                        S'inscrire
+                    </a>
+                {% endif %}
             </li>
+
             {#                    <li> #}
             {#                        <form method="get" action="{{ path("user_search") }}"> #}
             {#                            <input type="text" placeholder="Rechercher" name="search" id="search"> #}
