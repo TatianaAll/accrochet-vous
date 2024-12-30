@@ -25,7 +25,7 @@ class UserType extends AbstractType
                 'label' => 'Validation du mot de passe',
                 'mapped' => false,
             ])
-            ->add('enregistrer', SubmitType::class)
+            ->add('save', SubmitType::class)
 
         ;
     }

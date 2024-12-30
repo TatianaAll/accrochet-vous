@@ -8,10 +8,13 @@
         <h2 class="titleH2">Créer un compte</h2>
         <div class="formWrapper">
             {{ form_start(formView) }}
+            <h1 style="color: pink; font-weight: bolder;">{{ form_errors(formView) }}</h1>
             <div class="formField">
                 {{ form_label(formView.username, 'Pseudo', {'label_attr': {'class': 'labelForm'}}) }}
                 {{ form_widget(formView.username, {'attr': {'class': 'inputForm'}}) }}
-                {{ form_errors(formView.username) }}
+                <div>
+{#                    {{ form_errors(formView.username) }}#}
+                </div>
             </div>
             <div class="formField">
                 {{ form_label(formView.email, 'Adresse mail', {'label_attr': {'class': 'labelForm'}}) }}
@@ -30,7 +33,8 @@
             </div>
 
             <div class="center">
-                {{ form_widget(formView.enregistrer, {'attr' : {'class' : 'buttonContainer'}}) }}
+                {{  form_row(formView.save, { 'label' :'Enregistrer' })}}
+{#                {{ form_widget(formView.save, {'attr' : {'class' : 'buttonContainer'}   }) }}#}
             </div>
             {{ form_end(formView) }}
         </div>
