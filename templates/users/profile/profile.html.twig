@@ -1,18 +1,24 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello UserController!{% endblock %}
+{% block title %}Profil de {{ user.username }}{% endblock %}
 
 {% block body %}
 
-<main>
-    <h1>{{ user.username }}</h1>
-    <div>
-        <p>{{ user.email }}</p>
-        <p>{{ user.biography }}</p>
+    <main>
+        <section class="containerGreen">
+            <div>
+                <h2 class="titleH2">{{ user.username }}</h2>
+                <p>{{ user.email }}</p>
+            </div>
 
-        {% if app.user.id is same as user.id %}
-            <a href="{{ path("user_profile_update") }}">Modifier le mot de passe</a>
-        {% endif %}
-    </div>
-</main>
+            <div>
+                <p>{{ user.biography }}</p>
+            </div>
+
+            {% if app.user.id is same as user.id %}
+                <a href="{{ path("user_profile_update") }}" class="buttonContainer">Modifier le mot de passe</a>
+            {% endif %}
+
+        </section>
+    </main>
 {% endblock %}
