@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Modifier la biographie {% endblock %}
+
+{% block body %}
+
+  <section class="containerLilac">
+    <h2 class="titleH2">Modifier ma biographie</h2>
+    <div class="formWrapper">
+      <form method='POST' action='{{ path("user_profile_update_bio") }}' >
+        <div class="formField">
+          <label for="biography" class="labelForm">Modifier ma biographie</label>
+          <textarea id="biography" name="biography" class="textAreaForm">{{ user.biography }}</textarea>
+        </div>
+        <button type='submit' class="buttonContainer">Modifier</button>
+      </form>
+    </div>
+  </section>
+
+{% endblock %}
