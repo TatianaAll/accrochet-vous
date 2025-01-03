@@ -20,7 +20,7 @@
   border-top-left-radius: $borderRadiusLR;
   margin-right: auto;
   margin-left: auto;
-  padding: 1rem;
+  padding: 2rem;
 }
 
 
@@ -41,19 +41,33 @@ $successBg: #DAEFB3;
 .isRelative {
   position: relative;
 }
-
 .isAbsolute {
   position: absolute;
 }
 
 .isFlex {
   display: flex;
+  gap: 1rem;
+}
+.flexStart {
+  justify-content: flex-start;
+}
+.flexBetween {
+  justify-content: space-between;
 }
 
+.w70 {
+  width: 70%;
+  margin: 0 auto;
+}
 .w80 {
   width: 80%;
+  margin: 0 auto;
 }
-
+.w90 {
+  width: 90%;
+  margin: 0 auto;
+}
 .w100 {
   width: 100%;
 }

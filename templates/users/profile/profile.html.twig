@@ -4,21 +4,36 @@
 
 {% block body %}
 
-    <main>
-        <section class="containerGreen">
-            <div>
-                <h2 class="titleH2">{{ user.username }}</h2>
-                <p>{{ user.email }}</p>
-            </div>
+  <main>
+    <section class="containerGreen">
+      <div class="isFlex flexStart w90">
+        <div class="profilePictureContainer">
+          <img src="{{ asset('assets/images/profile_pic.png') }}" alt="profile pic" class="w100">
+        </div>
+        <div class="infoProfileContainer">
+          <h2 class="titleH2">{{ user.username }}</h2>
+          <p>{{ user.email }}</p>
+        </div>
+      </div>
 
-            <div>
-                <p>{{ user.biography }}</p>
-            </div>
+      <div class="w90">
+        <h3>Ma biographie</h3>
+        <div class="containerWhiteBg">
+          <p>{{ user.biography }}</p>
+        </div>
+      </div>
 
-            {% if app.user.id is same as user.id %}
-                <a href="{{ path("user_profile_update") }}" class="buttonContainer">Modifier le mot de passe</a>
-            {% endif %}
+      {% if app.user.id is same as user.id %}
+        <div class="isFlex flexBetween w90">
+          <a href="{{ path("user_profile_update") }}" class="buttonContainer center">
+            Modifier ma bio
+          </a>
+          <a href="{{ path("user_profile_update") }}" class="buttonContainer center">
+            Changer de mot de passe
+          </a>
+        </div>
+      {% endif %}
 
-        </section>
-    </main>
+    </section>
+  </main>
 {% endblock %}

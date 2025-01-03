@@ -5,6 +5,7 @@ section.containerGreen {
   @include formContainer($lightGreen, 2vmax, 0);
 
   h2.titleH2 {
+    margin: 1rem 0;
     @include fontTitle($black, 26px)
   }
   .formWrapper {
@@ -23,6 +24,7 @@ section.containerLilac {
   @include formContainer($lightLilac,0, 2vmax);
 
   h2.titleH2 {
+    margin: 1rem 0;
     @include fontTitle($black, 26px)
   }
   .formWrapper {

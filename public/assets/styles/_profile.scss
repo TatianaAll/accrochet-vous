@@ -1,0 +1,46 @@
+@import "_services.scss";
+
+section.containerGreen {
+  .isFlex {
+    align-items: center;
+    div.profilePictureContainer {
+      width: 10rem;
+    }
+    div.infoProfileContainer {
+      font-family: "Nunito Sans", sans-serif;
+      margin-left: 1rem;
+      text-align: left;
+    }
+  }
+  div.w90 {
+    h3 {
+      margin-top: 2rem;
+      font-family: "Nunito Sans", sans-serif;
+      font-weight: normal;
+    }
+    .containerWhiteBg {
+      font-family: "Nunito Sans", sans-serif;
+      color: $darkGreen;
+    }
+  }
+  .isFlex.flexBetween {
+    .buttonContainer {
+      @include buttonStyle($darkGreen);
+      color: $white;
+      font-family: "Nunito Sans", sans-serif;
+      text-decoration: none;
+      width: 250px;
+      height: 70px;
+      padding: 25px 7px;
+      font-size: 18px;
+    }
+  }
+}
+
+
+.containerWhiteBg {
+  border-radius: 2vmax;
+  background-color: $white;
+  padding: 1rem;
+  margin: 1rem auto;
+}
