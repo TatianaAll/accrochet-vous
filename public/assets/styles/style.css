@@ -447,6 +447,101 @@ section.containerGreen .isFlex.flexBetween .buttonContainer {
   padding: 1rem;
   margin: 1rem auto; }
 
+.isRelative {
+  position: relative; }
+
+.isAbsolute {
+  position: absolute; }
+
+.isFlex {
+  display: flex;
+  gap: 1rem; }
+
+.flexStart {
+  justify-content: flex-start; }
+
+.flexBetween {
+  justify-content: space-between; }
+
+.w70 {
+  width: 70%;
+  margin: 0 auto; }
+
+.w80 {
+  width: 80%;
+  margin: 0 auto; }
+
+.w90 {
+  width: 90%;
+  margin: 0 auto; }
+
+.w100 {
+  width: 100%; }
+
+.center {
+  text-align: center; }
+
+.messageFlash {
+  margin-top: 2rem;
+  padding-top: 0.8rem;
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: 1rem;
+  height: 50px;
+  text-align: center;
+  font-family: "Nunito Sans", serif; }
+
+.error {
+  background-color: #F06449;
+  border: #772014 1px solid;
+  color: #EEEEEE;
+  list-style: none; }
+
+.errorContainer {
+  margin-top: 0.4rem;
+  padding: 0.5rem;
+  text-align: center;
+  border-radius: 20px;
+  font-family: "Nunito Sans", serif; }
+
+.success {
+  background-color: #DAEFB3;
+  border: #76B041 1px solid;
+  color: #181F1C; }
+
+section.lilacSection {
+  background-color: #A589C6;
+  padding: 2rem 4rem;
+  margin: 2rem 0; }
+  section.lilacSection .titleH2 {
+    color: #181F1C;
+    font-size: 30px;
+    font-family: "Nunito", serif;
+    text-align: center;
+    margin: 0 0 1.5rem 0; }
+  section.lilacSection div.isFlex.w80 .imageContainerHomePage {
+    width: 30%; }
+    section.lilacSection div.isFlex.w80 .imageContainerHomePage img {
+      border-radius: 2rem; }
+  section.lilacSection div.isFlex.w80 .containerWhiteBg {
+    font-family: "Nunito Sans", sans-serif;
+    border-radius: 0.25rem;
+    width: 70%;
+    margin: 0;
+    padding: 1.5rem; }
+    section.lilacSection div.isFlex.w80 .containerWhiteBg h3 {
+      color: #6F7762;
+      font-size: 24px;
+      font-family: "Nunito", serif;
+      text-align: center;
+      margin: 1rem 0; }
+    section.lilacSection div.isFlex.w80 .containerWhiteBg p {
+      font-family: "Nunito Sans", sans-serif;
+      font-size: 18px;
+      color: #181F1C;
+      margin: 1rem 0; }
+
 * {
   margin: 0;
   padding: 0;

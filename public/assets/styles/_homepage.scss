@@ -1,0 +1,37 @@
+@import "_services.scss";
+
+section.lilacSection {
+  background-color: $lightLilac;
+  padding: 2rem 4rem;
+  margin: 2rem 0;
+  .titleH2 {
+    @include fontTitle($black, 30px);
+    margin: 0 0 1.5rem 0;
+  }
+  div.isFlex.w80 {
+    .imageContainerHomePage {
+      width: 30%;
+      img {
+        border-radius: 2rem;
+      }
+    }
+    .containerWhiteBg {
+      font-family: "Nunito Sans", sans-serif;
+      border-radius: 0.25rem;
+      width: 70%;
+      margin: 0;
+      padding: 1.5rem;
+      h3 {
+        @include fontTitle($darkGreen, 24px);
+        margin: 1rem 0;
+      }
+      p {
+        font-family: "Nunito Sans", sans-serif;
+        font-size: 18px;
+        color: $black;
+        margin: 1rem 0;
+      }
+    }
+  }
+
+}
