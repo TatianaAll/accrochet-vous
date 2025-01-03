@@ -34,11 +34,11 @@
 
 .messageFlash {
   margin-top: 2rem;
-  padding-top: 0.5rem;
+  padding-top: 0.8rem;
   width: 80%;
   margin-right: auto;
   margin-left: auto;
-  border-radius: 20px;
+  border-radius: 1rem;
   height: 50px;
   text-align: center;
   font-family: "Nunito Sans", serif; }
@@ -82,6 +82,7 @@ header.isRelative div.w80 {
     width: 120px;
     height: 50px;
     padding-top: 1rem;
+    border-radius: 0.25rem;
     text-align: center;
     transition: all 0.5s;
     top: 40%;
@@ -102,7 +103,8 @@ header.isRelative nav.headerNavBar {
   width: 80%;
   background-color: #AFC294;
   height: 60px;
-  align-items: center; }
+  align-items: center;
+  border-radius: 0.5rem; }
   header.isRelative nav.headerNavBar ul.isFlex {
     justify-content: space-evenly;
     align-items: center;
@@ -157,11 +159,11 @@ header.isRelative nav.headerNavBar {
 
 .messageFlash {
   margin-top: 2rem;
-  padding-top: 0.5rem;
+  padding-top: 0.8rem;
   width: 80%;
   margin-right: auto;
   margin-left: auto;
-  border-radius: 20px;
+  border-radius: 1rem;
   height: 50px;
   text-align: center;
   font-family: "Nunito Sans", serif; }
@@ -220,11 +222,11 @@ header.isRelative nav.headerNavBar {
 
 .messageFlash {
   margin-top: 2rem;
-  padding-top: 0.5rem;
+  padding-top: 0.8rem;
   width: 80%;
   margin-right: auto;
   margin-left: auto;
-  border-radius: 20px;
+  border-radius: 1rem;
   height: 50px;
   text-align: center;
   font-family: "Nunito Sans", serif; }
@@ -251,10 +253,10 @@ section.containerGreen {
   margin-top: 2.5rem;
   width: 80%;
   background-color: #AFC294;
-  border-top-right-radius: 2vmax;
-  border-bottom-left-radius: 2vmax;
-  border-bottom-right-radius: 0;
-  border-top-left-radius: 0;
+  border-top-right-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+  border-bottom-right-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
   margin-right: auto;
   margin-left: auto;
   padding: 2rem; }
@@ -271,16 +273,17 @@ section.containerGreen {
     color: #EEEEEE;
     font-family: "Nunito Sans", sans-serif;
     border: none;
-    font-size: 16px; }
+    font-size: 16px;
+    border-radius: 0.25rem; }
 
 section.containerLilac {
   margin-top: 2.5rem;
   width: 80%;
   background-color: #A589C6;
-  border-top-right-radius: 0;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 2vmax;
-  border-top-left-radius: 2vmax;
+  border-top-right-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 2rem;
+  border-top-left-radius: 2rem;
   margin-right: auto;
   margin-left: auto;
   padding: 2rem; }
@@ -297,7 +300,8 @@ section.containerLilac {
     color: #EEEEEE;
     font-family: "Nunito Sans", sans-serif;
     border: none;
-    font-size: 16px; }
+    font-size: 16px;
+    border-radius: 0.25rem; }
   section.containerLilac .textForm {
     font-family: "Nunito Sans", serif;
     text-align: center;
@@ -318,7 +322,7 @@ section.containerLilac {
       font-family: "Nunito Sans", serif;
       color: #181F1C;
       background-color: #EEEEEE;
-      border-radius: 10px;
+      border-radius: 0.5rem;
       border: none;
       width: 100%;
       height: 40px;
@@ -329,7 +333,7 @@ section.containerLilac {
   font-family: "Nunito Sans", serif;
   color: #181F1C;
   background-color: #EEEEEE;
-  border-radius: 10px;
+  border-radius: 0.5rem;
   border: none;
   width: 100%;
   height: 250px;
@@ -372,11 +376,11 @@ section.containerLilac {
 
 .messageFlash {
   margin-top: 2rem;
-  padding-top: 0.5rem;
+  padding-top: 0.8rem;
   width: 80%;
   margin-right: auto;
   margin-left: auto;
-  border-radius: 20px;
+  border-radius: 1rem;
   height: 50px;
   text-align: center;
   font-family: "Nunito Sans", serif; }
@@ -425,10 +429,11 @@ section.containerGreen .isFlex.flexBetween .buttonContainer {
   width: 250px;
   height: 70px;
   padding: 25px 7px;
-  font-size: 18px; }
+  font-size: 18px;
+  border-radius: 0.5rem; }
 
 .containerWhiteBg {
-  border-radius: 2vmax;
+  border-radius: 2rem;
   background-color: #EEEEEE;
   padding: 1rem;
   margin: 1rem auto; }

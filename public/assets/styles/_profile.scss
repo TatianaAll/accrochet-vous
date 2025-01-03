@@ -34,13 +34,14 @@ section.containerGreen {
       height: 70px;
       padding: 25px 7px;
       font-size: 18px;
+      border-radius: 0.5rem;
     }
   }
 }
 
 
 .containerWhiteBg {
-  border-radius: 2vmax;
+  border-radius: 2rem;
   background-color: $white;
   padding: 1rem;
   margin: 1rem auto;
