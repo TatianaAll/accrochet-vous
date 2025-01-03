@@ -35,13 +35,19 @@ section.containerGreen {
       padding: 25px 7px;
       font-size: 18px;
       border-radius: 0.5rem;
+      transition: all 0.3s;
+
+      &:hover {
+        background-color: $darkLilac;
+      }
+
     }
   }
 }
 
 
 .containerWhiteBg {
-  border-radius: 2rem;
+  border-radius: 1rem;
   background-color: $white;
   padding: 1rem;
   margin: 1rem auto;

@@ -274,7 +274,10 @@ section.containerGreen {
     font-family: "Nunito Sans", sans-serif;
     border: none;
     font-size: 16px;
-    border-radius: 0.25rem; }
+    border-radius: 0.25rem;
+    transition: all 0.3s; }
+    section.containerGreen .formWrapper .buttonContainer:hover {
+      background-color: #5F4B64; }
 
 section.containerLilac {
   margin-top: 2.5rem;
@@ -301,7 +304,10 @@ section.containerLilac {
     font-family: "Nunito Sans", sans-serif;
     border: none;
     font-size: 16px;
-    border-radius: 0.25rem; }
+    border-radius: 0.25rem;
+    transition: all 0.3s; }
+    section.containerLilac .formWrapper .buttonContainer:hover {
+      background-color: #5F4B64; }
   section.containerLilac .textForm {
     font-family: "Nunito Sans", serif;
     text-align: center;
@@ -430,10 +436,13 @@ section.containerGreen .isFlex.flexBetween .buttonContainer {
   height: 70px;
   padding: 25px 7px;
   font-size: 18px;
-  border-radius: 0.5rem; }
+  border-radius: 0.5rem;
+  transition: all 0.3s; }
+  section.containerGreen .isFlex.flexBetween .buttonContainer:hover {
+    background-color: #5F4B64; }
 
 .containerWhiteBg {
-  border-radius: 2rem;
+  border-radius: 1rem;
   background-color: #EEEEEE;
   padding: 1rem;
   margin: 1rem auto; }

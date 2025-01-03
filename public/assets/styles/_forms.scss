@@ -16,6 +16,11 @@ section.containerGreen {
       border: none;
       font-size: 16px;
       border-radius: 0.25rem;
+      transition: all 0.3s;
+
+      &:hover {
+        background-color: $darkLilac;
+      }
     }
   }
 }
@@ -36,6 +41,11 @@ section.containerLilac {
       border: none;
       font-size: 16px;
       border-radius: 0.25rem;
+      transition: all 0.3s;
+
+      &:hover {
+        background-color: $darkLilac;
+      }
     }
   }
   .textForm {

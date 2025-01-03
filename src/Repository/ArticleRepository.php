@@ -31,6 +31,11 @@ class ArticleRepository extends ServiceEntityRepository
         // SELECT * FROM article AS WHERE a.title LIKE %search% OR WHERE a.content LIKE %search%
     }
 
+    public function getLastArticlePublished() :?Article
+    {
+        return $this->findOneBy(['status'=>'published'], ['createdAt' => 'DESC']);
+    }
+
     //    /**
     //     * @return Article[] Returns an array of Article objects
     //     */
