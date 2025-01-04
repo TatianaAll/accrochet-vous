@@ -20,7 +20,7 @@ class CommentType extends AbstractType
             ->add('title')
             ->add('content')
             ->add('image', FileType::class, ["required"=>false, 'mapped'=>false])
-            ->add('enregistrer', SubmitType::class)
+            ->add('save', SubmitType::class)
         ;
     }
 
