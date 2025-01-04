@@ -11,6 +11,10 @@
   height: 50px;
 }
 
+@mixin border-radius($border-radius) {
+  border-radius: $border-radius;
+}
+
 @mixin formContainer($backgroundColor, $borderRadiusRL, $borderRadiusLR) {
   width: 80%;
   background-color: $backgroundColor;
@@ -56,6 +60,13 @@ $successBg: #DAEFB3;
   justify-content: space-between;
 }
 
+.w40 {
+  width: 40%;
+}
+.w60 {
+  width: 60%;
+  margin: 0 auto;
+}
 .w70 {
   width: 70%;
   margin: 0 auto;

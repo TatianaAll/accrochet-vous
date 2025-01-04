@@ -12,7 +12,6 @@ section.containerGreen {
     .buttonContainer {
       @include buttonStyle($darkGreen);
       color: $white;
-      font-family: "Nunito Sans", sans-serif;
       border: none;
       font-size: 16px;
       border-radius: 0.25rem;
@@ -37,7 +36,6 @@ section.containerLilac {
     .buttonContainer {
       @include buttonStyle($darkGreen);
       color: $white;
-      font-family: "Nunito Sans", sans-serif;
       border: none;
       font-size: 16px;
       border-radius: 0.25rem;
@@ -49,7 +47,6 @@ section.containerLilac {
     }
   }
   .textForm {
-    font-family: "Nunito Sans", serif;
     text-align: center;
     margin-top: 1.5rem;
     .linkForm {
@@ -66,13 +63,11 @@ section.containerLilac {
   .formField {
     margin-bottom: 0.8rem;
     .labelForm {
-      font-family: "Nunito Sans", serif;
       color: $black;
       margin: 0.5rem 0;
     }
 
     .inputForm {
-      font-family: "Nunito Sans", serif;
       color: $black;
       background-color: $white;
       border-radius: 0.5rem;
@@ -86,7 +81,6 @@ section.containerLilac {
 }
 
 .textAreaForm {
-  font-family: "Nunito Sans", serif;
   color: $black;
   background-color: $white;
   border-radius: 0.5rem;

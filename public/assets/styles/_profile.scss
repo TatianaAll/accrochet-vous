@@ -7,7 +7,6 @@ section.containerGreen {
       width: 10rem;
     }
     div.infoProfileContainer {
-      font-family: "Nunito Sans", sans-serif;
       margin-left: 1rem;
       text-align: left;
     }
@@ -15,11 +14,9 @@ section.containerGreen {
   div.w90 {
     h3 {
       margin-top: 2rem;
-      font-family: "Nunito Sans", sans-serif;
       font-weight: normal;
     }
     .containerWhiteBg {
-      font-family: "Nunito Sans", sans-serif;
       color: $darkGreen;
       margin-bottom: 2rem;
     }
@@ -28,7 +25,6 @@ section.containerGreen {
     .buttonContainer {
       @include buttonStyle($darkGreen);
       color: $white;
-      font-family: "Nunito Sans", sans-serif;
       text-decoration: none;
       width: 250px;
       height: 70px;
