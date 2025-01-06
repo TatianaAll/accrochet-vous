@@ -4,22 +4,51 @@
 
 {% block body %}
 
-    <ul>
-        {% for admin in admins %}
-        <li>{{ admin.email }},
-            <ul> Est :
-                {% for role in admin.roles %}
-                <li>
-                    {{ role }}
-                </li>
-                {% endfor %}
-                <li><a href="{{ path("admin_admin_update", {id: admin.id}) }}" class="btn btn-warning mt-1">Modifier</a></li>
-                <li><a href="{{ path("admin_admin_delete", {id: admin.id}) }}" class="btn btn-danger mt-1">Supprimer</a></li>
-            </ul>
-        </li>
-
-
-        {% endfor %}
-    </ul>
+  <section class="container">
+    {% if 'ROLE_SUPER_ADMIN' in app.user.roles %}
+      <!-- Button able for create admin -->
+      <a href="{{ path('admin_admin_create') }}" class="btn btn-primary">Créer un nouvel administrateur</a>
+    {% else %}
+      <!-- else if !super admin not the right to creat new admin -->
+      <button class="btn btn-outline-secondary" disabled>Créer un nouvel administrateur</button>
+    {% endif %}
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Email</th>
+        <th>Rôles</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% for admin in admins %}
+        <tr>
+          <td>{{ admin.email }}</td>
+          <td>
+            {% for role in admin.roles %}
+              <span class="badge bg-primary">{{ role }}</span>
+            {% endfor %}
+          </td>
+          <td>
+            {% if app.user.id is same as admin.id or 'ROLE_SUPER_ADMIN' in app.user.roles %}
+            <a href="{{ path("admin_admin_update", {id: admin.id}) }}" class="btn btn-warning mt-1">
+              Modifier
+            </a>
+            {% else %}
+              <button class="btn btn-outline-warning" disabled>Modifier</button>
+            {% endif %}
+            {% if 'ROLE_SUPER_ADMIN' in app.user.roles %}
+            <a href="{{ path("admin_admin_delete", {id: admin.id}) }}" class="btn btn-danger mt-1">
+              Supprimer
+            </a>
+            {% else %}
+              <button class="btn btn-outline-danger" disabled>Supprimer</button>
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </section>
 
 {% endblock %}

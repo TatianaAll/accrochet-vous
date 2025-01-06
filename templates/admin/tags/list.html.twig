@@ -27,7 +27,13 @@
             </a>
           </td>
           <td>
+            {% if 'ROLE_SUPER_ADMIN' in app.user.roles %}
             <a href="{{path("admin_tag_delete", {id: tag.id}) }}" class="btn btn-danger mt-1">Supprimer</a>
+            {% else %}
+              <button class="btn btn-outline-danger" disabled>
+                Supprimer
+              </button>
+            {% endif %}
           </td>
         </tr>
       {% endfor %}

@@ -25,34 +25,31 @@ class AdminRightController extends AbstractController
     {
         $admin = new Admin();
 
-        $form = $this->createForm(AdminType::class, $admin);
-        $formView = $form->createView();
+        $formCreateAdmin = $this->createForm(AdminType::class, $admin);
+        $formCreateAdmin->handleRequest($request);
 
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-
-            //il faut que je récupère le mdp rentré et que je le hache
-            $plaintextPassword = $form->get('password')->getData();
+        if ($formCreateAdmin->isSubmitted() && $formCreateAdmin->isValid()) {
+            //get the password in plain text and hash it
+            $plaintextPassword = $formCreateAdmin->get('password')->getData();
 
             if (!$plaintextPassword) {
                 $this->addFlash('error', 'Veuillez rentrer un mot de passe');
                 return $this->redirectToRoute('admin_admin_create');
             }
-            //je hash le tout
+            //hash the password
             $hashedPassword = $passwordHasher->hashPassword(
                 $admin,
                 $plaintextPassword
             );
             $admin->setPassword($hashedPassword);
             //dd($hashedPassword);
-
             $entityManager->persist($admin);
             $entityManager->flush();
 
             $this->addFlash('success', 'Un nouvel admin a été créé');
-            //return $this->redirectToRoute('admin_dashboard');
+            return $this->redirectToRoute('admin_dashboard');
         }
+        $formView = $formCreateAdmin->createView();
         return $this->render('admin/rights/create_admin.html.twig', ['formView' => $formView]);
 
     }

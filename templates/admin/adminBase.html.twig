@@ -34,6 +34,17 @@
                   Liste des admin
                 </a>
               </li>
+              <li>
+                {% if 'ROLE_SUPER_ADMIN' in app.user.roles %}
+                <a class="dropdown-item" href="{{ path("admin_admin_create") }}">
+                  Créer un nouvel admin
+                </a>
+                {% else %}
+                  <a class="dropdown-item disabled" href="{{ path("admin_admin_create") }}">
+                    Créer un nouvel admin
+                  </a>
+                {% endif %}
+              </li>
             </ul>
           </li>
           <li class="nav-item dropdown">

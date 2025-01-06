@@ -17,11 +17,11 @@ class AdminType extends AbstractType
         $builder
             ->add('email')
             ->add('roles', ChoiceType::class, options: [
-                'choices' => ['admin' => 'ROLE_ADMIN', 'superAdmin' => 'ROLE_SUPER_ADMIN'],
+                'choices' => ['Admin' => 'ROLE_ADMIN', 'Super Admin (droits de gestion et suppression)' => 'ROLE_SUPER_ADMIN'],
                 'expanded' => true,
                 'multiple' => true,])
-            ->add('password', PasswordType::class, options: ['mapped'=>false])
-            ->add('enregistrer', SubmitType::class)
+            ->add('password', PasswordType::class)
+            ->add('save', SubmitType::class)
         ;
     }
 
