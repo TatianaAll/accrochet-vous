@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Articles {% endblock %}
+{% block title %} Tous les modèles {% endblock %}
 
 {% block body %}
   <section class="w80">
@@ -14,7 +14,7 @@
           {% if article.description |length < 200 %}
             <p>{{ article.description }}</p>
           {% endif %}
-          <p>Date de parution : {{ article.createdAt | date('d-m-Y H:i') }}</p>
+          <p>Date de création : {{ article.createdAt | date('d-m-Y H:i') }}</p>
           <p>
             {% if article.user %}
               Auteur : {{ article.user.username }}

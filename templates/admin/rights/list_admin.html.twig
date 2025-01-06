@@ -5,6 +5,7 @@
 {% block body %}
 
   <section class="container">
+    <h2>Les administrateurs</h2>
     {% if 'ROLE_SUPER_ADMIN' in app.user.roles %}
       <!-- Button able for create admin -->
       <a href="{{ path('admin_admin_create') }}" class="btn btn-primary">Créer un nouvel administrateur</a>

@@ -4,23 +4,19 @@
 
 {% block body %}
 
-    <section class="container">
+  <section class="container">
 
-        <form action="{{ path('login_admin') }}" method="POST">
-            <div class="form-group">
-                <label for="_username">Adresse mail *</label>
-                <input type="email" class="form-control" name="_username" value="{{ lastUsername }}"
-                       placeholder="Entrer votre adresse mail">
-
-            </div>
-            <div class="form-group">
-                <label for="_password">Mot de passe *</label>
-                <input type="password" class="form-control" name="_password" placeholder="Mot de passe">
-
-            </div>
-
-            <button type="submit" class="btn btn-primary mt-3">Se connecter</button>
-        </form>
-    </section>
+    <form action="{{ path('login_admin') }}" method="POST">
+      <div class="form-group">
+        <label for="_username">Adresse mail *</label>
+        <input type="email" class="form-control" name="_username" value="{{ lastUsername }}" placeholder="Entrer votre adresse mail">
+      </div>
+      <div class="form-group">
+        <label for="_password">Mot de passe *</label>
+        <input type="password" class="form-control" name="_password" placeholder="Mot de passe">
+      </div>
+      <button type="submit" class="btn btn-primary mt-3">Se connecter</button>
+    </form>
+  </section>
 
 {% endblock %}

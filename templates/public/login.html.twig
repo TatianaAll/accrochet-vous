@@ -3,38 +3,36 @@
 {% block title %} Connexion {% endblock %}
 
 {% block body %}
-    <section class="containerLilac">
-
-        <h2 class="titleH2">Connexion</h2>
-        <div class="formWrapper">
-            <form action="{{ path('login') }}" method="POST">
-                <div class="formField">
-                    <label for="_username" class="labelForm">Adresse mail</label>
-                    <input type="email" name="_username" value="{{ lastUsername }}"
-                           class="inputForm"/>
-                </div>
-                <div class="formField">
-                    <label for="_password" class="labelForm">Mot de passe</label>
-                    <input type="password" name="_password" class="inputForm"/>
-                </div>
-                {% if error %}
-                <div class="errorContainer">
-                    <p class="error">
-                        {{ errorMessage }}
-                    </p>
-                </div>
-                {% endif %}
-                <div class="center">
-                    <button type="submit" class="buttonContainer">Se connecter</button>
-                </div>
-            </form>
+  <section class="containerLilac">
+    <h2 class="titleH2">Connexion</h2>
+    <div class="formWrapper">
+      <form action="{{ path('login') }}" method="POST">
+        <div class="formField">
+          <label for="_username" class="labelForm">Adresse mail</label>
+          <input type="email" name="_username" value="{{ lastUsername }}" class="inputForm"/>
         </div>
-        <p class="textForm">
-            Sinon créer un compte en vous
-            <a href="{{ path("user_inscription") }}" class="linkForm">
-                inscrivant ici
-            </a>
-        </p>
-    </section>
+        <div class="formField">
+          <label for="_password" class="labelForm">Mot de passe</label>
+          <input type="password" name="_password" class="inputForm"/>
+        </div>
+        {% if error %}
+          <div class="errorContainer">
+            <p class="error">
+              {{ errorMessage }}
+            </p>
+          </div>
+        {% endif %}
+        <div class="center">
+          <button type="submit" class="buttonContainer">Se connecter</button>
+        </div>
+      </form>
+    </div>
+    <p class="textForm">
+      Sinon créer un compte en vous
+      <a href="{{ path("user_inscription") }}" class="linkForm">
+        inscrivant ici
+      </a>
+    </p>
+  </section>
 
 {% endblock %}

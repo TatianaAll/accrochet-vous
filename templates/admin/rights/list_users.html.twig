@@ -1,0 +1,38 @@
+{% extends 'admin/adminBase.html.twig' %}
+
+{% block title %} Liste des users {% endblock %}
+
+{% block body %}
+  <section class="container">
+    <h2>Les utilisateurs</h2>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Pseudo</th>
+        <th>Email</th>
+        <th>Rôles</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% for user in users %}
+        <tr>
+          <td>{{ user.username }}</td>
+          <td>{{ user.email }}</td>
+          <td>
+            {% for role in user.roles %}
+              <span class="badge bg-primary">{{ role }}</span>
+            {% endfor %}
+          </td>
+          <td>
+              <a href="{{ path("admin_users_redactor", {id: user.id}) }}" class="btn btn-success mt-1">
+                Donner le statut "rédacteur"
+              </a>
+          </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </section>
+
+{% endblock %}

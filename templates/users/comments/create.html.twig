@@ -1,39 +1,39 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    Commentaire
+  Commentaire
 {% endblock %}
 
 {% block body %}
-<section class="containerLilac">
+  <section class="containerLilac">
     {{ form_start(formView) }}
     <h2 class="titleH2">Laisser un commentaire</h2>
     <div class="formWrapper">
-        <div class="formField">
-            {{ form_label(formView.title, 'Titre', {'label_attr': {'class': 'labelForm'}}) }}
-            {{ form_widget(formView.title, {'attr': {'class': 'inputForm'}}) }}
-            <div class="{{ formView.title.vars.errors|length > 0 ? 'error ' }}">
-                {{ form_errors(formView.title) }}
-            </div>
+      <div class="formField">
+        {{ form_label(formView.title, 'Titre', {'label_attr': {'class': 'labelForm'}}) }}
+        {{ form_widget(formView.title, {'attr': {'class': 'inputForm'}}) }}
+        <div class="{{ formView.title.vars.errors|length > 0 ? 'error ' }}">
+          {{ form_errors(formView.title) }}
         </div>
-        <div class="formField">
-            {{ form_label(formView.content, 'Commentaire', {'label_attr': {'class': 'labelForm'}}) }}
-            {{ form_widget(formView.content, {'attr': {'class': 'textAreaForm'}}) }}
-            <div class="{{ formView.content.vars.errors|length > 0 ? 'error ' }}">
-                {{ form_errors(formView.content) }}
-            </div>
+      </div>
+      <div class="formField">
+        {{ form_label(formView.content, 'Commentaire', {'label_attr': {'class': 'labelForm'}}) }}
+        {{ form_widget(formView.content, {'attr': {'class': 'textAreaForm'}}) }}
+        <div class="{{ formView.content.vars.errors|length > 0 ? 'error ' }}">
+          {{ form_errors(formView.content) }}
         </div>
-        <div class="formField">
-            {{ form_label(formView.image, 'Commentaire', {'label_attr': {'class': 'labelForm'}}) }}
-            {{ form_widget(formView.image) }}
-            <div class="{{ formView.image.vars.errors|length > 0 ? 'error ' }}">
-                {{ form_errors(formView.image) }}
-            </div>
+      </div>
+      <div class="formField">
+        {{ form_label(formView.image, 'Commentaire', {'label_attr': {'class': 'labelForm'}}) }}
+        {{ form_widget(formView.image) }}
+        <div class="{{ formView.image.vars.errors|length > 0 ? 'error ' }}">
+          {{ form_errors(formView.image) }}
         </div>
-        <div class="center">
-            {{ form_row(formView.save, { 'label' :'Enregistrer', 'attr' : {'class' : 'buttonContainer'} }) }}
-        </div>
+      </div>
+      <div class="center">
+        {{ form_row(formView.save, { 'label' :'Enregistrer', 'attr' : {'class' : 'buttonContainer'} }) }}
+      </div>
     </div>
     {{ form_end(formView) }}
-</section>
+  </section>
 {% endblock %}

@@ -3,38 +3,38 @@
 {% block title %} Soumission d'un modèle {% endblock %}
 
 {% block body %}
-    <main>
-        <h1>Proposez votre modèle de crochet</h1>
+  <main>
+    <h1>Proposez votre modèle de crochet</h1>
 
-        {{ form_start(formView) }}
-        <div>
-            {{ form_label(formView.title) }}
-            {{ form_widget(formView.title) }}
-            {{ form_errors(formView.title) }}
-        </div>
+    {{ form_start(formView) }}
+    <div>
+      {{ form_label(formView.title) }}
+      {{ form_widget(formView.title) }}
+      {{ form_errors(formView.title) }}
+    </div>
 
-        <div>
-            {{ form_label(formView.description) }}
-            {{ form_widget(formView.description) }}
-            {{ form_errors(formView.description) }}
-        </div>
+    <div>
+      {{ form_label(formView.description) }}
+      {{ form_widget(formView.description) }}
+      {{ form_errors(formView.description) }}
+    </div>
 
-        <div>
-            {{ form_label(formView.image) }}
-            {{ form_widget(formView.image) }}
-            {{ form_errors(formView.image) }}
-        </div>
+    <div>
+      {{ form_label(formView.image) }}
+      {{ form_widget(formView.image) }}
+      {{ form_errors(formView.image) }}
+    </div>
 
-        <div>
-            {{ form_label(formView.category) }}
-            {{ form_widget(formView.category) }}
-            {{ form_errors(formView.category) }}
-        </div>
+    <div>
+      {{ form_label(formView.category) }}
+      {{ form_widget(formView.category) }}
+      {{ form_errors(formView.category) }}
+    </div>
 
-        <div>
-            {{ form_widget(formView.enregistrer) }}
-        </div>
+    <div>
+      {{ form_widget(formView.save) }}
+    </div>
 
-        {{ form_end(formView) }}
-    </main>
+    {{ form_end(formView) }}
+  </main>
 {% endblock %}
