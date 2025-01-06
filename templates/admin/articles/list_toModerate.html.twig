@@ -1,6 +1,6 @@
 {% extends 'admin/adminBase.html.twig' %}
 
-{% block title %} Articles {% endblock %}
+{% block title %} Articles à modérer {% endblock %}
 
 {% block body %}
     <section class="container">
@@ -27,21 +27,20 @@
                     <td>{{ article.title }}</td>
                     <td>{{ article.status }}</td>
                     <td>{{ article.createdAt | date('d-m-Y H:i') }}</td>
-                    {% if article.updateAt %}
-                        <td>{{ article.updateAt | date('d-m-Y H:i') }}</td>
-                    {% else %}
-                        <td></td>
-                    {% endif %}
-                    {% if article.adminId %}
-                        <td>{{ article.adminId.email }}</td>
-                    {% else %}
-                        <td></td>
-                    {% endif %}
-                    {% if article.user %}
-                        <td>{{ article.user.username }}</td>
-                    {% else %}
-                        <td></td>
-                    {% endif %}
+                    <td>
+                        {% if article.updateAt %}
+                            {{ article.updateAt | date('d-m-Y H:i') }}
+                        {% else %}
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if article.adminId %}
+                            {{ article.adminId.email }}
+                        {% elseif article.user %}
+                            {{ article.user.username }}
+                        {% else %}
+                        {% endif %}
+                    </td>
 
                     <td><a href="{{ path("admin_article_show", {id: article.id}) }}"
                            class="btn btn-primary mt-1">Voir</a></td>
