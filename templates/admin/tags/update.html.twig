@@ -1,21 +1,26 @@
 {% extends 'admin/adminBase.html.twig' %}
 
-{% block title %}Créer un nouveau tag{% endblock %}
+{% block title %}
+  Modifier {{ tagToUpdate.name }}
+{% endblock %}
 
 {% block body %}
   <section class="container">
+
+    <h2>{{ tagToUpdate.name }}</h2>
+
     {{ form_start(formView) }}
     <div class="form-group mb-3">
-      {{ form_label(formView.name, 'Nom', {'label_attr': {'class': 'form-label'}}) }}
+      {{ form_label(formView.name, "Nom de l'étiquette", {'label_attr': {'class': 'form-label'}}) }}
       {{ form_widget(formView.name, {'attr': {'class': 'form-control'}}) }}
       <div class="{{ formView.name.vars.errors|length > 0 ? 'alert alert-warning ' }}">
         {{ form_errors(formView.name) }}
       </div>
     </div>
-
     <div>
-      {{ form_row(formView.save, { 'label' :'Enregistrer', 'attr' : {'class' : 'btn btn-success mt-1'} }) }}
+      {{ form_row(formView.save, { 'label' :'Enregistrer', 'attr' : {'class' : 'btn btn-success'} }) }}
     </div>
     {{ form_end(formView) }}
   </section>
+
 {% endblock %}
