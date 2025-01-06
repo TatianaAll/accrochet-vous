@@ -5,6 +5,8 @@
 {% block body %}
     <section class="container">
 
+        <a href="{{ path('admin_article_create') }}" class="btn btn-primary mt-3 mb-3">Ajouter un article</a>
+
         <table class="table table-borderless">
             <thead>
             <tr>
@@ -48,9 +50,6 @@
                 </tr>
             {% endfor %}
         </table>
-
-        <a href="{{ path('admin_article_create') }}" class="btn btn-primary">Ajouter un article</a>
-
 
     </section>
 

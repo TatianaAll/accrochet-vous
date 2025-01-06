@@ -3,9 +3,29 @@
 {% block title %}Modification de catégorie{% endblock %}
 
 {% block body %}
-
+  <section class="container">
     <h2>Modification de la catégorie "{{ categoryToUpdate.name }}"</h2>
 
-    {{ form(formView) }}
+    {{ form_start(formView) }}
+    <div class="form-group mb-3">
+      {{ form_label(formView.name, 'Nom de la catégorie', {'label_attr': {'class': 'form-label'}}) }}
+      {{ form_widget(formView.name, {'attr': {'class': 'form-control'}}) }}
+      <div class="{{ formView.name.vars.errors|length > 0 ? 'alert alert-warning ' }}">
+        {{ form_errors(formView.name) }}
+      </div>
+    </div>
+    <div class="form-group mb-3">
+      {{ form_label(formView.description, 'Description', {'label_attr': {'class': 'form-label'}}) }}
+      {{ form_widget(formView.description, {'attr': {'class': 'form-control'}}) }}
+      <div class="{{ formView.description.vars.errors|length > 0 ? 'alert alert-warning ' }}">
+        {{ form_errors(formView.description) }}
+      </div>
+    </div>
+
+    <div>
+      {{ form_row(formView.save, { 'label' :'Enregistrer', 'attr' : {'class' : 'btn btn-success'} }) }}
+    </div>
+    {{ form_end(formView) }}
+  </section>
 
 {% endblock %}
