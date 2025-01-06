@@ -14,7 +14,7 @@ class DashboardController extends AbstractController
     #[IsGranted(new Expression('is_granted("ROLE_SUPER_ADMIN") or is_granted("ROLE_ADMIN")'))]
     public function adminDashboard(): Response
     {
-        //
+        //Think... what information are pertinent here
         return $this->render('admin/dashboard.html.twig');
     }
 
