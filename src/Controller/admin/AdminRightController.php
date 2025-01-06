@@ -64,33 +64,29 @@ class AdminRightController extends AbstractController
 
     #[Route(path: "/admin/rights/{id}/update", name: "admin_admin_update", requirements: ["id"=>"\d+"], methods: ["GET","POST"])]
     #[IsGranted(new Expression('is_granted("ROLE_SUPER_ADMIN")'))]
-    public function updateAdminRights(int $id, AdminRepository $adminRepository,
+    public function updateAdminRights(int $id, AdminRepository $adminRepository, Request $request,
                                       EntityManagerInterface $entityManager,
                                       UserPasswordHasherInterface $passwordHasher): Response
     {
         $adminToUpdate = $adminRepository->find($id);
-
-        if(!$adminToUpdate){
+        if(!$adminToUpdate) {
             $this->addFlash("error", "Cet administrateur n'existe pas");
             return $this->redirectToRoute("admin_admin_list");
         }
 
-        $form = $this->createForm(AdminType::class, $adminToUpdate);
-        $formView = $form->createView();
-
-        if($form->isSubmitted())
-        {
-            //je récupère le nouveau mdp et je le hash à la hache
-            $plaintextPassword = $form->get('password')->getData();
-            //si rien = on garde le même
+        $formAdminToUpdate = $this->createForm(AdminType::class, $adminToUpdate);
+        $formAdminToUpdate->handleRequest($request);
+        //dd($formAdminToUpdate);
+        if($formAdminToUpdate->isSubmitted() && $formAdminToUpdate->isValid()) {
+            $plaintextPassword = $formAdminToUpdate->get('password')->getData();
+            //if no information --> keeping the same password
             if ($plaintextPassword) {
-                //je hache le tout
+                //hash
                 $hashedPassword = $passwordHasher->hashPassword(
                     $adminToUpdate,
                     $plaintextPassword
                 );
                 $adminToUpdate->setPassword($hashedPassword);
-                //dd($hashedPassword);
             }
 
             $entityManager->persist($adminToUpdate);
@@ -99,7 +95,7 @@ class AdminRightController extends AbstractController
             $this->addFlash("succes", "Droit de l'admin modifiés");
             return $this->redirectToRoute("admin_admin_list");
         }
-
+        $formView = $formAdminToUpdate->createView();
         return $this->render("admin/rights/update.html.twig", ["admin"=>$adminToUpdate, "formView"=>$formView]);
     }
 

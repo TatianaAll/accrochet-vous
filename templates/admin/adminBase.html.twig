@@ -35,7 +35,7 @@
                 </a>
               </li>
               <li>
-                {% if 'ROLE_SUPER_ADMIN' in app.user.roles %}
+                {% if app.user is not null and 'ROLE_SUPER_ADMIN' in app.user.roles %}
                 <a class="dropdown-item" href="{{ path("admin_admin_create") }}">
                   Créer un nouvel admin
                 </a>
