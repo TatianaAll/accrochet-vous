@@ -3,32 +3,35 @@
 {% block title %} Articles {% endblock %}
 
 {% block body %}
-    <section class="container">
-        <table class="table table-borderless">
-            <thead>
-            <tr>
-                <th scope="col">Titre</th>
-                <th scope="col">Date de création</th>
-                <th scope="col">Auteur</th>
-                <th scope="col">Voir l'article</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for article in articles %}
-                <tr>
-                    <td>{{ article.title }}</td>
-                    <td>{{ article.createdAt | date('d-m-Y H:i') }}</td>
-                    <td>
-                        {% if article.user %}
-                            {{ article.user.username }}
-                        {% endif %}
-                    </td>
-                    <td>
-                        <a href="{{ path("article_show", {id: article.id}) }}">Voir</a>
-                    </td>
-                </tr>
+  <section class="w80">
+    {% for article in articles %}
+      <article class="articleInList isFlex">
+        <div class="imageContainerList">
+          <img src="{{ asset('assets/uploads/'~article.image) }}" alt="{{ article.title }}" class="w100">
+        </div>
+        <div class="articleContent w70">
+          <h3>{{ article.title }}</h3>
+          {% if article.description |length < 200 %}
+            <p>{{ article.description }}</p>
+          {% endif %}
+          <p>Date de parution : {{ article.createdAt | date('d-m-Y H:i') }}</p>
+          <p>
+            {% if article.user %}
+              Auteur : {{ article.user.username }}
+            {% endif %}
+          </p>
+          <ul class="listCategory isFlex">
+            <li>{{ article.category.name }}</li>
+            {% for tag in article.tags %}
+              <li>{{ tag.name }}</li>
             {% endfor %}
-        </table>
-    </section>
+          </ul>
+          <div class="buttonContainer">
+            <a href="{{ path("article_show", {id: article.id}) }}">Voir le modèle</a>
+          </div>
+        </div>
+      </article>
+    {% endfor %}
+  </section>
 
 {% endblock %}

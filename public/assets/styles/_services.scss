@@ -11,6 +11,10 @@
   height: 50px;
 }
 
+@mixin border-radius($border-radius) {
+  border-radius: $border-radius;
+}
+
 @mixin formContainer($backgroundColor, $borderRadiusRL, $borderRadiusLR) {
   width: 80%;
   background-color: $backgroundColor;
@@ -20,7 +24,7 @@
   border-top-left-radius: $borderRadiusLR;
   margin-right: auto;
   margin-left: auto;
-  padding: 1rem;
+  padding: 2rem;
 }
 
 
@@ -41,19 +45,40 @@ $successBg: #DAEFB3;
 .isRelative {
   position: relative;
 }
-
 .isAbsolute {
   position: absolute;
 }
 
 .isFlex {
   display: flex;
+  gap: 1rem;
+}
+.flexStart {
+  justify-content: flex-start;
+}
+.flexBetween {
+  justify-content: space-between;
 }
 
+.w40 {
+  width: 40%;
+}
+.w60 {
+  width: 60%;
+  margin: 0 auto;
+}
+.w70 {
+  width: 70%;
+  margin: 0 auto;
+}
 .w80 {
   width: 80%;
+  margin: 0 auto;
 }
-
+.w90 {
+  width: 90%;
+  margin: 0 auto;
+}
 .w100 {
   width: 100%;
 }
@@ -64,11 +89,11 @@ $successBg: #DAEFB3;
 
 .messageFlash {
   margin-top: 2rem;
-  padding-top: 0.5rem;
+  padding-top: 0.8rem;
   width: 80%;
   margin-right: auto;
   margin-left: auto;
-  border-radius: 20px;
+  border-radius: 1rem;
   height: 50px;
   text-align: center;
   font-family: "Nunito Sans", serif;

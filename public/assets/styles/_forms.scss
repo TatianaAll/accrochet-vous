@@ -2,40 +2,51 @@
 
 section.containerGreen {
   margin-top: 2.5rem;
-  @include formContainer($lightGreen, 2vmax, 0);
+    @include formContainer($lightGreen, 2rem, 0.5rem);
 
   h2.titleH2 {
+    margin: 1rem 0;
     @include fontTitle($black, 26px)
   }
   .formWrapper {
     .buttonContainer {
       @include buttonStyle($darkGreen);
       color: $white;
-      font-family: "Nunito Sans", sans-serif;
       border: none;
       font-size: 16px;
+      border-radius: 0.25rem;
+      transition: all 0.3s;
+
+      &:hover {
+        background-color: $darkLilac;
+      }
     }
   }
 }
 
 section.containerLilac {
   margin-top: 2.5rem;
-  @include formContainer($lightLilac,0, 2vmax);
+  @include formContainer($lightLilac,0.5rem, 2rem );
 
   h2.titleH2 {
+    margin: 1rem 0;
     @include fontTitle($black, 26px)
   }
   .formWrapper {
     .buttonContainer {
       @include buttonStyle($darkGreen);
       color: $white;
-      font-family: "Nunito Sans", sans-serif;
       border: none;
       font-size: 16px;
+      border-radius: 0.25rem;
+      transition: all 0.3s;
+
+      &:hover {
+        background-color: $darkLilac;
+      }
     }
   }
   .textForm {
-    font-family: "Nunito Sans", serif;
     text-align: center;
     margin-top: 1.5rem;
     .linkForm {
@@ -52,16 +63,14 @@ section.containerLilac {
   .formField {
     margin-bottom: 0.8rem;
     .labelForm {
-      font-family: "Nunito Sans", serif;
       color: $black;
       margin: 0.5rem 0;
     }
 
     .inputForm {
-      font-family: "Nunito Sans", serif;
       color: $black;
       background-color: $white;
-      border-radius: 10px;
+      border-radius: 0.5rem;
       border: none;
       width: 100%;
       height: 40px;
@@ -69,5 +78,16 @@ section.containerLilac {
       padding: 0 1rem;
     }
   }
+}
+
+.textAreaForm {
+  color: $black;
+  background-color: $white;
+  border-radius: 0.5rem;
+  border: none;
+  width: 100%;
+  height: 250px;
+  margin: 1rem 0;
+  padding: 1rem;
 }
 

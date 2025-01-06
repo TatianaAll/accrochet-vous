@@ -1,0 +1,57 @@
+@import "_services.scss";
+
+article.articleInList {
+  margin: 2rem 0;
+  flex-wrap: wrap;
+  div.imageContainerList {
+    width: 25%;
+    img {
+      @include border-radius(0.25rem);
+    }
+  }
+  .articleContent {
+    h3 {
+      font-weight: bold;
+      font-size: 24px;
+      margin-bottom: 1rem;
+    }
+    p {
+      font-weight: normal;
+      font-size: 20px;
+      margin: 0.5rem 0;
+    }
+    ul.listCategory {
+      margin: 1rem 0;
+      li {
+        list-style: none;
+        color: $darkGreen;
+      }
+    }
+
+    div.buttonContainer {
+      @include buttonStyle($darkGreen);
+      @include border-radius(0.5rem);
+      width: 250px;
+      height: 40px;
+      padding: 0.5rem 0;
+      text-align: center;
+      transition: all 0.3s;
+
+      &:hover {
+        background-color: $darkLilac;
+      }
+      a {
+        color: $white;
+        text-decoration: none;
+      }
+    }
+  }
+  &::after {
+    content: "";
+    display: block;
+    width: 80%;
+    height: 0.1rem;
+    background-color: $lightGreen;
+    margin: 0 auto;
+  }
+}

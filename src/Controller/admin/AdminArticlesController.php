@@ -10,6 +10,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\ExpressionLanguage\Expression;
+use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -25,35 +26,38 @@ class AdminArticlesController extends AbstractController
         //new instance of article
         $article = new Article();
 
-        //calling the form
-        $formAdminCreateArticle = $this->createForm(ArticleType::class, $article, [
-            'is_admin' => $this->isGranted('ROLE_ADMIN'),
-        ]);
-        $formAdminView = $formAdminCreateArticle->createView();
+        //set the creation date
+        $article->setCreatedAt(new \DateTime());
+        //set the author to admin
+        $article->setAdminId($this->getUser());
 
+        //calling the form with a cerification about admin (to manage the status of the article)
+        $formAdminCreateArticle = $this->createForm(ArticleType::class, $article, [
+            'is_admin' => $this->isGranted('ROLE_ADMIN') || $this->isGranted('ROLE_SUPER_ADMIN'),
+        ]);
         $formAdminCreateArticle->handleRequest($request);
 
-        if ($formAdminCreateArticle->isSubmitted() && $formAdminCreateArticle->isValid()) {
-            $article->setCreatedAt(new \DateTime());
+        if ($formAdminCreateArticle->isSubmitted()) {
             //management of the images imported
             //get them from the form
             $imageImported = $formAdminCreateArticle->get('image')->getData();
-
             if ($imageImported) {
                 //calling the service class for importation
                 $newImageName = $imageImporter->importImage($imageImported);
                 // stock new image in the entity instance with the new name
                 $article->setImage($newImageName);
             }
-            //set the author to admin
-            $article->setAdminId($this->getUser());
 
-            $entityManager->persist($article);
-            $entityManager->flush();
+            if ($formAdminCreateArticle->isValid()) {
 
-            $this->addFlash("success", "Modèle ajouté ;)");
-            return $this->redirectToRoute('admin_articles_list');
+                $entityManager->persist($article);
+                $entityManager->flush();
+
+                $this->addFlash("success", "Modèle ajouté ;)");
+                return $this->redirectToRoute('admin_articles_list');
+            }
         }
+        $formAdminView = $formAdminCreateArticle->createView();
         return $this->render('admin/articles/create.html.twig', ['formView' => $formAdminView]);
     }
 

@@ -28,22 +28,18 @@ class CommentController extends AbstractController
         $article = $articleRepository->find($articleId);
         $comment = new Comment();
 
+        $comment->setUser($this->getUser());
+        $comment->setArticle($article);
+        $comment->setStatus("to moderate");
+        $comment->setCreatedAt(new \DateTime());
+        $comment->setLinkedRate(false);
+
         $formNewComment = $this->createForm(CommentType::class, $comment);
-        $formView = $formNewComment->createView();
 
         $formNewComment->handleRequest($request);
 
         if($formNewComment->isSubmitted() && $formNewComment->isValid()) {
-            $comment->setUser($this->getUser());
-            $comment->setArticle($article);
-
-            $comment->setStatus("to moderate");
-
-            $comment->setCreatedAt(new \DateTime());
-            $comment->setLinkedRate(false);
-
             $imageImported = $formNewComment->get('image')->getData();
-
             if ($imageImported) {
                 $newImageName = $imageImporter->importImage($imageImported);
                 $article->setImage($newImageName);
@@ -54,7 +50,7 @@ class CommentController extends AbstractController
             $this->addFlash("success", "Commentaire ajouté, il sera lu par nos administrateurs avant d'apparaitre !");
             return $this->redirectToRoute('article_show', ['id' => $articleId]);
         }
-
+        $formView = $formNewComment->createView();
         return $this->render("users/comments/create.html.twig", ["article" => $article, "formView"=>$formView]);
     }
 

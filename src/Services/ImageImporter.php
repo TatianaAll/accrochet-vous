@@ -22,7 +22,7 @@ class ImageImporter
     }
 
     //method for image import --> need an uploaded file as argument (the image in the form)
-    public function importImage(UploadedFile $imageFile){
+    public function importImage(UploadedFile $imageFile): string {
 
         $imageName = $imageFile->getClientOriginalName();
         $imageExtension = $imageFile->getClientOriginalExtension();

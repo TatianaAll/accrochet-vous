@@ -1,0 +1,50 @@
+@import "_services.scss";
+
+section.containerGreen {
+  .isFlex {
+    align-items: center;
+    div.profilePictureContainer {
+      width: 10rem;
+    }
+    div.infoProfileContainer {
+      margin-left: 1rem;
+      text-align: left;
+    }
+  }
+  div.w90 {
+    h3 {
+      margin-top: 2rem;
+      font-weight: normal;
+    }
+    .containerWhiteBg {
+      color: $darkGreen;
+      margin-bottom: 2rem;
+    }
+  }
+  .isFlex.flexBetween {
+    .buttonContainer {
+      @include buttonStyle($darkGreen);
+      color: $white;
+      text-decoration: none;
+      width: 250px;
+      height: 70px;
+      padding: 25px 7px;
+      font-size: 18px;
+      border-radius: 0.5rem;
+      transition: all 0.3s;
+
+      &:hover {
+        background-color: $darkLilac;
+      }
+
+    }
+  }
+}
+
+
+.containerWhiteBg {
+  border-radius: 1rem;
+  background-color: $white;
+  padding: 1rem;
+  margin: 1rem auto;
+}

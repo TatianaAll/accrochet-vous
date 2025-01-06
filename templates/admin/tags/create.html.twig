@@ -1,0 +1,21 @@
+{% extends 'admin/adminBase.html.twig' %}
+
+{% block title %}Créer un nouveau tag{% endblock %}
+
+{% block body %}
+  <section class="container">
+    {{ form_start(formView) }}
+    <div class="form-group mb-3">
+      {{ form_label(formView.name, 'Nom', {'label_attr': {'class': 'form-label'}}) }}
+      {{ form_widget(formView.name, {'attr': {'class': 'form-control'}}) }}
+      <div class="{{ formView.name.vars.errors|length > 0 ? 'alert alert-warning ' }}">
+        {{ form_errors(formView.name) }}
+      </div>
+    </div>
+
+    <div>
+      {{ form_row(formView.save, { 'label' :'Enregistrer', 'attr' : {'class' : 'buttonContainer'} }) }}
+    </div>
+    {{ form_end(formView) }}
+  </section>
+{% endblock %}

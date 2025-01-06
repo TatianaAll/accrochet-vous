@@ -1,7 +1,10 @@
 @import "_header.scss";
 @import "_services.scss";
 @import "_forms.scss";
-
+@import "_profile.scss";
+@import "_homepage.scss";
+@import "_list-articles";
+@import "_article-show.scss";
 
 * {
   margin: 0;
@@ -11,4 +14,5 @@
 
 body {
   background-color: $white;
+  font-family: "Nunito Sans", sans-serif;
 }

@@ -19,6 +19,11 @@
                 {% endif %}
             </p>
             <p>Description : {{ article.description }}</p>
+            <ul>
+                {% for tag in article.tags %}
+                <li>{{ tag.name }}</li>
+                {% endfor %}
+            </ul>
 
             {% if article.status is same as 'to moderate' %}
                 <a href="{{ path("admin_article_moderate_published", {id: article.id}) }}" class="btn btn-success">Publier l'article</a>

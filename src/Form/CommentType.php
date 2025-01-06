@@ -19,8 +19,8 @@ class CommentType extends AbstractType
         $builder
             ->add('title')
             ->add('content')
-            ->add('image', FileType::class, ["required"=>false])
-            ->add('enregistrer', SubmitType::class)
+            ->add('image', FileType::class, ["required"=>false, 'mapped'=>false])
+            ->add('save', SubmitType::class)
         ;
     }
 

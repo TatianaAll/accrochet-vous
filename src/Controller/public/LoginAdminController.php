@@ -9,7 +9,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class LoginAdminController extends AbstractController
 {
-    //je fais ma route avec le login dans ma partie public par ce que sinon je ne peux jamais ya voir accès
+    //I do the path to the login in the public part of my website because i need to connect before having access
     #[Route(path:'/admin/login', name:'login_admin')]
     public function loginAdmin(AuthenticationUtils $authenticationUtils) : Response
     {
@@ -25,8 +25,8 @@ class LoginAdminController extends AbstractController
     #[Route(path: '/admin/logout', name: 'admin_logout')]
     public function logout(): void
     {
-        //route utilisée par symfony pour se décnnecter, c'est magique un peu
-        //en vrai ça renvoi vers le fichier security.yalm et est utilisé dans le logout
+        //route use by Symfony to logout, it's magic
+        //redirect to the security.yaml file
     }
 
 }

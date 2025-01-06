@@ -21,6 +21,7 @@ header.isRelative {
     div.buttonContainer.isAbsolute {
       @include buttonStyle($lightGreen);
       padding-top: 1rem;
+      border-radius: 0.25rem;
       text-align: center;
       transition: all 0.5s;
       top: 40%;
@@ -51,6 +52,7 @@ header.isRelative {
     background-color: $lightGreen;
     height: 60px;
     align-items: center;
+    border-radius: 0.5rem;
 
     ul.isFlex {
       justify-content: space-evenly;

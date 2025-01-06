@@ -1,0 +1,13 @@
+@import "_services.scss";
+
+section.w80 {
+  article.isFlex {
+    margin: 2rem 0;
+  }
+  .w40 {
+    img {
+      @include border-radius(0.25rem)
+    }
+  }
+
+}

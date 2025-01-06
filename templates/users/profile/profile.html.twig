@@ -1,18 +1,39 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello UserController!{% endblock %}
+{% block title %}Profil de {{ user.username }}{% endblock %}
 
 {% block body %}
 
-<main>
-    <h1>{{ user.username }}</h1>
-    <div>
-        <p>{{ user.email }}</p>
-        <p>{{ user.biography }}</p>
+  <main>
+    <section class="containerGreen">
+      <div class="isFlex flexStart w90">
+        <div class="profilePictureContainer">
+          <img src="{{ asset('assets/images/profile_pic.png') }}" alt="profile pic" class="w100">
+        </div>
+        <div class="infoProfileContainer">
+          <h2 class="titleH2">{{ user.username }}</h2>
+          <p>{{ user.email }}</p>
+        </div>
+      </div>
 
-        {% if app.user.id is same as user.id %}
-            <a href="{{ path("user_profile_update") }}">Modifier le mot de passe</a>
-        {% endif %}
-    </div>
-</main>
+      <div class="w90">
+        <h3>Ma biographie</h3>
+        <div class="containerWhiteBg">
+          <p>{{ user.biography }}</p>
+        </div>
+      </div>
+
+      {% if app.user.id is same as user.id %}
+        <div class="isFlex flexBetween w90">
+          <a href="{{ path("user_profile_update_bio") }}" class="buttonContainer center">
+            Modifier ma bio
+          </a>
+          <a href="{{ path("user_profile_update_password") }}" class="buttonContainer center">
+            Changer de mot de passe
+          </a>
+        </div>
+      {% endif %}
+
+    </section>
+  </main>
 {% endblock %}
