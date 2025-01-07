@@ -32,6 +32,12 @@
     </div>
 
     <div>
+      {{ form_label(formView.tags) }}
+      {{ form_widget(formView.tags) }}
+      {{ form_errors(formView.tags) }}
+    </div>
+
+    <div>
       {{ form_widget(formView.save) }}
     </div>
 
