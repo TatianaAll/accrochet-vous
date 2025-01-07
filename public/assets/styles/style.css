@@ -440,7 +440,7 @@ section.containerGreen .isFlex {
     text-align: left; }
 section.containerGreen div.w90 h3 {
   margin-top: 2rem;
-  font-weight: normal; }
+  font-weight: bolder; }
 section.containerGreen div.w90 .containerWhiteBg {
   color: #6F7762;
   margin-bottom: 2rem; }
@@ -458,12 +458,30 @@ section.containerGreen .isFlex.flexBetween .buttonContainer {
   transition: all 0.3s; }
   section.containerGreen .isFlex.flexBetween .buttonContainer:hover {
     background-color: #5F4B64; }
+section.containerGreen .isFlex.flexBetween a {
+  color: #181F1C;
+  text-decoration: none;
+  position: relative;
+  display: inline-block; }
 
 .containerWhiteBg {
   border-radius: 1rem;
   background-color: #EEEEEE;
   padding: 1rem;
   margin: 1rem auto; }
+
+.infobubble {
+  position: absolute;
+  background-color: #5F4B64;
+  color: #EEEEEE;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  z-index: 1000;
+  white-space: nowrap;
+  bottom: 1.5rem;
+  left: 4.5rem;
+  transform: translate(-50%, -50%); }
 
 .isRelative {
   position: relative; }

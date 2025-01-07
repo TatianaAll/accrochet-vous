@@ -14,7 +14,7 @@ section.containerGreen {
   div.w90 {
     h3 {
       margin-top: 2rem;
-      font-weight: normal;
+      font-weight: bolder;
     }
     .containerWhiteBg {
       color: $darkGreen;
@@ -36,15 +36,33 @@ section.containerGreen {
       &:hover {
         background-color: $darkLilac;
       }
-
+    }
+    a {
+      color: $black;
+      text-decoration: none;
+        position: relative;
+        display: inline-block;
     }
   }
 }
-
 
 .containerWhiteBg {
   border-radius: 1rem;
   background-color: $white;
   padding: 1rem;
   margin: 1rem auto;
+}
+
+.infobubble {
+  position: absolute;
+  background-color: $darkLilac;
+  color: $white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  z-index: 1000;
+  white-space: nowrap;
+  bottom: 1.5rem;
+  left: 4.5rem;
+  transform: translate(-50%,-50%);
 }
