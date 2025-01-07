@@ -324,8 +324,8 @@
           <!-- START MAIN CONTENT AREA -->
           <tr>
             <td class="wrapper">
-              <p>Bonjour</p>
-              <p>{{ user.username }}, bienvenue dans la communauté d'Accrochet-vous !</p>
+              <p>Bonjour {{ user.username }}</p>
+              <p>Vous aviez demandé à être rédacteur sur Accrochet-vous</p>
               <table role="presentation" border="0" cellpadding="0" cellspacing="0"
                      class="btn btn-primary">
                 <tbody>
@@ -334,7 +334,16 @@
                     <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                       <tbody>
                       <tr>
-                        <td> Vous avez renseigner cette adresse : {{ user.email }}</td>
+                        <td>
+                          Votre demande à été acceptée, vous pouvez soumettre votre article en cliquant sur le lien suivant
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <a href= "http://localhost{{ path('user_article_create')}}">
+                            Soumettre un article
+                          </a>
+                        </td>
                       </tr>
                       </tbody>
                     </table>
