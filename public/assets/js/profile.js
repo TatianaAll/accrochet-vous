@@ -10,8 +10,7 @@ aForInfoBubble.addEventListener("mouseover",  () => {
         infobubble.innerText = "Il faut être rédacteur pour soumettre un article";
         aForInfoBubble.appendChild(infobubble);
         }
-    }
-)
+    });
 
 aForInfoBubble.addEventListener("mouseout", () => {
     // delete the info bubble when the mouse is out the link
