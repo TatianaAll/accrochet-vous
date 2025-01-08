@@ -822,6 +822,8 @@ section.w80 .w40 img {
     color: #6F7762;
     font-size: 14px;
     margin-bottom: 0.5rem; }
+    .commentArticle .info a {
+      color: #6F7762; }
 
 .buttonComment {
   background-color: #6F7762;

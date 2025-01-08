@@ -27,7 +27,11 @@
       {% for comment in comments %}
         <article class="commentArticle">
           <h3>{{ comment.title }}</h3>
-          <p class="info">Publié le {{ comment.createdAt | date('d-m-Y') }} par {{ comment.user.username }}</p>
+          <p class="info">Publié le {{ comment.createdAt | date('d-m-Y') }} par
+            <a href="{{ path('user_profile', {id: comment.user.id}) }}">
+              {{ comment.user.username }}
+            </a>
+          </p>
           <p class="white-space">{{ comment.content }}</p>
         </article>
       {% endfor %}

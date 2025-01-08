@@ -9,7 +9,6 @@ section.w80 {
       @include border-radius(0.25rem)
     }
   }
-
 }
 
 .commentArticle {
@@ -22,6 +21,9 @@ section.w80 {
     color: $darkGreen;
     font-size: 14px;
     margin-bottom: 0.5rem;
+    a {
+      color: $darkGreen;
+    }
   }
 }
 
