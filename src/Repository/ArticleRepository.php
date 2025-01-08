@@ -20,7 +20,7 @@ class ArticleRepository extends ServiceEntityRepository
             //start the SQL request with the where
             ->where('a.title LIKE :search')
             //a second condition for search in the content
-            ->orWhere('a.content LIKE :search')
+            ->orWhere('a.description LIKE :search')
             //parametring the variable 'search'
             ->setParameter('search', '%'.$search.'%')
             //construct the query

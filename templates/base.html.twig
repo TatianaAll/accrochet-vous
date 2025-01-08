@@ -18,6 +18,11 @@
 <body>
 <header class="isRelative">
   <div class="w80">
+    <ul class="menu isAbsolute inMobile">
+      <li class="hamburgerMenu"></li>
+      <li class="hamburgerMenu"></li>
+      <li class="hamburgerMenu"></li>
+    </ul>
     <div class="titleContainer">
       <h1 class="mainTitle">Accrochet-vous</h1>
       <h2 class="titleH2">Modèles de crochet gratuit</h2>
@@ -45,9 +50,11 @@
         <a href="{{ path("articles_list") }}" class="linkNav">Les modèles</a>
       </li>
       <li class="liNav">
-        <a class="linkNav">Recherche</a>
+        <form method="get" action="{{ path("user_search") }}" class="linkNav">
+          <input type="text" id="search" name="search" placeholder="Recherche" value="{{ app.request.get('search') }}" class="inputForm">
+          <button type="submit">Rechercher</button>
+        </form>
       </li>
-
       <li class="liNav">
         {% if app.user %}
           <a href="{{ path("user_current_profile", {id: app.user.id}) }}" class="linkNav">
@@ -59,12 +66,6 @@
           </a>
         {% endif %}
       </li>
-
-      {#                    <li> #}
-      {#                        <form method="get" action="{{ path("user_search") }}"> #}
-      {#                            <input type="text" placeholder="Rechercher" name="search" id="search"> #}
-      {#                        </form> #}
-      {#                    </li> #}
     </ul>
   </nav>
 </header>

@@ -71,7 +71,7 @@
   border: #76B041 1px solid;
   color: #181F1C; }
 
-.white-space {
+.white-space-wrap {
   white-space: pre-line; }
 
 header.isRelative div.w80 {
@@ -136,6 +136,12 @@ header.isRelative nav.headerNavBar {
           color: #EEEEEE;
           font-size: 21px; }
 
+.inMobile {
+  display: none; }
+
+@media screen and (max-width: 620px) {
+  .inMobile {
+    display: block; } }
 .isRelative {
   position: relative; }
 
@@ -209,7 +215,7 @@ header.isRelative nav.headerNavBar {
   border: #76B041 1px solid;
   color: #181F1C; }
 
-.white-space {
+.white-space-wrap {
   white-space: pre-line; }
 
 .isRelative {
@@ -285,7 +291,7 @@ header.isRelative nav.headerNavBar {
   border: #76B041 1px solid;
   color: #181F1C; }
 
-.white-space {
+.white-space-wrap {
   white-space: pre-line; }
 
 section.containerGreen {
@@ -452,7 +458,7 @@ section.containerLilac {
   border: #76B041 1px solid;
   color: #181F1C; }
 
-.white-space {
+.white-space-wrap {
   white-space: pre-line; }
 
 section.containerGreen .isFlex {
@@ -580,7 +586,7 @@ section.containerGreen .isFlex.flexBetween a {
   border: #76B041 1px solid;
   color: #181F1C; }
 
-.white-space {
+.white-space-wrap {
   white-space: pre-line; }
 
 section.lilacSection {
@@ -686,7 +692,7 @@ section.lilacSection {
   border: #76B041 1px solid;
   color: #181F1C; }
 
-.white-space {
+.white-space-wrap {
   white-space: pre-line; }
 
 article.articleInList {
@@ -805,7 +811,7 @@ article.articleInList {
   border: #76B041 1px solid;
   color: #181F1C; }
 
-.white-space {
+.white-space-wrap {
   white-space: pre-line; }
 
 section.w80 article.isFlex {
@@ -910,12 +916,12 @@ section.w80 .w40 img {
   border: #76B041 1px solid;
   color: #181F1C; }
 
-.white-space {
+.white-space-wrap {
   white-space: pre-line; }
 
 .footerContainer {
   margin-top: 4rem;
-  height: 10vh;
+  height: 5rem;
   width: 80%;
   margin-left: auto;
   margin-right: auto; }

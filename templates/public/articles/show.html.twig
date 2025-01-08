@@ -16,7 +16,7 @@
             {{ article.user.username }}
           </p>
         {% endif %}
-      <p class="white-space">Description : {{ article.description }}</p>
+      <p class="white-space-wrap">Description : {{ article.description }}</p>
     </div>
     </article>
   </section>
@@ -32,7 +32,7 @@
               {{ comment.user.username }}
             </a>
           </p>
-          <p class="white-space">{{ comment.content }}</p>
+          <p class="white-space-wrap">{{ comment.content }}</p>
         </article>
       {% endfor %}
       <a href="{{ path('user_article_add_comment', {articleId: article.id}) }}" class="buttonComment">Ajouter un commentaire</a>

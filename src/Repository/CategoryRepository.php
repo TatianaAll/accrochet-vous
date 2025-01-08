@@ -17,10 +17,9 @@ class CategoryRepository extends ServiceEntityRepository
     }
 
     public function searchCategories(string $search){
-        //on créé un query Builder = une requet SQL pour interroger la DB
+        //creation of a query builder = SQL request translate thanks to Doctrine
         return $this->createQueryBuilder('category')
-            -> where('category.title LIKE :search')
-            -> orWhere('category.color LIKE :search')
+            -> where('category.name LIKE :search')
             -> setParameter('search','%'. $search . '%')
             ->getQuery()
             ->getResult();
