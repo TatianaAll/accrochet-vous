@@ -3,38 +3,51 @@
 {% block title %} Soumission d'un modèle {% endblock %}
 
 {% block body %}
-    <main>
-        <h1>Proposez votre modèle de crochet</h1>
-
-        {{ form_start(formView) }}
-        <div>
-            {{ form_label(formView.title) }}
-            {{ form_widget(formView.title) }}
-            {{ form_errors(formView.title) }}
+  <main>
+  <section class="containerLilac">
+    <h2 class="center">Proposez votre modèle de crochet</h2>
+    {{ form_start(formView) }}
+    <div class="formWrapper">
+      <div class="formField">
+        {{ form_label(formView.title, 'Titre', {'label_attr': {'class': 'labelForm'}}) }}
+        {{ form_widget(formView.title, {'attr': {'class': 'inputForm'}}) }}
+        <div class="{{ formView.title.vars.errors|length > 0 ? 'error ' }}">
+          {{ form_errors(formView.title) }}
         </div>
-
-        <div>
-            {{ form_label(formView.description) }}
-            {{ form_widget(formView.description) }}
-            {{ form_errors(formView.description) }}
+      </div>
+      <div class="formField">
+        {{ form_label(formView.description, 'Description', {'label_attr': {'class': 'labelForm'}}) }}
+        {{ form_widget(formView.description, {'attr': {'class': 'textAreaForm'}}) }}
+        <div class="{{ formView.description.vars.errors|length > 0 ? 'error ' }}">
+          {{ form_errors(formView.description) }}
         </div>
-
-        <div>
-            {{ form_label(formView.image) }}
-            {{ form_widget(formView.image) }}
-            {{ form_errors(formView.image) }}
+      </div>
+      <div class="formField">
+        {{ form_label(formView.image, 'Image associée', {'label_attr': {'class': 'labelForm'}}) }}
+        {{ form_widget(formView.image) }}
+        <div class="{{ formView.image.vars.errors|length > 0 ? 'error ' }}">
+          {{ form_errors(formView.image) }}
         </div>
-
-        <div>
-            {{ form_label(formView.category) }}
-            {{ form_widget(formView.category) }}
-            {{ form_errors(formView.category) }}
+      </div>
+      <div class="formField">
+        {{ form_label(formView.category, 'Catégorie associée', {'label_attr': {'class': 'labelForm'}}) }}
+        {{ form_widget(formView.category) }}
+        <div class="{{ formView.category.vars.errors|length > 0 ? 'error ' }}">
+          {{ form_errors(formView.category) }}
         </div>
-
-        <div>
-            {{ form_widget(formView.enregistrer) }}
+      </div>
+      <div class="formField">
+        {{ form_label(formView.tags, 'Catégorie associée', {'label_attr': {'class': 'labelForm'}}) }}
+        {{ form_widget(formView.tags) }}
+        <div class="{{ formView.tags.vars.errors|length > 0 ? 'error ' }}">
+          {{ form_errors(formView.tags) }}
         </div>
-
-        {{ form_end(formView) }}
-    </main>
+      </div>
+      <div>
+        {{ form_row(formView.save, { 'label' :'Enregistrer', 'attr' : {'class' : 'buttonContainer'} }) }}
+      </div>
+    </div>
+    {{ form_end(formView) }}
+  </section>
+  </main>
 {% endblock %}

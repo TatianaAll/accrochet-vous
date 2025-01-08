@@ -21,8 +21,8 @@ class LoginController extends AbstractController
     #[Route(path: '/user/logout', name: 'user_logout')]
     public function logout(): void
     {
-        //route utilisée par symfony pour se décnnecter, c'est magique un peu
-        //en vrai ça renvoi vers le fichier security.yalm et est utilisé dans le logout
+        //route use by Symfony to logout, it's magic
+        //redirect to the security.yaml file
     }
 
     #[Route(path: '/user/login', name: 'login')]

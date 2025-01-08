@@ -28,12 +28,25 @@
           <a href="{{ path("user_profile_update_bio") }}" class="buttonContainer center">
             Modifier ma bio
           </a>
+          {% if 'ROLE_REDACTOR' in app.user.roles %}
+            <a href="{{ path("user_article_create") }}" class="buttonContainer center">
+              Soumettre un article
+            </a>
+          {% else %}
+            <a class="center disabled" href="#" aria-disabled="true" >
+              Soumettre un article
+            </a>
+          {% endif %}
           <a href="{{ path("user_profile_update_password") }}" class="buttonContainer center">
             Changer de mot de passe
           </a>
         </div>
       {% endif %}
-
     </section>
   </main>
+
+  {% block javascripts %}
+    <script src={{ asset("assets/js/profile.js") }}></script>
+  {% endblock %}
 {% endblock %}
+

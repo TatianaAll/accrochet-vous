@@ -59,6 +59,9 @@ $successBg: #DAEFB3;
 .flexBetween {
   justify-content: space-between;
 }
+.flexAlignItemsCenter {
+  align-items: center;
+}
 
 .w40 {
   width: 40%;
@@ -118,4 +121,8 @@ $successBg: #DAEFB3;
   background-color: $successBg;
   border: $successBorder 1px solid;
   color: $black;
+}
+
+.white-space {
+  white-space: pre-line;
 }

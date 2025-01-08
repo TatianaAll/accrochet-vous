@@ -1,0 +1,31 @@
+@import "_services.scss";
+
+.footerContainer {
+  margin-top: 4rem;
+  height: 10vh;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.liFooter {
+  list-style: none;
+  width: 25%;
+  text-align: center;
+
+  .aContainer {
+    display: block;
+    width: 25%;
+    text-align: center;
+    margin: 0 auto;
+  }
+}
+
+.linkFooter {
+  color: $darkGreen;
+  transition: color 0.5s;
+
+  &:hover {
+    color: $black;
+  }
+}

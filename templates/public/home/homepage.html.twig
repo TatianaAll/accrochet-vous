@@ -1,67 +1,67 @@
 {%  extends 'base.html.twig' %}
 
 {%  block title %}
-    Bienvenue ! | Accrochet-vous
+  Bienvenue ! | Accrochet-vous
 {% endblock %}
 
 {%  block body %}
-<main>
+  <main>
     <section class="lilacSection">
-        <h2 class="titleH2">Dernier ajout</h2>
-        <div class="isFlex flexBetween w80">
-            <div class="imageContainerHomePage">
-                <img src="{{ asset('assets/uploads/'~lastArticle.image) }}" alt="{{ lastArticle.title }}" class="w100">
-            </div>
-            <article class="containerWhiteBg">
-                <h3>{{ lastArticle.title }}</h3>
-                <p>{{ lastArticle.description }}</p>
-                <p>Catégorie :  <a>{{ lastArticle.category.name }}</a> </p>
-
-                <div class="buttonContainer"><a href="{{ path("article_show", {id: lastArticle.id}) }}">Voir le modèle</a> </div>
-            </article>
+      <h2 class="titleH2">Dernier ajout</h2>
+      <div class="isFlex flexBetween w80">
+        <div class="imageContainerHomePage">
+          <img src="{{ asset('assets/uploads/'~lastArticle.image) }}" alt="{{ lastArticle.title }}" class="w100">
         </div>
+        <article class="containerWhiteBg">
+          <h3>{{ lastArticle.title }}</h3>
+          <p class="articleContent">{{ lastArticle.description }}</p>
+          <p>Catégorie :  <a>{{ lastArticle.category.name }}</a> </p>
+
+          <div class="buttonContainer"><a href="{{ path("article_show", {id: lastArticle.id}) }}">Voir le modèle</a> </div>
+        </article>
+      </div>
     </section>
 
     <section>
-        <h2>Les préférés de l'équipe</h2>
+      <h2>Les préférés de l'équipe</h2>
+      <div>
         <div>
-            <div>
-                <div><img></div>
-                <div>
-                    <h4></h4>
-                    <p></p>
-                </div>
-            </div>
-            <div>
-                <div><img></div>
-                <div>
-                    <h4></h4>
-                    <p></p>
-                </div>
-            </div>
-            <div>
-                <div><img></div>
-                <div>
-                    <h4></h4>
-                    <p></p>
-                </div>
-            </div>
-            <div>
-                <div><img></div>
-                <div>
-                    <h4></h4>
-                    <p></p>
-                </div>
-            </div>
-            <div>
-                <div><img></div>
-                <div>
-                    <h4></h4>
-                    <p></p>
-                </div>
-            </div>
+          <div><img></div>
+          <div>
+            <h4></h4>
+            <p></p>
+          </div>
         </div>
+        <div>
+          <div><img></div>
+          <div>
+            <h4></h4>
+            <p></p>
+          </div>
+        </div>
+        <div>
+          <div><img></div>
+          <div>
+            <h4></h4>
+            <p></p>
+          </div>
+        </div>
+        <div>
+          <div><img></div>
+          <div>
+            <h4></h4>
+            <p></p>
+          </div>
+        </div>
+        <div>
+          <div><img></div>
+          <div>
+            <h4></h4>
+            <p></p>
+          </div>
+        </div>
+      </div>
     </section>
-</main>
+  </main>
 
 {% endblock %}

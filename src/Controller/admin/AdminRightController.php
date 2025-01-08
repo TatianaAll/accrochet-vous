@@ -25,34 +25,31 @@ class AdminRightController extends AbstractController
     {
         $admin = new Admin();
 
-        $form = $this->createForm(AdminType::class, $admin);
-        $formView = $form->createView();
+        $formCreateAdmin = $this->createForm(AdminType::class, $admin);
+        $formCreateAdmin->handleRequest($request);
 
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-
-            //il faut que je récupère le mdp rentré et que je le hache
-            $plaintextPassword = $form->get('password')->getData();
+        if ($formCreateAdmin->isSubmitted() && $formCreateAdmin->isValid()) {
+            //get the password in plain text and hash it
+            $plaintextPassword = $formCreateAdmin->get('password')->getData();
 
             if (!$plaintextPassword) {
                 $this->addFlash('error', 'Veuillez rentrer un mot de passe');
                 return $this->redirectToRoute('admin_admin_create');
             }
-            //je hash le tout
+            //hash the password
             $hashedPassword = $passwordHasher->hashPassword(
                 $admin,
                 $plaintextPassword
             );
             $admin->setPassword($hashedPassword);
             //dd($hashedPassword);
-
             $entityManager->persist($admin);
             $entityManager->flush();
 
             $this->addFlash('success', 'Un nouvel admin a été créé');
-            //return $this->redirectToRoute('admin_dashboard');
+            return $this->redirectToRoute('admin_dashboard');
         }
+        $formView = $formCreateAdmin->createView();
         return $this->render('admin/rights/create_admin.html.twig', ['formView' => $formView]);
 
     }
@@ -67,33 +64,29 @@ class AdminRightController extends AbstractController
 
     #[Route(path: "/admin/rights/{id}/update", name: "admin_admin_update", requirements: ["id"=>"\d+"], methods: ["GET","POST"])]
     #[IsGranted(new Expression('is_granted("ROLE_SUPER_ADMIN")'))]
-    public function updateAdminRights(int $id, AdminRepository $adminRepository,
+    public function updateAdminRights(int $id, AdminRepository $adminRepository, Request $request,
                                       EntityManagerInterface $entityManager,
                                       UserPasswordHasherInterface $passwordHasher): Response
     {
         $adminToUpdate = $adminRepository->find($id);
-
-        if(!$adminToUpdate){
+        if(!$adminToUpdate) {
             $this->addFlash("error", "Cet administrateur n'existe pas");
             return $this->redirectToRoute("admin_admin_list");
         }
 
-        $form = $this->createForm(AdminType::class, $adminToUpdate);
-        $formView = $form->createView();
-
-        if($form->isSubmitted())
-        {
-            //je récupère le nouveau mdp et je le hash à la hache
-            $plaintextPassword = $form->get('password')->getData();
-            //si rien = on garde le même
+        $formAdminToUpdate = $this->createForm(AdminType::class, $adminToUpdate);
+        $formAdminToUpdate->handleRequest($request);
+        //dd($formAdminToUpdate);
+        if($formAdminToUpdate->isSubmitted() && $formAdminToUpdate->isValid()) {
+            $plaintextPassword = $formAdminToUpdate->get('password')->getData();
+            //if no information --> keeping the same password
             if ($plaintextPassword) {
-                //je hache le tout
+                //hash
                 $hashedPassword = $passwordHasher->hashPassword(
                     $adminToUpdate,
                     $plaintextPassword
                 );
                 $adminToUpdate->setPassword($hashedPassword);
-                //dd($hashedPassword);
             }
 
             $entityManager->persist($adminToUpdate);
@@ -102,7 +95,7 @@ class AdminRightController extends AbstractController
             $this->addFlash("succes", "Droit de l'admin modifiés");
             return $this->redirectToRoute("admin_admin_list");
         }
-
+        $formView = $formAdminToUpdate->createView();
         return $this->render("admin/rights/update.html.twig", ["admin"=>$adminToUpdate, "formView"=>$formView]);
     }
 

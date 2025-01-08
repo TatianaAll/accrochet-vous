@@ -31,7 +31,7 @@ class AdminArticlesController extends AbstractController
         //set the author to admin
         $article->setAdminId($this->getUser());
 
-        //calling the form with a cerification about admin (to manage the status of the article)
+        //calling the form with a certification about admin (to manage the status of the article)
         $formAdminCreateArticle = $this->createForm(ArticleType::class, $article, [
             'is_admin' => $this->isGranted('ROLE_ADMIN') || $this->isGranted('ROLE_SUPER_ADMIN'),
         ]);
@@ -66,7 +66,6 @@ class AdminArticlesController extends AbstractController
     public function adminListArticles(ArticleRepository $articleRepository): Response
     {
         $articles = $articleRepository->findAll();
-
         return $this->render('admin/articles/list.html.twig', ['articles' => $articles]);
     }
 
@@ -97,13 +96,17 @@ class AdminArticlesController extends AbstractController
             return $this->redirectToRoute("admin_articles_list");
         }
 
-        $form = $this->createForm(ArticleType::class, $articleToUpdate);
-        $formView = $form->createView();
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
+        //calling the form with a certification about admin (to manage the status of the article)
+        $formArticleToUpdate = $this->createForm(ArticleType::class, $articleToUpdate, [
+            'is_admin' => $this->isGranted('ROLE_ADMIN') || $this->isGranted('ROLE_SUPER_ADMIN'),
+        ]);
+
+        $formArticleToUpdate->handleRequest($request);
+
+        if ($formArticleToUpdate->isSubmitted() && $formArticleToUpdate->isValid()) {
             $articleToUpdate->setUpdateAt(new \DateTime());
 
-            $imageToUpdate = $form->get('image')->getData();
+            $imageToUpdate = $formArticleToUpdate->get('image')->getData();
             if ($imageToUpdate) {
                 $oldImage = $articleToUpdate->getImage();
                 $rootDir = $parameterBag->get('kernel.project_dir');
@@ -119,7 +122,7 @@ class AdminArticlesController extends AbstractController
             $this->addFlash("success", "Modification effectuée avec succès");
             return $this->redirectToRoute("admin_articles_list");
         }
-
+        $formView = $formArticleToUpdate->createView();
         return $this->render("admin/articles/update.html.twig", ["formView" => $formView, "articleToUpdate" => $articleToUpdate]);
     }
 

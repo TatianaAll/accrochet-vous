@@ -4,6 +4,38 @@
 
 {% block body %}
 
-    {{ form(formView) }}
+  <section class="container">
+    {{ form_start(formView) }}
+    <div class="form-group mb-3">
+      {{ form_label(formView.email, 'Email du nouvel admin', {'label_attr': {'class': 'form-label'}}) }}
+      {{ form_widget(formView.email, {'attr': {'class': 'form-control'}}) }}
+      <div class="{{ formView.email.vars.errors|length > 0 ? 'alert alert-warning mt-1 mb-1' }}">
+        {{ form_errors(formView.email) }}
+      </div>
+    </div>
+    <div class="form-group mb-3">
+      <label class="form-label">Rôles attribués à ce nouvel admin</label>
+      {% for role in formView.roles %}
+        <div class="form-check">
+          {{ form_widget(role, {'attr': {'class': 'btn-check', 'id': role.vars.id, 'autocomplete': 'off'}}) }}
+          {{ form_label(role, null, {'label_attr': {'class': 'btn btn-outline-primary', 'for': role.vars.id}}) }}
+        </div>
+      {% endfor %}
+      <div class="{{ formView.roles.vars.errors|length > 0 ? 'alert alert-warning mt-1 mb-1' }}">
+        {{ form_errors(formView.roles) }}
+      </div>
+    </div>
+    <div class="form-group mb-3">
+      {{ form_label(formView.password, 'Générer un mot de passe pour l\'admin', {'label_attr': {'class': 'form-label'}}) }}
+      {{ form_widget(formView.password, {'attr': {'class': 'form-control'}}) }}
+      <div class="{{ formView.password.vars.errors|length > 0 ? 'alert alert-warning mt-1 mb-1' }}">
+        {{ form_errors(formView.password) }}
+      </div>
+    </div>
+    <div>
+      {{ form_row(formView.save, { 'label' :'Enregistrer', 'attr' : {'class' : 'btn btn-success'} }) }}
+    </div>
+    {{ form_end(formView) }}
+  </section>
 
 {% endblock %}

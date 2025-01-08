@@ -1,86 +1,117 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>{% block title %}Welcome!{% endblock %}</title>
-    <link rel="icon" href="{{ asset('assets/images/logoCouleur.svg') }}" type="image/svg+xml">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Sniglet:wght@400;800&display=swap"
-          rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Sniglet:wght@400;800&display=swap"
-          rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('assets/styles/style.css') }}">
-    {% block javascripts %}
-        {% block importmap %}{{ importmap('app') }}{% endblock %}
-    {% endblock %}
+  <meta charset="UTF-8">
+  <title>{% block title %}Welcome!{% endblock %}</title>
+  <link rel="icon" href="{{ asset('assets/images/logoCouleur.svg') }}" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Sniglet:wght@400;800&display=swap"
+        rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Sniglet:wght@400;800&display=swap"
+        rel="stylesheet">
+  <link rel="stylesheet" href="{{ asset('assets/styles/style.css') }}">
+
 </head>
 <body>
 <header class="isRelative">
-    <div class="w80">
-        <div class="titleContainer">
-            <h1 class="mainTitle">Accrochet-vous</h1>
-            <h2 class="titleH2">Modèles de crochet gratuit</h2>
-        </div>
-        <div class="buttonContainer isAbsolute">
-            {% if app.user %}
-                <a href="{{ path("user_logout") }}" class="buttonHeader">
-                    Déconnexion
-                </a>
-            {% else %}
-                <a href="{{ path("login") }}" class="buttonHeader">
-                    Se connecter
-                </a>
-            {% endif %}
-        </div>
-        <div class="isAbsolute logoHeader">
-            <img src="{{ asset("assets/images/logoCouleur.svg") }}" class="w100" alt="Logo du site">
-        </div>
+  <div class="w80">
+    <div class="titleContainer">
+      <h1 class="mainTitle">Accrochet-vous</h1>
+      <h2 class="titleH2">Modèles de crochet gratuit</h2>
     </div>
-    <nav class="headerNavBar">
-        <ul class="isFlex">
-            <li class="liNav">
-                <a href="{{ path("articles_list") }}" class="linkNav">Les modèles</a>
-            </li>
-            <li class="liNav">
-                <a class="linkNav">Recherche</a>
-            </li>
+    <div class="buttonContainer isAbsolute">
+      {% if app.user %}
+        <a href="{{ path("user_logout") }}" class="buttonHeader">
+          Déconnexion
+        </a>
+      {% else %}
+        <a href="{{ path("login") }}" class="buttonHeader">
+          Se connecter
+        </a>
+      {% endif %}
+    </div>
+    <div class="isAbsolute logoHeader">
+      <a href="{{ path('home') }}">
+        <img src="{{ asset("assets/images/logoCouleur.svg") }}" class="w100" alt="Logo du site">
+      </a>
+    </div>
+  </div>
+  <nav class="headerNavBar">
+    <ul class="isFlex">
+      <li class="liNav">
+        <a href="{{ path("articles_list") }}" class="linkNav">Les modèles</a>
+      </li>
+      <li class="liNav">
+        <a class="linkNav">Recherche</a>
+      </li>
 
-            <li class="liNav">
-                {% if app.user %}
-                    <a href="{{ path("user_current_profile", {id: app.user.id}) }}" class="linkNav">
-                        Voir mon profil
-                    </a>
-                {% else %}
-                    <a href="{{ path("user_inscription")}}" class="linkNav">
-                        S'inscrire
-                    </a>
-                {% endif %}
-            </li>
+      <li class="liNav">
+        {% if app.user %}
+          <a href="{{ path("user_current_profile", {id: app.user.id}) }}" class="linkNav">
+            Voir mon profil
+          </a>
+        {% else %}
+          <a href="{{ path("user_inscription")}}" class="linkNav">
+            S'inscrire
+          </a>
+        {% endif %}
+      </li>
 
-            {#                    <li> #}
-            {#                        <form method="get" action="{{ path("user_search") }}"> #}
-            {#                            <input type="text" placeholder="Rechercher" name="search" id="search"> #}
-            {#                        </form> #}
-            {#                    </li> #}
-        </ul>
-    </nav>
+      {#                    <li> #}
+      {#                        <form method="get" action="{{ path("user_search") }}"> #}
+      {#                            <input type="text" placeholder="Rechercher" name="search" id="search"> #}
+      {#                        </form> #}
+      {#                    </li> #}
+    </ul>
+  </nav>
 </header>
 
 {% for message in app.flashes('success') %}
-    <div class="messageFlash success" role="alert">
-        {{ message }}
-    </div>
+  <div class="messageFlash success" role="alert">
+    {{ message }}
+  </div>
 {% endfor %}
 
 {% for message in app.flashes('error') %}
-    <div class="messageFlash error" role="alert">
-        {{ message }}
-    </div>
+  <div class="messageFlash error" role="alert">
+    {{ message }}
+  </div>
 {% endfor %}
 
-{% block body %}{% endblock %}
+{% block body %}
+
+  {% block javascripts %}
+    {% block importmap %}{{ importmap('app') }}{% endblock %}
+  {% endblock %}
+
+{% endblock %}
+
+<footer class="footerContainer">
+  <nav>
+    <ul class="isFlex flexBetween flexAlignItemsCenter">
+      <li class="liFooter">
+        <a href="#top" class="aContainer">
+          <img src="{{ asset("assets/images/top-arrow.png") }}" alt="retour en haut de page" class="w100"/>
+        </a>
+      </li>
+      <li class="liFooter">
+        Copyrights 2025 - Accrochet-vous
+      </li>
+      <li class="liFooter">
+        <a>Contact</a>
+      </li>
+      <li class="liFooter">
+        {% if app.user is not null and 'ROLE_REDACTOR' in app.user.roles %}
+          <p>Vous êtes rédacteur, merci à vous !</p>
+        {% else %}
+          <a href="{{ path("user_asking_redactor") }}" class="linkFooter">Demander le status rédacteur</a>
+        {% endif %}
+      </li>
+    </ul>
+  </nav>
+</footer>
 </body>
 </html>

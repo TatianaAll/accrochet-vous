@@ -1,0 +1,44 @@
+{% extends 'admin/adminBase.html.twig' %}
+
+{% block title %} Tags {% endblock %}
+
+{% block body %}
+  <section class="container">
+
+    <a href="{{ path('admin_tag_create') }}" class="btn btn-primary mt-3 mb-3">Ajouter un tag/ une étiquette</a>
+
+    <table class="table table-borderless">
+      <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nom du tag</th>
+        <th scope="col">Modifier</th>
+        <th scope="col">Supprimer</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% for tag in tags %}
+        <tr>
+          <th scope="row">{{ tag.id }}</th>
+          <td>{{ tag.name }}</td>
+          <td>
+            <a href="{{ path("admin_tag_update", {id: tag.id}) }}" class="btn btn-warning mt-1">
+              Modifier
+            </a>
+          </td>
+          <td>
+            {% if 'ROLE_SUPER_ADMIN' in app.user.roles %}
+            <a href="{{path("admin_tag_delete", {id: tag.id}) }}" class="btn btn-danger mt-1">Supprimer</a>
+            {% else %}
+              <button class="btn btn-outline-danger" disabled>
+                Supprimer
+              </button>
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+
+  </section>
+
+{% endblock %}

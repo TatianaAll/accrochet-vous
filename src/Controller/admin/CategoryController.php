@@ -22,12 +22,9 @@ class CategoryController extends AbstractController
         $category = new Category();
 
         $categoryForm = $this->createForm(CategoryType::class, $category);
-        $formView = $categoryForm->createView();
-
         $categoryForm->handleRequest($request);
 
         if ($categoryForm->isSubmitted() && $categoryForm->isValid()) {
-            //dd($category);
             $entityManager->persist($category);
             $entityManager->flush();
 
@@ -35,7 +32,7 @@ class CategoryController extends AbstractController
 
             return $this->redirectToRoute('admin_category_list');
         }
-
+        $formView = $categoryForm->createView();
         return $this->render('admin/categories/create.html.twig', ["formView"=>$formView]);
     }
 
@@ -64,21 +61,20 @@ class CategoryController extends AbstractController
                                    CategoryRepository $categoryRepository,
                                    EntityManagerInterface $entityManager): Response
     {
-        //dd('test');
         $categoryToUpdate = $categoryRepository->find($id);
+        $categoryUpdateForm = $this->createForm(CategoryType::class, $categoryToUpdate);
 
-        $categoryForm = $this->createForm(CategoryType::class, $categoryToUpdate);
-        $formView = $categoryForm->createView();
 
-        $categoryForm->handleRequest($request);
+        $categoryUpdateForm->handleRequest($request);
 
-        if($categoryForm->isSubmitted() && $categoryForm->isValid()){
+        if($categoryUpdateForm->isSubmitted() && $categoryUpdateForm->isValid()){
             $entityManager->persist($categoryToUpdate);
             $entityManager->flush();
 
             $this->addFlash('success', 'Modification enregistrée');
             return $this->redirectToRoute('admin_category_list');
         }
+        $formView = $categoryUpdateForm->createView();
         return $this->render('admin/categories/update.html.twig',
             ["formView"=>$formView, "categoryToUpdate"=>$categoryToUpdate]);
     }
@@ -88,7 +84,6 @@ class CategoryController extends AbstractController
     public function deleteCategory(int $id, CategoryRepository $categoryRepository, EntityManagerInterface $entityManager) : Response
     {
         $categoryToDelete = $categoryRepository->find($id);
-        //dd($categoryToDelete);
 
         $entityManager->remove($categoryToDelete);
         $entityManager->flush();
@@ -96,6 +91,5 @@ class CategoryController extends AbstractController
         $this->addFlash("success", "Catégorie supprimée");
 
         return $this->redirectToRoute("admin_category_list");
-
     }
 }
