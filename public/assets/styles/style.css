@@ -27,47 +27,46 @@
 
 .w80 {
   width: 80%;
-}
+  margin: 0 auto; }
+
+.w90 {
+  width: 90%;
+  margin: 0 auto; }
 
 .w100 {
   width: 100%; }
 
 .center {
-  text-align: center;
-}
+  text-align: center; }
 
 .messageFlash {
   margin-top: 2rem;
-  padding-top: 0.5rem;
+  padding-top: 0.8rem;
   width: 80%;
   margin-right: auto;
   margin-left: auto;
-  border-radius: 20px;
+  border-radius: 1rem;
   height: 50px;
   text-align: center;
-  font-family: "Nunito Sans", serif;
-}
+  font-family: "Nunito Sans", serif; }
 
 .error {
   background-color: #F06449;
   border: #772014 1px solid;
   color: #EEEEEE;
-  list-style: none;
-}
+  list-style: none; }
 
 .errorContainer {
   margin-top: 0.4rem;
   padding: 0.5rem;
   text-align: center;
   border-radius: 20px;
-  font-family: "Nunito Sans", serif;
-}
+  font-family: "Nunito Sans", serif; }
 
 .success {
   background-color: #DAEFB3;
   border: #76B041 1px solid;
-  color: #181F1C;
-}
+  color: #181F1C; }
 
 header.isRelative div.w80 {
   margin: auto; }
@@ -132,12 +131,10 @@ header.isRelative nav.headerNavBar {
           font-size: 21px; }
 
 .isRelative {
-  position: relative;
-}
+  position: relative; }
 
 .isAbsolute {
-  position: absolute;
-}
+  position: absolute; }
 
 .isFlex {
   display: flex;
@@ -169,53 +166,45 @@ header.isRelative nav.headerNavBar {
   margin: 0 auto; }
 
 .w100 {
-  width: 100%;
-}
+  width: 100%; }
 
 .center {
-  text-align: center;
-}
+  text-align: center; }
 
 .messageFlash {
   margin-top: 2rem;
-  padding-top: 0.5rem;
+  padding-top: 0.8rem;
   width: 80%;
   margin-right: auto;
   margin-left: auto;
-  border-radius: 20px;
+  border-radius: 1rem;
   height: 50px;
   text-align: center;
-  font-family: "Nunito Sans", serif;
-}
+  font-family: "Nunito Sans", serif; }
 
 .error {
   background-color: #F06449;
   border: #772014 1px solid;
   color: #EEEEEE;
-  list-style: none;
-}
+  list-style: none; }
 
 .errorContainer {
   margin-top: 0.4rem;
   padding: 0.5rem;
   text-align: center;
   border-radius: 20px;
-  font-family: "Nunito Sans", serif;
-}
+  font-family: "Nunito Sans", serif; }
 
 .success {
   background-color: #DAEFB3;
   border: #76B041 1px solid;
-  color: #181F1C;
-}
+  color: #181F1C; }
 
 .isRelative {
-  position: relative;
-}
+  position: relative; }
 
 .isAbsolute {
-  position: absolute;
-}
+  position: absolute; }
 
 .isFlex {
   display: flex;
@@ -247,54 +236,48 @@ header.isRelative nav.headerNavBar {
   margin: 0 auto; }
 
 .w100 {
-  width: 100%;
-}
+  width: 100%; }
 
 .center {
-  text-align: center;
-}
+  text-align: center; }
 
 .messageFlash {
   margin-top: 2rem;
-  padding-top: 0.5rem;
+  padding-top: 0.8rem;
   width: 80%;
   margin-right: auto;
   margin-left: auto;
-  border-radius: 20px;
+  border-radius: 1rem;
   height: 50px;
   text-align: center;
-  font-family: "Nunito Sans", serif;
-}
+  font-family: "Nunito Sans", serif; }
 
 .error {
   background-color: #F06449;
   border: #772014 1px solid;
   color: #EEEEEE;
-  list-style: none;
-}
+  list-style: none; }
 
 .errorContainer {
   margin-top: 0.4rem;
   padding: 0.5rem;
   text-align: center;
   border-radius: 20px;
-  font-family: "Nunito Sans", serif;
-}
+  font-family: "Nunito Sans", serif; }
 
 .success {
   background-color: #DAEFB3;
   border: #76B041 1px solid;
-  color: #181F1C;
-}
+  color: #181F1C; }
 
 section.containerGreen {
   margin-top: 2.5rem;
   width: 80%;
   background-color: #AFC294;
-  border-top-right-radius: 2vmax;
-  border-bottom-left-radius: 2vmax;
-  border-bottom-right-radius: 0;
-  border-top-left-radius: 0;
+  border-top-right-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+  border-bottom-right-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
   margin-right: auto;
   margin-left: auto;
   padding: 2rem; }
@@ -320,10 +303,10 @@ section.containerLilac {
   margin-top: 2.5rem;
   width: 80%;
   background-color: #A589C6;
-  border-top-right-radius: 0;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 2vmax;
-  border-top-left-radius: 2vmax;
+  border-top-right-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 2rem;
+  border-top-left-radius: 2rem;
   margin-right: auto;
   margin-left: auto;
   padding: 2rem; }
@@ -773,8 +756,7 @@ section.w80 .w40 img {
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
+  box-sizing: border-box; }
 
 body {
   background-color: #EEEEEE;
