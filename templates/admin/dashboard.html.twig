@@ -3,9 +3,66 @@
 {% block body %}
   <main class="container">
     <h1>Dashboard | Accrochet-vous</h1>
-    <h2>Nombre d'articles</h2>
-    <h2>Nombre de user</h2>
-    <h2>Nombre de commentaires à modérer</h2>
-    <h2>Nombre d'article à modérer</h2>
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col" class="text-center">Nombre d'utilisateurs</th>
+        <th scope="col" class="text-center">Nombre d'articles publiés</th>
+        <th scope="col" class="text-center">Nombre d'articles à modérer</th>
+        <th scope="col" class="text-center">Nombre de commentaires à modérer</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td class="text-center">
+          {{ numberOfUsers }}
+        </td>
+        <td class="text-center">
+          {{ numberOfArticlesPublished }}
+        </td>
+        {% if numberOfArticlesToModerate >= 1 %}
+          <td class="text-center fw-bold text-danger">
+            {{ numberOfArticlesToModerate }}
+          </td>
+        {% else %}
+          <td class="text-center">
+            {{ numberOfArticlesToModerate }}
+          </td>
+        {% endif %}
+        {% if numberOfCommentsToModerate >= 1 %}
+          <td class="text-center fw-bold text-danger">
+            {{ numberOfCommentsToModerate }}
+          </td>
+        {% else %}
+          <td class="text-center">
+            {{ numberOfCommentsToModerate }}
+          </td>
+        {% endif %}
+
+      </tr>
+      <tr>
+        <td class="text-center">
+          <a href="{{ path('admin_users_list') }}">
+            Voir les utilisateurs
+          </a>
+        </td>
+        <td class="text-center">
+          <a href="{{ path('admin_articles_list') }}">
+            Voir les articles
+          </a>
+        </td>
+        <td class="text-center">
+          <a href="{{ path('admin_articles_moderate') }}">
+            Voir les articles à modérer
+          </a>
+        </td>
+        <td class="text-center">
+          <a href="{{ path('admin_comments_moderate') }}">
+            Voir les commentaires à modérer
+          </a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
   </main>
 {% endblock %}

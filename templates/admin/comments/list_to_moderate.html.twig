@@ -3,37 +3,37 @@
 {% block title %} Commentaires à modérer {% endblock %}
 
 {% block body %}
-    <section class="container">
-        <h1>Commentaires à modérer</h1>
-        <table class="table table-borderless">
-            <thead>
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Titre</th>
-                <th scope="col">Statut</th>
-                <th scope="col">Auteur</th>
-                <th scope="col">Article concerné</th>
-                <th scope="col">Date de création</th>
-                <th scope="col">Voir le commentaire</th>
+  <section class="container">
+    <h1>Commentaires à modérer</h1>
+    <table class="table table-borderless">
+      <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Titre</th>
+        <th scope="col">Statut</th>
+        <th scope="col">Auteur</th>
+        <th scope="col">Article concerné</th>
+        <th scope="col">Date de création</th>
+        <th scope="col">Voir le commentaire</th>
 
-            </tr>
-            </thead>
-            <tbody>
-            {% for comment in comments %}
-                <tr>
-                    <th scope="row">{{ comment.id }}</th>
-                    <td>{{ comment.title }}</td>
-                    <td>{{ comment.status }}</td>
-                    <td>{{ comment.user.username }}</td>
-                    <td>{{ comment.article.title }}</td>
-                    <td>{{ comment.createdAt | date('d-m-Y H:i') }}</td>
-                    <td>
-                        <a href="{{ path("admin_comment_moderate_show", {id: comment.id}) }}"
-                           class="btn btn-primary mt-1">Voir</a>
-                    </td>
-                </tr>
-            {% endfor %}
-        </table>
-    </section>
+      </tr>
+      </thead>
+      <tbody>
+      {% for comment in comments %}
+        <tr>
+          <th scope="row">{{ comment.id }}</th>
+          <td>{{ comment.title }}</td>
+          <td>{{ comment.status }}</td>
+          <td>{{ comment.user.username }}</td>
+          <td>{{ comment.article.title }}</td>
+          <td>{{ comment.createdAt | date('d-m-Y H:i') }}</td>
+          <td>
+            <a href="{{ path("admin_comment_moderate_show", {id: comment.id}) }}"
+               class="btn btn-primary mt-1">Voir</a>
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+  </section>
 
 {% endblock %}
