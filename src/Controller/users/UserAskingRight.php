@@ -4,6 +4,7 @@ namespace App\Controller\users;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\ExpressionLanguage\Expression;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Attribute\Route;
@@ -13,7 +14,7 @@ class UserAskingRight extends AbstractController
 {
     #[Route(path: '/user/asking_right', name: 'user_asking_redactor', methods: ['GET'])]
     #[IsGranted(new Expression('is_granted("ROLE_USER")'))]
-    public function askRedactorRight(MailerInterface $mailer)
+    public function askRedactorRight(MailerInterface $mailer) : Response
     {
         $user = $this->getUser();
         $email = new Email();

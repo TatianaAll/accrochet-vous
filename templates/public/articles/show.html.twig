@@ -9,29 +9,29 @@
       <div class="w40">
         <img src="{{ asset('assets/uploads/' ~ article.image) }}" alt="{{ article.title }}" class="w100">
       </div>
-      <div>
+      <div class="w60">
         <h2 class="titleH2">{{ article.title }}</h2>
         {% if article.user %}
           <p>{{ article.title }} écrit par
             {{ article.user.username }}
           </p>
         {% endif %}
-      <p>Description : {{ article.description }}</p>
+      <p class="white-space">Description : {{ article.description }}</p>
     </div>
     </article>
   </section>
 
-  <section class="w80">
-    <h2>Commentaires</h2>
+  <section class="w80 containerGreen">
+    <h2 class="titleH2">Commentaires</h2>
     {% if app.user %}
       {% for comment in comments %}
-        <article>
+        <article class="commentArticle">
           <h3>{{ comment.title }}</h3>
-          <p>Publié le {{ comment.createdAt | date('d-m-Y H:i') }}</p>
-          <p>{{ comment.content }}</p>
+          <p class="info">Publié le {{ comment.createdAt | date('d-m-Y') }} par {{ comment.user.username }}</p>
+          <p class="white-space">{{ comment.content }}</p>
         </article>
       {% endfor %}
-      <a href="{{ path('user_article_add_comment', {articleId: article.id}) }}">Ajouter un commentaire</a>
+      <a href="{{ path('user_article_add_comment', {articleId: article.id}) }}" class="buttonComment">Ajouter un commentaire</a>
     {% else %}
       <p>Connectez-vous pour voir les commentaires ;)</p>
       <a href="{{ path("login") }}">Se connecter</a>

@@ -11,3 +11,29 @@ section.w80 {
   }
 
 }
+
+.commentArticle {
+  background-color: $white;
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+  padding: 1rem;
+
+  .info {
+    color: $darkGreen;
+    font-size: 14px;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.buttonComment {
+  @include buttonStyle($darkGreen);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  color: $white;
+  text-decoration: none;
+  transition: all 0.3s;
+
+  &:hover {
+    background-color: $darkLilac;
+  }
+}

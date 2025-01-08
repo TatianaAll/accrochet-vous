@@ -10,4 +10,22 @@
 
 .liFooter {
   list-style: none;
+  width: 25%;
+  text-align: center;
+
+  .aContainer {
+    display: block;
+    width: 25%;
+    text-align: center;
+    margin: 0 auto;
+  }
+}
+
+.linkFooter {
+  color: $darkGreen;
+  transition: color 0.5s;
+
+  &:hover {
+    color: $black;
+  }
 }

@@ -14,6 +14,9 @@
 .flexBetween {
   justify-content: space-between; }
 
+.flexAlignItemsCenter {
+  align-items: center; }
+
 .w40 {
   width: 40%; }
 
@@ -67,6 +70,9 @@
   background-color: #DAEFB3;
   border: #76B041 1px solid;
   color: #181F1C; }
+
+.white-space {
+  white-space: pre-line; }
 
 header.isRelative div.w80 {
   margin: auto; }
@@ -146,6 +152,9 @@ header.isRelative nav.headerNavBar {
 .flexBetween {
   justify-content: space-between; }
 
+.flexAlignItemsCenter {
+  align-items: center; }
+
 .w40 {
   width: 40%; }
 
@@ -199,6 +208,9 @@ header.isRelative nav.headerNavBar {
   background-color: #DAEFB3;
   border: #76B041 1px solid;
   color: #181F1C; }
+
+.white-space {
+  white-space: pre-line; }
 
 .isRelative {
   position: relative; }
@@ -216,6 +228,9 @@ header.isRelative nav.headerNavBar {
 .flexBetween {
   justify-content: space-between; }
 
+.flexAlignItemsCenter {
+  align-items: center; }
+
 .w40 {
   width: 40%; }
 
@@ -269,6 +284,9 @@ header.isRelative nav.headerNavBar {
   background-color: #DAEFB3;
   border: #76B041 1px solid;
   color: #181F1C; }
+
+.white-space {
+  white-space: pre-line; }
 
 section.containerGreen {
   margin-top: 2.5rem;
@@ -377,6 +395,9 @@ section.containerLilac {
 .flexBetween {
   justify-content: space-between; }
 
+.flexAlignItemsCenter {
+  align-items: center; }
+
 .w40 {
   width: 40%; }
 
@@ -430,6 +451,9 @@ section.containerLilac {
   background-color: #DAEFB3;
   border: #76B041 1px solid;
   color: #181F1C; }
+
+.white-space {
+  white-space: pre-line; }
 
 section.containerGreen .isFlex {
   align-items: center; }
@@ -499,6 +523,9 @@ section.containerGreen .isFlex.flexBetween a {
 .flexBetween {
   justify-content: space-between; }
 
+.flexAlignItemsCenter {
+  align-items: center; }
+
 .w40 {
   width: 40%; }
 
@@ -552,6 +579,9 @@ section.containerGreen .isFlex.flexBetween a {
   background-color: #DAEFB3;
   border: #76B041 1px solid;
   color: #181F1C; }
+
+.white-space {
+  white-space: pre-line; }
 
 section.lilacSection {
   background-color: #A589C6;
@@ -599,6 +629,9 @@ section.lilacSection {
 .flexBetween {
   justify-content: space-between; }
 
+.flexAlignItemsCenter {
+  align-items: center; }
+
 .w40 {
   width: 40%; }
 
@@ -652,6 +685,9 @@ section.lilacSection {
   background-color: #DAEFB3;
   border: #76B041 1px solid;
   color: #181F1C; }
+
+.white-space {
+  white-space: pre-line; }
 
 article.articleInList {
   margin: 2rem 0;
@@ -712,6 +748,9 @@ article.articleInList {
 .flexBetween {
   justify-content: space-between; }
 
+.flexAlignItemsCenter {
+  align-items: center; }
+
 .w40 {
   width: 40%; }
 
@@ -766,10 +805,35 @@ article.articleInList {
   border: #76B041 1px solid;
   color: #181F1C; }
 
+.white-space {
+  white-space: pre-line; }
+
 section.w80 article.isFlex {
   margin: 2rem 0; }
 section.w80 .w40 img {
   border-radius: 0.25rem; }
+
+.commentArticle {
+  background-color: #EEEEEE;
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+  padding: 1rem; }
+  .commentArticle .info {
+    color: #6F7762;
+    font-size: 14px;
+    margin-bottom: 0.5rem; }
+
+.buttonComment {
+  background-color: #6F7762;
+  width: 120px;
+  height: 50px;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  color: #EEEEEE;
+  text-decoration: none;
+  transition: all 0.3s; }
+  .buttonComment:hover {
+    background-color: #5F4B64; }
 
 .isRelative {
   position: relative; }
@@ -787,6 +851,9 @@ section.w80 .w40 img {
 .flexBetween {
   justify-content: space-between; }
 
+.flexAlignItemsCenter {
+  align-items: center; }
+
 .w40 {
   width: 40%; }
 
@@ -841,6 +908,9 @@ section.w80 .w40 img {
   border: #76B041 1px solid;
   color: #181F1C; }
 
+.white-space {
+  white-space: pre-line; }
+
 .footerContainer {
   margin-top: 4rem;
   height: 10vh;
@@ -849,7 +919,20 @@ section.w80 .w40 img {
   margin-right: auto; }
 
 .liFooter {
-  list-style: none; }
+  list-style: none;
+  width: 25%;
+  text-align: center; }
+  .liFooter .aContainer {
+    display: block;
+    width: 25%;
+    text-align: center;
+    margin: 0 auto; }
+
+.linkFooter {
+  color: #6F7762;
+  transition: color 0.5s; }
+  .linkFooter:hover {
+    color: #181F1C; }
 
 * {
   margin: 0;

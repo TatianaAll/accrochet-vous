@@ -25,9 +25,13 @@
             {% endfor %}
           </td>
           <td>
+            {% if 'ROLE_REDACTOR' in user.roles %}
+            <button class="btn btn-outline-success" disabled>Déjà rédacteur</button>
+            {% else %}
               <a href="{{ path("admin_users_redactor", {id: user.id}) }}" class="btn btn-success mt-1">
                 Donner le statut "rédacteur"
               </a>
+            {% endif %}
           </td>
         </tr>
       {% endfor %}

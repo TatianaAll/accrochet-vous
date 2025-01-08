@@ -34,7 +34,9 @@
       {% endif %}
     </div>
     <div class="isAbsolute logoHeader">
-      <img src="{{ asset("assets/images/logoCouleur.svg") }}" class="w100" alt="Logo du site">
+      <a href="{{ path('home') }}">
+        <img src="{{ asset("assets/images/logoCouleur.svg") }}" class="w100" alt="Logo du site">
+      </a>
     </div>
   </div>
   <nav class="headerNavBar">
@@ -89,15 +91,24 @@
 
 <footer class="footerContainer">
   <nav>
-    <ul class="isFlex flexBetween">
+    <ul class="isFlex flexBetween flexAlignItemsCenter">
       <li class="liFooter">
-        Copyrights 2025 - Tatiana ALLERY
+        <a href="#top" class="aContainer">
+          <img src="{{ asset("assets/images/top-arrow.png") }}" alt="retour en haut de page" class="w100"/>
+        </a>
+      </li>
+      <li class="liFooter">
+        Copyrights 2025 - Accrochet-vous
       </li>
       <li class="liFooter">
         <a>Contact</a>
       </li>
       <li class="liFooter">
-        <a href="{{ path("user_asking_redactor") }}">Demander le status rédacteur</a>
+        {% if app.user is not null and 'ROLE_REDACTOR' in app.user.roles %}
+          <p>Vous êtes rédacteur, merci à vous !</p>
+        {% else %}
+          <a href="{{ path("user_asking_redactor") }}" class="linkFooter">Demander le status rédacteur</a>
+        {% endif %}
       </li>
     </ul>
   </nav>
