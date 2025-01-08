@@ -45,12 +45,21 @@ class LoginController extends AbstractController
                                     EntityManagerInterface      $entityManager,
                                     UserPasswordHasherInterface $passwordHasher, MailerInterface $mailer): Response
     {
-        $user = new User();
+        $newUser = new User();
 
-        $user->setCreationDate(new \DateTime());
-        $form = $this->createForm(UserType::class, $user);
+        $newUser->setCreationDate(new \DateTime());
+        $form = $this->createForm(UserType::class, $newUser);
 
         $form->handleRequest($request);
+        $allUsers = $userRepository->findAll();
+        foreach ($allUsers as $user) {
+            if ($form->get('username')->getData() === $user->getUsername()) {
+                $form->addError(new FormError("Ce pseudo est déjà utilisé"));
+            }
+            if ($form->get('email')->getData() === $user->getEmail()) {
+                $form->addError(new FormError("Cette adresse mail est déjà utilisée"));
+            }
+        }
 
         if ($form->isSubmitted() && $form->isValid()) {
             $plaintextPassword = $form->get('password')->getData();
@@ -58,35 +67,32 @@ class LoginController extends AbstractController
 
             if ($plaintextPassword === $confirmPassword) {
                 $hashedPassword = $passwordHasher->hashPassword(
-                    $user,
+                    $newUser,
                     $plaintextPassword
                 );
-                $user->setPassword($hashedPassword);
+                $newUser->setPassword($hashedPassword);
 
-                //vérifier si le nom est dispo
-                //vérifier si l'adresse mail est déjà utilisé
+                $newUser->setRoles(["ROLE_USER"]);
 
-                $user->setRoles(["ROLE_USER"]);
-
-                $entityManager->persist($user);
+                $entityManager->persist($newUser);
                 $entityManager->flush();
 
                 $email = new Email();
 
-                //je fais un template avec mon mail
-                //je lui fais passer ma vue et je lui donne les valeur de contact récup dans le form
-                $emailTemplate = $this->renderView('mails/inscription.html.twig', ['user' => $user]);
+                //template with my mail
+                //pass the view and the values
+                $emailTemplate = $this->renderView('mails/inscription.html.twig', ['user' => $newUser]);
 
-                //j'envoie avec mailer
+                //send with mailer
                 $mailer->send(
                     $email->from('noreply@accrochetvous.com')
-                        ->to($user->getEmail())
+                        ->to($newUser->getEmail())
                         ->subject('Inscription')
                         ->html($emailTemplate)
                 );
 
                 $this->addFlash('success', 'Votre compte a bien été créé');
-                return $this->redirectToRoute('home');
+                return $this->redirectToRoute('login');
             } else {
                 $form->addError(new FormError('Les mots de passe ne sont pas identiques'));
             }

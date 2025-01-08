@@ -38,11 +38,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @var string The hashed password
      */
     #[ORM\Column]
-    #[Assert\NotBlank (message:'Ce champs ne peut pas être nul')]
+    #[Assert\NotBlank (message:'Le mot de passe ne peut pas être nul')]
     private ?string $password = null;
 
     #[ORM\Column(length: 50)]
-    #[Assert\NotBlank (message:'Ce champs ne peut pas être nul')]
+    #[Assert\NotBlank (message:'Merci de renseigner un pseudo')]
     private ?string $username = null;
 
     #[ORM\Column(length: 255, nullable: true)]
