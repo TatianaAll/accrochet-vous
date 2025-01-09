@@ -29,7 +29,25 @@ section.lilacSection {
         color: $black;
         margin: 1rem 0;
       }
+      a.button {
+        @include buttonStyle($lightGreen);
+        text-align: center;
+        padding: 0.6rem;
+        border-radius: 0.25rem;
+        color: $black;
+        margin: 1rem 0;
+        text-decoration: none;
+        transition: all 0.4s;
+
+        &:hover {
+          background-color: $darkLilac;
+          color: $white;
+        }
+      }
     }
   }
+}
+
+.homePageSection {
 
 }

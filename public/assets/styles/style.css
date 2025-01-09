@@ -618,6 +618,20 @@ section.lilacSection {
       font-size: 18px;
       color: #181F1C;
       margin: 1rem 0; }
+    section.lilacSection div.isFlex.w80 .containerWhiteBg a.button {
+      background-color: #AFC294;
+      width: 120px;
+      height: 50px;
+      text-align: center;
+      padding: 0.6rem;
+      border-radius: 0.25rem;
+      color: #181F1C;
+      margin: 1rem 0;
+      text-decoration: none;
+      transition: all 0.4s; }
+      section.lilacSection div.isFlex.w80 .containerWhiteBg a.button:hover {
+        background-color: #5F4B64;
+        color: #EEEEEE; }
 
 .isRelative {
   position: relative; }
