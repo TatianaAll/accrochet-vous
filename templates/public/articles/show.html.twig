@@ -33,6 +33,9 @@
             </a>
           </p>
           <p class="white-space-wrap">{{ comment.content }}</p>
+          <div class="w40">
+            <img src="{{ asset('assets/uploads/') }}{{ comment.image }}" alt="{{ comment.title }}" class="w100"/>
+          </div>
         </article>
       {% endfor %}
       <a href="{{ path('user_article_add_comment', {articleId: article.id}) }}" class="buttonComment">Ajouter un commentaire</a>

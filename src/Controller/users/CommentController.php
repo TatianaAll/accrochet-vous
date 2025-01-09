@@ -42,7 +42,7 @@ class CommentController extends AbstractController
             $imageImported = $formNewComment->get('image')->getData();
             if ($imageImported) {
                 $newImageName = $imageImporter->importImage($imageImported);
-                $article->setImage($newImageName);
+                $comment->setImage($newImageName);
             }
             $entityManager->persist($comment);
             $entityManager->flush();
