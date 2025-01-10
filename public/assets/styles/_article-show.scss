@@ -9,6 +9,14 @@ section.w80 {
       @include border-radius(0.25rem)
     }
   }
+  div.w60 {
+    p.info-category {
+      margin-bottom: 1rem;
+    }
+    p.white-space-wrap.overflow-scroll {
+      height: 35rem;
+    }
+  }
 }
 
 .commentArticle {

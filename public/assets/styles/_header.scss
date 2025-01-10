@@ -76,13 +76,40 @@ header.isRelative {
             font-size: 21px;
           }
         }
-
       }
     }
   }
 }
 .inMobile {
   display: none;
+}
+.liNav {
+  input {
+    border-bottom: solid $darkGreen 1px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    background-color: transparent;
+    color: $black;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 16px;
+    transition: all 0.5s;
+
+    &:hover {
+      border-bottom: solid $white 2px;
+      color: $white;
+    }
+  }
+  button {
+    background-color: transparent;
+    border: none;
+    width: 10%;
+    transition: all 0.3s;
+
+    &:hover {
+      transform: scale(120%);
+    }
+  }
 }
 
 @media screen and (max-width: 620px) {
