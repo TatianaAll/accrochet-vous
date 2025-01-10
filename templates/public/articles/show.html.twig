@@ -12,11 +12,11 @@
       <div class="w60">
         <h2 class="titleH2">{{ article.title }}</h2>
         {% if article.user %}
-          <p>{{ article.title }} écrit par
-            {{ article.user.username }}
+          <p class="info-category">
+            {{ article.title }} écrit par {{ article.user.username }}
           </p>
         {% endif %}
-      <p class="white-space-wrap">Description : {{ article.description }}</p>
+      <p class="white-space-wrap overflow-scroll">Description : {{ article.description }}</p>
     </div>
     </article>
   </section>

@@ -11,9 +11,7 @@
         </div>
         <div class="articleContent w70">
           <h3>{{ article.title }}</h3>
-          {% if article.description |length < 200 %}
-            <p>{{ article.description }}</p>
-          {% endif %}
+          <p class="white-space-wrap overflow-scroll">{{ article.description }}</p>
           <p>Date de création : {{ article.createdAt | date('d-m-Y H:i') }}</p>
           <p>
             {% if article.user %}
