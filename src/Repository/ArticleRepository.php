@@ -36,17 +36,16 @@ class ArticleRepository extends ServiceEntityRepository
         return $this->findOneBy(['status'=>'published'], ['createdAt' => 'DESC']);
     }
 
-    public function getLast5ArticlePublished() :?Article
-    {
-        $qb = $this->createQueryBuilder('article')
-            //start the SQL request with the where
-            ->where('article.status LIKE "published"')
-            //construct the query
-            ->getQuery()
-            //get the result filtrered by the DB
-            ->getResult();
-
-        return $qb->setMaxResults(5);
+    public function getLast5ArticlePublished():? array {
+      return $this->createQueryBuilder('article')
+        //start the SQL request with the where
+        ->where('article.status LIKE \'published\'')
+        //limit the number of result at 5
+        ->setMaxResults(5)
+        //construct the query
+        ->getQuery()
+        //get the result filtrered by the DB
+        ->getResult();
     }
 
     //    /**
