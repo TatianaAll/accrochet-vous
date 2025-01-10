@@ -6,21 +6,22 @@
 
   <section class="container">
     <h2>{{ comment.title }}</h2>
-    {% if comment.image %}
-      <div>
-        <img src="{{ asset('assets/uploads/' ~ comment.image) }}" alt="{{ comment.title }}">
-      </div>
-    {% endif %}
-    <div>
-      <p>{{ comment.title }} écrit par {{ comment.user.username }} </p>
-      <p>Date de soumission du commentaire : {{ comment.createdAt | date('d-m-Y H:i') }}</p>
-      <p>Description : {{ comment.content }}</p>
+    <div class="row">
+      {% if comment.image %}
+        <div class="col-3">
+          <img src="{{ asset('assets/uploads/' ~ comment.image) }}" alt="{{ comment.title }}" class="img-fluid">
+        </div>
+      {% endif %}
+      <div class="col-8">
+        <p>{{ comment.title }} écrit par {{ comment.user.username }} </p>
+        <p>Date de soumission du commentaire : {{ comment.createdAt | date('d-m-Y H:i') }}</p>
+        <p class="text-break">Description : {{ comment.content }}</p>
 
-      <a href="{{ path("admin_comment_moderate_published", {id : comment.id}) }}" class="btn btn-success mt-1">Publier le commentaire</a>
-      <a href="{{ path("admin_comment_moderate_blocked", {id: comment.id}) }}" class="btn btn-danger mt-1">Bloquer le commentaire</a>
+        <a href="{{ path("admin_comment_moderate_published", {id : comment.id}) }}" class="btn btn-success mt-1">Publier le commentaire</a>
+        <a href="{{ path("admin_comment_moderate_blocked", {id: comment.id}) }}" class="btn btn-danger mt-1">Bloquer le commentaire</a>
       {#            <a href="{{ path("admin_comment_delete", {id: comment.id}) }}" class="btn btn-danger mt-1">Supprimer</a>#}
+      </div>
     </div>
-
   </section>
 
 {% endblock %}

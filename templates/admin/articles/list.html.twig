@@ -26,13 +26,25 @@
         <tr>
           <th scope="row">{{ article.id }}</th>
           <td>{{ article.title }}</td>
-          <td>{{ article.status }}</td>
-          <td>{{ article.createdAt | date('d-m-Y H:i') }}</td>
-          {% if article.updateAt %}
-            <td>{{ article.updateAt | date('d-m-Y H:i') }}</td>
-          {% else %}
-            <td></td>
+          {% if article.status is same as 'published' %}
+            <td class="text-success">
+              {{ article.status }}
+            </td>
+          {% elseif article.status is same as 'to moderate' %}
+            <td class="text-warning">
+              {{ article.status }}
+            </td>
+          {% elseif article.status is same as 'to moderate' %}
+            <td class="text-danger">
+              {{ article.status }}
+            </td>
           {% endif %}
+          <td>{{ article.createdAt | date('d-m-Y H:i') }}</td>
+            <td>
+              {% if article.updateAt %}
+                {{ article.updateAt | date('d-m-Y H:i') }}
+              {% endif %}
+            </td>
           <td>
             {% if article.adminId %}
               {{ article.adminId.email }}

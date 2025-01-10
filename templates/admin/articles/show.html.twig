@@ -4,36 +4,35 @@
 
 {% block body %}
 
-    <section class="container">
+  <section class="container">
+    <h2>{{ article.title }}</h2>
+    <div class="row">
+      <div class="col-4">
+        <img src="{{ asset('assets/uploads/' ~ article.image) }}" alt="{{ article.title }}" class="img-fluid rounded">
+      </div>
+      <div class="col-8">
+        <p>{{ article.title }} écrit par
+          {% if article.adminId %}
+            {{ article.adminId.email }}
+          {% else %}
+            {{ article.user.username }}
+          {% endif %}
+        </p>
+        <p>Description : {{ article.description }}</p>
+        <ul>
+          {% for tag in article.tags %}
+            <li>{{ tag.name }}</li>
+          {% endfor %}
+        </ul>
 
-        <h2>{{ article.title }}</h2>
-        <div>
-            <img src="{{ asset('assets/uploads/' ~ article.image) }}" alt="{{ article.title }}">
-        </div>
-        <div>
-            <p>{{ article.title }} écrit par
-                {% if article.adminId %}
-                    {{ article.adminId.email }}
-                {% else %}
-                    {{ article.user.username }}
-                {% endif %}
-            </p>
-            <p>Description : {{ article.description }}</p>
-            <ul>
-                {% for tag in article.tags %}
-                <li>{{ tag.name }}</li>
-                {% endfor %}
-            </ul>
+        {% if article.status is same as 'to moderate' %}
+          <a href="{{ path("admin_article_moderate_published", {id: article.id}) }}" class="btn btn-success">Publier l'article</a>
+          <a href="{{ path("admin_article_moderate_blocked", {id: article.id}) }}" class="btn btn-danger">Bloquer l'article</a>
+        {% endif %}
 
-            {% if article.status is same as 'to moderate' %}
-                <a href="{{ path("admin_article_moderate_published", {id: article.id}) }}" class="btn btn-success">Publier l'article</a>
-                <a href="{{ path("admin_article_moderate_blocked", {id: article.id}) }}" class="btn btn-danger">Bloquer l'article</a>
-            {% endif %}
-
-            <a href="{{ path('admin_article_update', {id: article.id}) }}" class="btn btn-warning mt-1">Modifier</a>
-
-        </div>
-
-    </section>
+        <a href="{{ path('admin_article_update', {id: article.id}) }}" class="btn btn-warning mt-1">Modifier</a>
+      </div>
+    </div>
+  </section>
 
 {% endblock %}
