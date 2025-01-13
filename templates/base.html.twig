@@ -51,7 +51,8 @@
       </li>
       <li class="liNav">
         <form method="get" action="{{ path("user_search") }}" class="linkNav">
-          <input type="text" id="search" name="search" placeholder="Recherche" value="{{ app.request.get('search') }}" class="inputForm">
+          <input type="text" id="search" name="search" placeholder="Recherche" value="{{ app.request.get('search') }}"
+                 class="inputForm">
           <button type="submit">
             <img src="{{ asset("assets/images/loupe.png") }}" alt="recherche" class="w100"/>
           </button>

@@ -4,7 +4,8 @@
 
 {% block body %}
   <section class="w80">
-    <h2>Résultat de la recherche {{ search }}</h2>
+    <h2>Résultat de la recherche "{{ search }}"</h2>
+    <h2>Articles correspondants</h2>
     {% for article in articlesFound %}
       <article class="articleInList isFlex">
         <div class="imageContainerList">
@@ -12,15 +13,11 @@
         </div>
         <div class="articleContent w70">
           <h3>{{ article.title }}</h3>
-          {% if article.description |length < 200 %}
-            <p>{{ article.description }}</p>
-          {% endif %}
+          <p class="white-space-wrap overflow-scroll">{{ article.description }}</p>
           <p>Date de création : {{ article.createdAt | date('d-m-Y H:i') }}</p>
-          <p>
-            {% if article.user %}
-              Auteur : {{ article.user.username }}
-            {% endif %}
-          </p>
+          {% if article.user %}
+            <p> Auteur : {{ article.user.username }}</p>
+          {% endif %}
           <ul class="listCategory isFlex">
             <li>{{ article.category.name }}</li>
             {% for tag in article.tags %}
@@ -33,6 +30,15 @@
         </div>
       </article>
     {% endfor %}
+    {% for category in categoriesFound %}
+      <h2>Catégories correspondantes</h2>
+      <article class="articleInList isFlex">
+        <div class="articleContent w70">
+          <h3>{{ category.name }}</h3>
+        </div>
+      </article>
+    {% endfor %}
+
   </section>
 
 {% endblock %}
