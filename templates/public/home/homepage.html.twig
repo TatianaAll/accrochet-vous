@@ -31,42 +31,23 @@
 
     <section class="homePageSection">
       <h2>Les préférés de l'équipe</h2>
-      <div>
-        <div>
-          <div><img></div>
-          <div>
-            <h4></h4>
-            <p></p>
+      <div class="grid">
+        {% for articleGrid in last5Articles %}
+        <div class="isRelative" id="grid{{ articleGrid.id }}">
+          <div class="w100">
+            <img src="{{ asset('assets/uploads/'~articleGrid.image) }}" alt="{{ articleGrid.title }}" class="w100">
+          </div>
+          <div class="contentGrid isAbsolute">
+            <h4 class="center">{{ articleGrid.title }}</h4>
+            <p class="center">
+              {{ articleGrid.category.name }}
+                {% for tagGrid in articleGrid.tags %}
+                  {{ tagGrid.name }}
+                {% endfor %}
+            </p>
           </div>
         </div>
-        <div>
-          <div><img></div>
-          <div>
-            <h4></h4>
-            <p></p>
-          </div>
-        </div>
-        <div>
-          <div><img></div>
-          <div>
-            <h4></h4>
-            <p></p>
-          </div>
-        </div>
-        <div>
-          <div><img></div>
-          <div>
-            <h4></h4>
-            <p></p>
-          </div>
-        </div>
-        <div>
-          <div><img></div>
-          <div>
-            <h4></h4>
-            <p></p>
-          </div>
-        </div>
+        {% endfor %}
       </div>
     </section>
   </main>
