@@ -53,11 +53,15 @@ p.white-space-wrap.overflow-scroll {
 .homePageSection {
   background-color: $lightGreen;
   margin-top: 4rem;
+  padding: 3rem;
+  h2 {
+    margin: 1rem 0;
+  }
   .grid {
     width: 90%;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 25rem 50rem 25rem;
+    grid-template-columns: 0.5fr 1fr 0.5fr;
     grid-template-rows: 1fr 1fr;
     gap: 1rem ;
     .contentGrid {
@@ -65,7 +69,9 @@ p.white-space-wrap.overflow-scroll {
       bottom: 0;
       left: 0;
       width: 100%;
-      padding: 1rem;
+      height: 5.5rem;
+      padding: 0.75rem;
+      transition: all 1s;
       h4 {
         color: $white;
         font-weight: normal;
@@ -77,6 +83,9 @@ p.white-space-wrap.overflow-scroll {
     #grid1 {
       grid-column: 1/2;
       grid-row: 1/2;
+      &:hover > .contentGrid {
+        bottom: 0
+      }
     }
     #grid2 {
       grid-column: 2/3;

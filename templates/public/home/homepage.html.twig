@@ -30,7 +30,7 @@
     </section>
 
     <section class="homePageSection">
-      <h2>Les préférés de l'équipe</h2>
+      <h2 class="center">Les préférés de l'équipe</h2>
       <div class="grid">
         {% for articleGrid in last5Articles %}
         <div class="isRelative" id="grid{{ articleGrid.id }}">
@@ -41,9 +41,9 @@
             <h4 class="center">{{ articleGrid.title }}</h4>
             <p class="center">
               {{ articleGrid.category.name }}
-                {% for tagGrid in articleGrid.tags %}
-                  {{ tagGrid.name }}
-                {% endfor %}
+              {% for tagGrid in articleGrid.tags %}
+                {{ tagGrid.name }}
+              {% endfor %}
             </p>
           </div>
         </div>

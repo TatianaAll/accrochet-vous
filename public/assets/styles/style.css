@@ -808,12 +808,15 @@ p.white-space-wrap.overflow-scroll {
 
 .homePageSection {
   background-color: #AFC294;
-  margin-top: 4rem; }
+  margin-top: 4rem;
+  padding: 3rem; }
+  .homePageSection h2 {
+    margin: 1rem 0; }
   .homePageSection .grid {
     width: 90%;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 25rem 50rem 25rem;
+    grid-template-columns: 0.5fr 1fr 0.5fr;
     grid-template-rows: 1fr 1fr;
     gap: 1rem; }
     .homePageSection .grid .contentGrid {
@@ -821,7 +824,9 @@ p.white-space-wrap.overflow-scroll {
       bottom: 0;
       left: 0;
       width: 100%;
-      padding: 1rem; }
+      height: 5.5rem;
+      padding: 0.75rem;
+      transition: all 1s; }
       .homePageSection .grid .contentGrid h4 {
         color: #EEEEEE;
         font-weight: normal; }
@@ -830,6 +835,8 @@ p.white-space-wrap.overflow-scroll {
     .homePageSection .grid #grid1 {
       grid-column: 1/2;
       grid-row: 1/2; }
+      .homePageSection .grid #grid1:hover > .contentGrid {
+        bottom: 0; }
     .homePageSection .grid #grid2 {
       grid-column: 2/3;
       grid-row: 1/3; }
