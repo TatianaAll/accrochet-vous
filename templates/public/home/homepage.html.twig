@@ -14,7 +14,11 @@
         </div>
         <article class="containerWhiteBg">
           <h3>{{ lastArticle.title }}</h3>
-          <p class="white-space-wrap overflow-scroll">{{ lastArticle.description }}</p>
+          <p class="white-space-wrap">
+            {{ lastArticle.description |slice(0,200) }} {% if lastArticle.description |length > 200 %}
+              ...
+            {% endif %}
+          </p>
           <p>Catégorie :
             <a>{{ lastArticle.category.name }}</a>
           </p>

@@ -27,7 +27,9 @@ article.articleInList {
         color: $darkGreen;
       }
     }
-
+    .infoArticle {
+      margin-bottom: 2rem;
+    }
     div.buttonContainer {
       @include buttonStyle($darkGreen);
       @include border-radius(0.5rem);
@@ -52,6 +54,6 @@ article.articleInList {
     width: 80%;
     height: 0.1rem;
     background-color: $lightGreen;
-    margin: 0 auto;
+    margin: 1rem auto;
   }
 }

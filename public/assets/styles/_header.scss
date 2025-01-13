@@ -80,23 +80,21 @@ header.isRelative {
     }
   }
 }
-.inMobile {
-  display: none;
-}
 .liNav {
   input {
     border-bottom: solid $darkGreen 1px;
+    height: 1.5rem;
     border-top: none;
     border-left: none;
     border-right: none;
     background-color: transparent;
     color: $black;
     font-family: "Nunito Sans", sans-serif;
-    font-size: 16px;
+    font-size: 18px;
     transition: all 0.5s;
 
     &:hover {
-      border-bottom: solid $white 2px;
+      border-bottom: solid $white 1px;
       color: $white;
     }
   }
@@ -110,11 +108,4 @@ header.isRelative {
       transform: scale(120%);
     }
   }
-}
-
-@media screen and (max-width: 620px) {
-  .inMobile {
-    display: block;
-  }
-  
 }

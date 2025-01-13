@@ -29,7 +29,7 @@ class Article
     private ?string $image = null;
 
     //Join table of Article/Tags ==> M2M
-    #[ORM\ManyToMany(targetEntity: Tag::class)]
+    #[ORM\ManyToMany(targetEntity: Tag::class, inversedBy: 'articles')]
     #[ORM\JoinTable(name:'article_tag')]
     private Collection $tags;
 

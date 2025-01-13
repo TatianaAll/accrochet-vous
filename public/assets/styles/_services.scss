@@ -42,6 +42,8 @@ $darkRed: #772014;
 $successBorder: #76B041;
 $successBg: #DAEFB3;
 
+$breakPoint: 620px;
+
 .isRelative {
   position: relative;
 }
@@ -52,6 +54,9 @@ $successBg: #DAEFB3;
 .isFlex {
   display: flex;
   gap: 1rem;
+}
+.flexColumn {
+  flex-direction: column;
 }
 .flexStart {
   justify-content: flex-start;
@@ -130,3 +135,12 @@ $successBg: #DAEFB3;
 .overflow-scroll {
   overflow: scroll;
 }
+
+.text-ellipsis {
+  white-space: pre-line;
+  width: 100%;
+  height: 15rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
