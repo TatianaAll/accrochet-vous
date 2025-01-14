@@ -268,7 +268,7 @@ header.isRelative nav.headerNavBar.dropdown-menu {
   .liNav button:hover {
     transform: scale(120%); }
 
-ul.menu.inMobile {
+.menu.inMobile {
   display: none; }
 
 .isRelative {
@@ -1245,19 +1245,25 @@ section.w80 div.w60 p.white-space-wrap.overflow-scroll {
 
 @media only screen and (max-width: 620px) {
   /* hamburger menu in mobile */
-  ul.menu.inMobile {
+  .menu.inMobile {
     display: block;
     list-style: none;
     top: 7rem;
     right: 2rem;
-    background-color: yellow; }
-    ul.menu.inMobile li.hamburgerMenu {
+    z-index: 5000; }
+    .menu.inMobile li.hamburgerMenu {
       background-color: #6F7762;
       height: 0.3rem;
       width: 4.5rem;
       margin: 0.8rem 0;
       transform: rotate(0) translate(0, 0);
       transition: all 1s; }
+    .menu.inMobile li.hamburgerMenu.liActive:first-of-type {
+      transform: rotate(-45deg); }
+    .menu.inMobile li.hamburgerMenu.liActive:last-of-type {
+      transform: rotate(45deg) translate(-1.5rem, -1.2rem); }
+    .menu.inMobile li.hamburgerMenu.liActive:nth-of-type(2) {
+      background-color: transparent; }
 
   header.isRelative div.w80 div.titleContainer {
     text-align: center;
@@ -1283,9 +1289,12 @@ section.w80 div.w60 p.white-space-wrap.overflow-scroll {
     width: 100%;
     height: 80vh;
     position: absolute;
-    top: -300rem;
-    left: 0;
-    border-radius: 0; }
+    top: 0;
+    right: -40rem;
+    border-radius: 0;
+    transform: translateX(0);
+    z-index: 300;
+    transition: all 1s; }
     header.isRelative nav.headerNavBar.dropdown-menu ul.isFlex {
       flex-direction: column;
       justify-content: space-around;
@@ -1295,6 +1304,8 @@ section.w80 div.w60 p.white-space-wrap.overflow-scroll {
         width: 40%;
         background-color: #6F7762;
         padding: 1rem; }
+  header.isRelative nav.headerNavBar.dropdown-menu.navActive {
+    transform: translateX(-40rem); }
   header.isRelative .liNav input {
     border-bottom: solid #6F7762 1px;
     height: 1.5rem;

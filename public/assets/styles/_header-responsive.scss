@@ -2,12 +2,13 @@
 
 @media only screen and (max-width: $breakPoint) {
   /* hamburger menu in mobile */
-  ul.menu.inMobile {
+  .menu.inMobile {
     display: block;
     list-style: none;
     top: 7rem;
     right: 2rem;
-    background-color: yellow;
+    z-index: 5000;
+
     li.hamburgerMenu {
       background-color: $darkGreen;
       height: 0.3rem;
@@ -15,6 +16,16 @@
       margin: 0.8rem 0;
       transform: rotate(0) translate(0, 0);
       transition: all 1s;
+    }
+
+    li.hamburgerMenu.liActive:first-of-type {
+      transform: rotate(-45deg);
+    }
+    li.hamburgerMenu.liActive:last-of-type {
+      transform: rotate(45deg) translate(-1.5rem, -1.2rem);
+    }
+    li.hamburgerMenu.liActive:nth-of-type(2) {
+      background-color: transparent;
     }
   }
 
@@ -50,10 +61,12 @@
       width: 100%;
       height: 80vh;
       position: absolute;
-      top: -300rem;
-      left: 0;
+      top: 0;
+      right: -40rem;
       border-radius: 0;
-      //transform: translateX(50%);
+      transform: translateX(0);
+      z-index: 300;
+      transition: all 1s;
 
       ul.isFlex {
         flex-direction: column;
@@ -67,6 +80,9 @@
           padding: 1rem;
         }
       }
+    }
+    nav.headerNavBar.dropdown-menu.navActive {
+      transform: translateX(-40rem);
     }
 
     .liNav {

@@ -89,13 +89,12 @@
 {% endfor %}
 
 {% block body %}
-
   {% block javascripts %}
     {% block importmap %}{{ importmap('app') }}{% endblock %}
   {% endblock %}
 
 {% endblock %}
-
+<script src={{ asset("assets/js/header.js") }}></script>
 <footer class="footerContainer">
   <nav>
     <ul class="isFlex flexBetween flexAlignItemsCenter">
