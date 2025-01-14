@@ -1,9 +1,9 @@
 @import "_services.scss";
 
+
 header.isRelative {
   div.w80 {
     margin: auto;
-
     div.titleContainer {
       text-align: center;
       margin-bottom: 1.5rem;
@@ -18,27 +18,6 @@ header.isRelative {
       }
     }
 
-    div.buttonContainer.isAbsolute {
-      @include buttonStyle($lightGreen);
-      padding-top: 1rem;
-      border-radius: 0.25rem;
-      text-align: center;
-      transition: all 0.5s;
-      top: 40%;
-      right: 78px;
-      transform: translate(-50%, -50%);
-
-      a.buttonHeader {
-        text-decoration: none;
-        color: $white;
-        font-family: "Nunito", serif;
-      }
-
-      &:hover {
-        background-color: $darkGreen;
-      }
-    }
-
     .isAbsolute.logoHeader {
       width: 12%;
       top: 5px;
@@ -46,7 +25,7 @@ header.isRelative {
     }
   }
 
-  nav.headerNavBar {
+  nav.headerNavBar.dropdown-menu {
     margin: auto;
     width: 80%;
     background-color: $lightGreen;
@@ -74,6 +53,31 @@ header.isRelative {
           &:hover {
             color: $white;
             font-size: 21px;
+          }
+        }
+      }
+      .outLi {
+        list-style: none;
+        div.buttonContainer.isAbsolute {
+          width: 5rem;
+          display: block;
+          @include buttonStyle($lightGreen);
+          padding-top: 1rem;
+          border-radius: 0.25rem;
+          text-align: center;
+          transition: all 0.5s;
+          top: 40%;
+          right: 78px;
+          transform: translate(-50%, -50%);
+
+          a.buttonHeader {
+            text-decoration: none;
+            color: $white;
+            font-family: "Nunito", serif;
+          }
+
+          &:hover {
+            background-color: $darkGreen;
           }
         }
       }
@@ -108,4 +112,8 @@ header.isRelative {
       transform: scale(120%);
     }
   }
+}
+
+ul.menu.inMobile {
+  display: none;
 }

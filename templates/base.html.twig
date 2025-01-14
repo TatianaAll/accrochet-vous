@@ -2,6 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title %}Welcome!{% endblock %}</title>
   <link rel="icon" href="{{ asset('assets/images/logoCouleur.svg') }}" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,17 +23,11 @@
       <h1 class="mainTitle">Accrochet-vous</h1>
       <h2 class="titleH2">Modèles de crochet gratuit</h2>
     </div>
-    <div class="buttonContainer isAbsolute">
-      {% if app.user %}
-        <a href="{{ path("user_logout") }}" class="buttonHeader">
-          Déconnexion
-        </a>
-      {% else %}
-        <a href="{{ path("login") }}" class="buttonHeader">
-          Se connecter
-        </a>
-      {% endif %}
-    </div>
+    <ul class="menu inMobile isAbsolute">
+      <li class="hamburgerMenu"></li>
+      <li class="hamburgerMenu"></li>
+      <li class="hamburgerMenu"></li>
+    </ul>
     <div class="isAbsolute logoHeader">
       <a href="{{ path('home') }}">
         <img src="{{ asset("assets/images/logoCouleur.svg") }}" class="w100" alt="Logo du site">
@@ -63,6 +58,19 @@
             S'inscrire
           </a>
         {% endif %}
+      </li>
+      <li class="outLi">
+        <div class="buttonContainer isAbsolute">
+          {% if app.user %}
+            <a href="{{ path("user_logout") }}" class="buttonHeader">
+              Déconnexion
+            </a>
+          {% else %}
+            <a href="{{ path("login") }}" class="buttonHeader">
+              Se connecter
+            </a>
+          {% endif %}
+        </div>
       </li>
     </ul>
   </nav>
