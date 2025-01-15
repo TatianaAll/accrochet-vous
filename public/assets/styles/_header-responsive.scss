@@ -22,7 +22,7 @@
       transform: rotate(-45deg);
     }
     li.hamburgerMenu.liActive:last-of-type {
-      transform: rotate(45deg) translate(-1.5rem, -1.2rem);
+      transform: rotate(45deg) translate(-1.5rem, -1.4rem);
     }
     li.hamburgerMenu.liActive:nth-of-type(2) {
       background-color: transparent;
@@ -70,14 +70,31 @@
 
       ul.isFlex {
         flex-direction: column;
-        justify-content: space-around;
+        justify-content: center;
         width: 100%;
 
         li.liNav {
           font-size: 16px;
           width: 40%;
           background-color: $darkGreen;
+          border-radius: 0.5rem;
           padding: 1rem;
+          margin: 1rem 0;
+
+          a.linkNav {
+            color: $white;
+          }
+        }
+        .outLi {
+          div.buttonContainer.isAbsolute {
+            position: absolute;
+            top: 4rem;
+            left: 50%;
+            background-color: $darkGreen;
+            border-radius: 0.5rem;
+            width: 40%;
+            padding: 1rem;
+          }
         }
       }
     }
@@ -85,18 +102,19 @@
       transform: translateX(-40rem);
     }
 
-    .liNav {
+    .liNav:nth-of-type(2) {
       input {
         border-bottom: solid $darkGreen 1px;
         height: 1.5rem;
         font-size: 16px;
-        width: 5rem;
+        width: 7rem;
+        color: $white;
       }
       button {
         width: 2rem;
         position: absolute;
         top: 20.8rem;
-        left: 8.5rem;
+        left: 7rem;
       }
     }
   }

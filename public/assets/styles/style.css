@@ -1261,7 +1261,7 @@ section.w80 div.w60 p.white-space-wrap.overflow-scroll {
     .menu.inMobile li.hamburgerMenu.liActive:first-of-type {
       transform: rotate(-45deg); }
     .menu.inMobile li.hamburgerMenu.liActive:last-of-type {
-      transform: rotate(45deg) translate(-1.5rem, -1.2rem); }
+      transform: rotate(45deg) translate(-1.5rem, -1.4rem); }
     .menu.inMobile li.hamburgerMenu.liActive:nth-of-type(2) {
       background-color: transparent; }
 
@@ -1297,25 +1297,38 @@ section.w80 div.w60 p.white-space-wrap.overflow-scroll {
     transition: all 1s; }
     header.isRelative nav.headerNavBar.dropdown-menu ul.isFlex {
       flex-direction: column;
-      justify-content: space-around;
+      justify-content: center;
       width: 100%; }
       header.isRelative nav.headerNavBar.dropdown-menu ul.isFlex li.liNav {
         font-size: 16px;
         width: 40%;
         background-color: #6F7762;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        margin: 1rem 0; }
+        header.isRelative nav.headerNavBar.dropdown-menu ul.isFlex li.liNav a.linkNav {
+          color: #EEEEEE; }
+      header.isRelative nav.headerNavBar.dropdown-menu ul.isFlex .outLi div.buttonContainer.isAbsolute {
+        position: absolute;
+        top: 4rem;
+        left: 50%;
+        background-color: #6F7762;
+        border-radius: 0.5rem;
+        width: 40%;
         padding: 1rem; }
   header.isRelative nav.headerNavBar.dropdown-menu.navActive {
     transform: translateX(-40rem); }
-  header.isRelative .liNav input {
+  header.isRelative .liNav:nth-of-type(2) input {
     border-bottom: solid #6F7762 1px;
     height: 1.5rem;
     font-size: 16px;
-    width: 5rem; }
-  header.isRelative .liNav button {
+    width: 7rem;
+    color: #EEEEEE; }
+  header.isRelative .liNav:nth-of-type(2) button {
     width: 2rem;
     position: absolute;
     top: 20.8rem;
-    left: 8.5rem; } }
+    left: 7rem; } }
 * {
   margin: 0;
   padding: 0;
