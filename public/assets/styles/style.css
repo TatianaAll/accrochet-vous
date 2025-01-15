@@ -1282,8 +1282,8 @@ section.w80 div.w60 p.white-space-wrap.overflow-scroll {
   header.isRelative div.w80 div.buttonContainer.isAbsolute {
     display: none; }
   header.isRelative div.w80 .isAbsolute.logoHeader {
-    width: 6rem;
-    top: 6rem;
+    width: 7.5rem;
+    top: 5rem;
     left: 1rem; }
   header.isRelative nav.headerNavBar.dropdown-menu {
     width: 100%;
@@ -1327,8 +1327,160 @@ section.w80 div.w60 p.white-space-wrap.overflow-scroll {
   header.isRelative .liNav:nth-of-type(2) button {
     width: 2rem;
     position: absolute;
-    top: 20.8rem;
-    left: 7rem; } }
+    top: 46%;
+    left: 26%; } }
+.isRelative {
+  position: relative; }
+
+.isAbsolute {
+  position: absolute; }
+
+.isFlex {
+  display: flex;
+  gap: 1rem; }
+
+.flexColumn {
+  flex-direction: column; }
+
+.flexStart {
+  justify-content: flex-start; }
+
+.flexBetween {
+  justify-content: space-between; }
+
+.flexAlignItemsCenter {
+  align-items: center; }
+
+.w40 {
+  width: 40%; }
+
+.w60 {
+  width: 60%;
+  margin: 0 auto; }
+
+.w70 {
+  width: 70%;
+  margin: 0 auto; }
+
+.w80 {
+  width: 80%;
+  margin: 0 auto; }
+
+.w90 {
+  width: 90%;
+  margin: 0 auto; }
+
+.w100 {
+  width: 100%; }
+
+.center {
+  text-align: center; }
+
+.messageFlash {
+  margin-top: 2rem;
+  padding-top: 0.8rem;
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: 1rem;
+  height: 50px;
+  text-align: center;
+  font-family: "Nunito Sans", serif; }
+
+.error {
+  background-color: #F06449;
+  border: #772014 1px solid;
+  color: #EEEEEE;
+  list-style: none;
+  border-radius: 0.25rem;
+  margin-bottom: 0.5rem; }
+
+.errorContainer {
+  margin-top: 0.4rem;
+  padding: 0.5rem;
+  text-align: center;
+  border-radius: 0.25rem;
+  font-family: "Nunito Sans", serif; }
+
+.success {
+  background-color: #DAEFB3;
+  border: #76B041 1px solid;
+  color: #181F1C; }
+
+.white-space-wrap {
+  white-space: pre-line; }
+
+.overflow-scroll {
+  overflow: scroll; }
+
+.text-ellipsis {
+  white-space: pre-line;
+  width: 100%;
+  height: 15rem;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+
+@media only screen and (max-width: 620px) {
+  section.lilacSection {
+    background-color: #A589C6;
+    padding: 1rem 2rem; }
+    section.lilacSection .titleH2 {
+      color: #181F1C;
+      font-size: 26px;
+      font-family: "Nunito", serif;
+      text-align: center;
+      margin: 0 0 1rem 0; }
+    section.lilacSection div.isFlex.w80 {
+      flex-direction: column;
+      width: 90%; }
+      section.lilacSection div.isFlex.w80 .imageContainerHomePage {
+        width: 100%; }
+        section.lilacSection div.isFlex.w80 .imageContainerHomePage img {
+          border-radius: 0.75rem; }
+      section.lilacSection div.isFlex.w80 .containerWhiteBg {
+        border-radius: 0.25rem;
+        width: 100%;
+        margin: 0;
+        padding: 0.8rem 0.8rem 0.8rem 0.8rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center; }
+        section.lilacSection div.isFlex.w80 .containerWhiteBg h3 {
+          color: #6F7762;
+          font-size: 20px;
+          font-family: "Nunito", serif;
+          text-align: center;
+          margin: 0.2rem 0; }
+        section.lilacSection div.isFlex.w80 .containerWhiteBg p.white-space-wrap {
+          display: none; }
+        section.lilacSection div.isFlex.w80 .containerWhiteBg p {
+          margin: 0.2rem 0;
+          font-size: 16px; }
+        section.lilacSection div.isFlex.w80 .containerWhiteBg a.button {
+          background-color: #AFC294;
+          width: 120px;
+          height: 50px;
+          width: 8rem;
+          padding: 0.6rem;
+          border-radius: 0.25rem;
+          margin: 0.3rem 0; }
+
+  .homePageSection {
+    background-color: #AFC294;
+    margin-top: 2rem;
+    padding: 0.3rem; }
+    .homePageSection .grid {
+      width: 90%;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column; }
+      .homePageSection .grid .contentGrid {
+        background-color: #6F7762;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 5.5rem;
+        padding: 0.75rem; } }
 * {
   margin: 0;
   padding: 0;
