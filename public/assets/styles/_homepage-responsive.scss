@@ -47,6 +47,7 @@
 
         a.button {
           @include buttonStyle($lightGreen);
+          height: 43px;
           width: 8rem;
           padding: 0.6rem;
           border-radius: 0.25rem;

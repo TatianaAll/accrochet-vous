@@ -449,9 +449,10 @@ section.containerLilac {
   border-radius: 0.5rem;
   border: none;
   width: 100%;
-  height: 250px;
+  height: 20rem;
   margin: 1rem 0;
-  padding: 1rem; }
+  padding: 1rem;
+  font-family: "Nunito Sans", sans-serif; }
 
 .isRelative {
   position: relative; }
@@ -756,8 +757,10 @@ p.white-space-wrap.overflow-scroll {
       padding: 0.75rem;
       transition: all 1s; }
       .homePageSection .grid .contentGrid h4 {
-        color: #EEEEEE;
         font-weight: normal; }
+        .homePageSection .grid .contentGrid h4 a {
+          color: #EEEEEE;
+          text-decoration: none; }
       .homePageSection .grid .contentGrid p {
         color: #AFC294; }
     .homePageSection .grid #grid1 {
@@ -1460,6 +1463,7 @@ section.w80 div.w60 p.white-space-wrap.overflow-scroll {
           background-color: #AFC294;
           width: 120px;
           height: 50px;
+          height: 43px;
           width: 8rem;
           padding: 0.6rem;
           border-radius: 0.25rem;
@@ -1481,6 +1485,604 @@ section.w80 div.w60 p.white-space-wrap.overflow-scroll {
         width: 100%;
         height: 5.5rem;
         padding: 0.75rem; } }
+.isRelative {
+  position: relative; }
+
+.isAbsolute {
+  position: absolute; }
+
+.isFlex {
+  display: flex;
+  gap: 1rem; }
+
+.flexColumn {
+  flex-direction: column; }
+
+.flexStart {
+  justify-content: flex-start; }
+
+.flexBetween {
+  justify-content: space-between; }
+
+.flexAlignItemsCenter {
+  align-items: center; }
+
+.w40 {
+  width: 40%; }
+
+.w60 {
+  width: 60%;
+  margin: 0 auto; }
+
+.w70 {
+  width: 70%;
+  margin: 0 auto; }
+
+.w80 {
+  width: 80%;
+  margin: 0 auto; }
+
+.w90 {
+  width: 90%;
+  margin: 0 auto; }
+
+.w100 {
+  width: 100%; }
+
+.center {
+  text-align: center; }
+
+.messageFlash {
+  margin-top: 2rem;
+  padding-top: 0.8rem;
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: 1rem;
+  height: 50px;
+  text-align: center;
+  font-family: "Nunito Sans", serif; }
+
+.error {
+  background-color: #F06449;
+  border: #772014 1px solid;
+  color: #EEEEEE;
+  list-style: none;
+  border-radius: 0.25rem;
+  margin-bottom: 0.5rem; }
+
+.errorContainer {
+  margin-top: 0.4rem;
+  padding: 0.5rem;
+  text-align: center;
+  border-radius: 0.25rem;
+  font-family: "Nunito Sans", serif; }
+
+.success {
+  background-color: #DAEFB3;
+  border: #76B041 1px solid;
+  color: #181F1C; }
+
+.white-space-wrap {
+  white-space: pre-line; }
+
+.overflow-scroll {
+  overflow: scroll; }
+
+.text-ellipsis {
+  white-space: pre-line;
+  width: 100%;
+  height: 15rem;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+
+@media only screen and (max-width: 620px) {
+  .footerContainer {
+    margin-top: 1rem;
+    height: 3rem;
+    width: 90%; }
+
+  .liFooter {
+    width: 30%;
+    text-align: center;
+    font-size: 14px; }
+    .liFooter .aContainer {
+      display: block;
+      width: 70%;
+      text-align: center;
+      margin: 0 auto; }
+
+  .notMobile {
+    display: none; } }
+.isRelative {
+  position: relative; }
+
+.isAbsolute {
+  position: absolute; }
+
+.isFlex {
+  display: flex;
+  gap: 1rem; }
+
+.flexColumn {
+  flex-direction: column; }
+
+.flexStart {
+  justify-content: flex-start; }
+
+.flexBetween {
+  justify-content: space-between; }
+
+.flexAlignItemsCenter {
+  align-items: center; }
+
+.w40 {
+  width: 40%; }
+
+.w60 {
+  width: 60%;
+  margin: 0 auto; }
+
+.w70 {
+  width: 70%;
+  margin: 0 auto; }
+
+.w80 {
+  width: 80%;
+  margin: 0 auto; }
+
+.w90 {
+  width: 90%;
+  margin: 0 auto; }
+
+.w100 {
+  width: 100%; }
+
+.center {
+  text-align: center; }
+
+.messageFlash {
+  margin-top: 2rem;
+  padding-top: 0.8rem;
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: 1rem;
+  height: 50px;
+  text-align: center;
+  font-family: "Nunito Sans", serif; }
+
+.error {
+  background-color: #F06449;
+  border: #772014 1px solid;
+  color: #EEEEEE;
+  list-style: none;
+  border-radius: 0.25rem;
+  margin-bottom: 0.5rem; }
+
+.errorContainer {
+  margin-top: 0.4rem;
+  padding: 0.5rem;
+  text-align: center;
+  border-radius: 0.25rem;
+  font-family: "Nunito Sans", serif; }
+
+.success {
+  background-color: #DAEFB3;
+  border: #76B041 1px solid;
+  color: #181F1C; }
+
+.white-space-wrap {
+  white-space: pre-line; }
+
+.overflow-scroll {
+  overflow: scroll; }
+
+.text-ellipsis {
+  white-space: pre-line;
+  width: 100%;
+  height: 15rem;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+
+@media only screen and (max-width: 620px) {
+  section.containerGreen {
+    margin-top: 2.5rem;
+    width: 80%;
+    background-color: #AFC294;
+    border-top-right-radius: 2rem;
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 0.5rem;
+    border-top-left-radius: 0.5rem;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 2rem; }
+    section.containerGreen h2.titleH2 {
+      margin: 1rem 0;
+      color: #181F1C;
+      font-size: 26px;
+      font-family: "Nunito", serif;
+      text-align: center; }
+    section.containerGreen .formWrapper .buttonContainer {
+      background-color: #6F7762;
+      width: 120px;
+      height: 50px;
+      color: #EEEEEE;
+      border: none;
+      font-size: 16px;
+      border-radius: 0.25rem; }
+
+  section.containerLilac {
+    margin-top: 1.5rem; }
+    section.containerLilac h2.titleH2 {
+      color: #181F1C;
+      font-size: 20px;
+      font-family: "Nunito", serif;
+      text-align: center; }
+
+  .formWrapper {
+    width: 90%; }
+    .formWrapper .formField {
+      margin-bottom: 0.6rem;
+      text-align: center; }
+      .formWrapper .formField .labelForm {
+        margin: 0.3rem 0; }
+      .formWrapper .formField .inputForm {
+        color: #181F1C;
+        background-color: #EEEEEE;
+        border-radius: 0.5rem;
+        border: none;
+        width: 100%;
+        height: 40px;
+        margin: 0.4rem 0;
+        padding: 0 1rem; }
+
+  .textAreaForm {
+    height: 15rem; } }
+.isRelative {
+  position: relative; }
+
+.isAbsolute {
+  position: absolute; }
+
+.isFlex {
+  display: flex;
+  gap: 1rem; }
+
+.flexColumn {
+  flex-direction: column; }
+
+.flexStart {
+  justify-content: flex-start; }
+
+.flexBetween {
+  justify-content: space-between; }
+
+.flexAlignItemsCenter {
+  align-items: center; }
+
+.w40 {
+  width: 40%; }
+
+.w60 {
+  width: 60%;
+  margin: 0 auto; }
+
+.w70 {
+  width: 70%;
+  margin: 0 auto; }
+
+.w80 {
+  width: 80%;
+  margin: 0 auto; }
+
+.w90 {
+  width: 90%;
+  margin: 0 auto; }
+
+.w100 {
+  width: 100%; }
+
+.center {
+  text-align: center; }
+
+.messageFlash {
+  margin-top: 2rem;
+  padding-top: 0.8rem;
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: 1rem;
+  height: 50px;
+  text-align: center;
+  font-family: "Nunito Sans", serif; }
+
+.error {
+  background-color: #F06449;
+  border: #772014 1px solid;
+  color: #EEEEEE;
+  list-style: none;
+  border-radius: 0.25rem;
+  margin-bottom: 0.5rem; }
+
+.errorContainer {
+  margin-top: 0.4rem;
+  padding: 0.5rem;
+  text-align: center;
+  border-radius: 0.25rem;
+  font-family: "Nunito Sans", serif; }
+
+.success {
+  background-color: #DAEFB3;
+  border: #76B041 1px solid;
+  color: #181F1C; }
+
+.white-space-wrap {
+  white-space: pre-line; }
+
+.overflow-scroll {
+  overflow: scroll; }
+
+.text-ellipsis {
+  white-space: pre-line;
+  width: 100%;
+  height: 15rem;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+
+@media only screen and (max-width: 620px) {
+  section.containerGreen .isFlex.flexStart.w90 {
+    flex-direction: column; }
+    section.containerGreen .isFlex.flexStart.w90 div.profilePictureContainer {
+      width: 7.5rem; }
+    section.containerGreen .isFlex.flexStart.w90 .infoProfileContainer {
+      margin-bottom: 0.3rem; }
+      section.containerGreen .isFlex.flexStart.w90 .infoProfileContainer .titleH2 {
+        margin: 0.3rem 0; }
+  section.containerGreen div.w90 h3 {
+    margin-top: 0.3rem; }
+  section.containerGreen div.w90 .containerWhiteBg {
+    margin-bottom: 1rem; }
+  section.containerGreen .isFlex.flexBetween.w90 {
+    flex-direction: column; }
+    section.containerGreen .isFlex.flexBetween.w90 .buttonContainer {
+      color: #EEEEEE;
+      width: 13rem;
+      height: 3.5rem;
+      padding: 15px 5px;
+      font-size: 16px;
+      border-radius: 0.5rem; }
+    section.containerGreen .isFlex.flexBetween.w90 a {
+      color: #181F1C;
+      text-decoration: none;
+      position: relative;
+      display: inline-block; }
+
+  .containerWhiteBg {
+    border-radius: 1rem;
+    background-color: #EEEEEE;
+    padding: 1rem;
+    margin: 1rem auto; } }
+.isRelative {
+  position: relative; }
+
+.isAbsolute {
+  position: absolute; }
+
+.isFlex {
+  display: flex;
+  gap: 1rem; }
+
+.flexColumn {
+  flex-direction: column; }
+
+.flexStart {
+  justify-content: flex-start; }
+
+.flexBetween {
+  justify-content: space-between; }
+
+.flexAlignItemsCenter {
+  align-items: center; }
+
+.w40 {
+  width: 40%; }
+
+.w60 {
+  width: 60%;
+  margin: 0 auto; }
+
+.w70 {
+  width: 70%;
+  margin: 0 auto; }
+
+.w80 {
+  width: 80%;
+  margin: 0 auto; }
+
+.w90 {
+  width: 90%;
+  margin: 0 auto; }
+
+.w100 {
+  width: 100%; }
+
+.center {
+  text-align: center; }
+
+.messageFlash {
+  margin-top: 2rem;
+  padding-top: 0.8rem;
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: 1rem;
+  height: 50px;
+  text-align: center;
+  font-family: "Nunito Sans", serif; }
+
+.error {
+  background-color: #F06449;
+  border: #772014 1px solid;
+  color: #EEEEEE;
+  list-style: none;
+  border-radius: 0.25rem;
+  margin-bottom: 0.5rem; }
+
+.errorContainer {
+  margin-top: 0.4rem;
+  padding: 0.5rem;
+  text-align: center;
+  border-radius: 0.25rem;
+  font-family: "Nunito Sans", serif; }
+
+.success {
+  background-color: #DAEFB3;
+  border: #76B041 1px solid;
+  color: #181F1C; }
+
+.white-space-wrap {
+  white-space: pre-line; }
+
+.overflow-scroll {
+  overflow: scroll; }
+
+.text-ellipsis {
+  white-space: pre-line;
+  width: 100%;
+  height: 15rem;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+
+@media only screen and (max-width: 620px) {
+  article.articleInList {
+    flex-direction: column;
+    align-items: center;
+    margin: 0.5rem 0; }
+    article.articleInList div.imageContainerList {
+      width: 70%; }
+    article.articleInList .articleContent h3 {
+      font-size: 20px;
+      font-weight: normal;
+      color: #6F7762;
+      margin-bottom: 0.3rem; }
+    article.articleInList .articleContent p {
+      display: none; }
+    article.articleInList .articleContent ul.listCategory {
+      display: none; }
+    article.articleInList .articleContent .infoArticle {
+      margin-bottom: 0.3rem; }
+    article.articleInList .articleContent div.buttonContainer {
+      background-color: #6F7762;
+      width: 120px;
+      height: 50px;
+      border-radius: 0.5rem;
+      width: 10rem;
+      height: 2.5rem; } }
+.isRelative {
+  position: relative; }
+
+.isAbsolute {
+  position: absolute; }
+
+.isFlex {
+  display: flex;
+  gap: 1rem; }
+
+.flexColumn {
+  flex-direction: column; }
+
+.flexStart {
+  justify-content: flex-start; }
+
+.flexBetween {
+  justify-content: space-between; }
+
+.flexAlignItemsCenter {
+  align-items: center; }
+
+.w40 {
+  width: 40%; }
+
+.w60 {
+  width: 60%;
+  margin: 0 auto; }
+
+.w70 {
+  width: 70%;
+  margin: 0 auto; }
+
+.w80 {
+  width: 80%;
+  margin: 0 auto; }
+
+.w90 {
+  width: 90%;
+  margin: 0 auto; }
+
+.w100 {
+  width: 100%; }
+
+.center {
+  text-align: center; }
+
+.messageFlash {
+  margin-top: 2rem;
+  padding-top: 0.8rem;
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: 1rem;
+  height: 50px;
+  text-align: center;
+  font-family: "Nunito Sans", serif; }
+
+.error {
+  background-color: #F06449;
+  border: #772014 1px solid;
+  color: #EEEEEE;
+  list-style: none;
+  border-radius: 0.25rem;
+  margin-bottom: 0.5rem; }
+
+.errorContainer {
+  margin-top: 0.4rem;
+  padding: 0.5rem;
+  text-align: center;
+  border-radius: 0.25rem;
+  font-family: "Nunito Sans", serif; }
+
+.success {
+  background-color: #DAEFB3;
+  border: #76B041 1px solid;
+  color: #181F1C; }
+
+.white-space-wrap {
+  white-space: pre-line; }
+
+.overflow-scroll {
+  overflow: scroll; }
+
+.text-ellipsis {
+  white-space: pre-line;
+  width: 100%;
+  height: 15rem;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+
+@media only screen and (max-width: 620px) {
+  section.w80 article.isFlex {
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem auto; }
+  section.w80 .w40 {
+    width: 80%; }
+  section.w80 div.w60 {
+    width: 90%; }
+    section.w80 div.w60 p.info-category {
+      margin-bottom: 1rem; }
+    section.w80 div.w60 p.white-space-wrap.overflow-scroll {
+      height: 35rem; } }
 * {
   margin: 0;
   padding: 0;

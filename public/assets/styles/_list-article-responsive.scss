@@ -1,0 +1,35 @@
+@import "_services.scss";
+
+@media only screen and (max-width: $breakPoint) {
+  article.articleInList {
+    flex-direction: column;
+    align-items: center;
+    margin: 0.5rem 0;
+    div.imageContainerList {
+      width: 70%;
+    }
+    .articleContent {
+      h3 {
+        font-size: 20px;
+        font-weight: normal;
+        color: $darkGreen;
+        margin-bottom: 0.3rem;
+      }
+      p {
+        display: none;
+      }
+      ul.listCategory {
+        display: none;
+      }
+      .infoArticle {
+        margin-bottom: 0.3rem;
+      }
+      div.buttonContainer {
+        @include buttonStyle($darkGreen);
+        @include border-radius(0.5rem);
+        width: 10rem;
+        height: 2.5rem;
+      }
+    }
+  }
+}

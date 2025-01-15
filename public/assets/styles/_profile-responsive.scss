@@ -1,0 +1,54 @@
+@import "_services.scss";
+
+@media only screen and (max-width: $breakPoint) {
+  //section profile
+  section.containerGreen {
+    .isFlex.flexStart.w90 {
+      flex-direction: column;
+      div.profilePictureContainer {
+        width: 7.5rem;
+      }
+      .infoProfileContainer {
+        .titleH2 {
+          margin: 0.3rem 0;
+        }
+        margin-bottom: 0.3rem;
+      }
+    }
+
+    div.w90 {
+      h3 {
+        margin-top: 0.3rem;
+      }
+
+      .containerWhiteBg {
+        margin-bottom: 1rem;
+      }
+    }
+
+    .isFlex.flexBetween.w90 {
+      flex-direction: column;
+      .buttonContainer {
+        color: $white;
+        width: 13rem;
+        height: 3.5rem;
+        padding: 15px 5px;
+        font-size: 16px;
+        border-radius: 0.5rem;
+      }
+
+      a {
+        color: $black;
+        text-decoration: none;
+        position: relative;
+        display: inline-block;
+      }
+    }
+  }
+  .containerWhiteBg {
+    border-radius: 1rem;
+    background-color: $white;
+    padding: 1rem;
+    margin: 1rem auto;
+  }
+}

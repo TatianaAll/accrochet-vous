@@ -73,8 +73,11 @@ p.white-space-wrap.overflow-scroll {
       padding: 0.75rem;
       transition: all 1s;
       h4 {
-        color: $white;
         font-weight: normal;
+        a{
+          color: $white;
+          text-decoration: none;
+        }
       }
       p {
         color: $lightGreen;

@@ -1,0 +1,61 @@
+@import "_services.scss";
+
+@media only screen and (max-width: $breakPoint) {
+  //containerGreen
+  section.containerGreen {
+    margin-top: 2.5rem;
+    @include formContainer($lightGreen, 2rem, 0.5rem);
+
+    h2.titleH2 {
+      margin: 1rem 0;
+      @include fontTitle($black, 26px)
+    }
+    .formWrapper {
+      .buttonContainer {
+        @include buttonStyle($darkGreen);
+        color: $white;
+        border: none;
+        font-size: 16px;
+        border-radius: 0.25rem;
+      }
+    }
+  }
+
+  //Container lilac
+  section.containerLilac {
+    margin-top: 1.5rem;
+
+    h2.titleH2 {
+      @include fontTitle($black, 20px)
+    }
+  }
+
+  //form wrapper
+  .formWrapper {
+    width: 90%;
+
+    .formField {
+      margin-bottom: 0.6rem;
+      text-align: center;
+      .labelForm {
+        margin: 0.3rem 0;
+      }
+
+      .inputForm {
+        color: $black;
+        background-color: $white;
+        border-radius: 0.5rem;
+        border: none;
+        width: 100%;
+        height: 40px;
+        margin: 0.4rem 0;
+        padding: 0 1rem;
+      }
+    }
+  }
+
+  //TextArea
+  .textAreaForm {
+    height: 15rem;
+  }
+}
