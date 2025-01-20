@@ -273,6 +273,10 @@ header.isRelative nav.headerNavBar.dropdown-menu {
 .menu.inMobile {
   display: none; }
 
+.noStyle {
+  text-decoration: none;
+  color: #181F1C; }
+
 .isRelative {
   position: relative; }
 
