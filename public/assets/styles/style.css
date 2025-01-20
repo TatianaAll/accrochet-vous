@@ -252,7 +252,7 @@ header.isRelative nav.headerNavBar.dropdown-menu {
   border-top: none;
   border-left: none;
   border-right: none;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   background-color: transparent;
   color: #181F1C;
   font-family: "Nunito Sans", sans-serif;
@@ -265,7 +265,8 @@ header.isRelative nav.headerNavBar.dropdown-menu {
   background-color: transparent;
   border: none;
   width: 8%;
-  transition: all 0.3s; }
+  transition: all 0.3s;
+  margin-top: 0.5rem; }
   .liNav button:hover {
     transform: scale(120%); }
 
@@ -910,6 +911,8 @@ article.articleInList {
     article.articleInList .articleContent div.buttonContainer a {
       color: #EEEEEE;
       text-decoration: none; }
+  article.articleInList .articleContent div.buttonContainer.inCat {
+    margin-top: 2rem; }
   article.articleInList::after {
     content: "";
     display: block;
@@ -917,6 +920,11 @@ article.articleInList {
     height: 0.1rem;
     background-color: #AFC294;
     margin: 1rem auto; }
+
+.titleList {
+  margin-top: 2rem;
+  text-align: center;
+  color: #6F7762; }
 
 .isRelative {
   position: relative; }
@@ -1322,18 +1330,18 @@ section.w80 div.w60 p.white-space-wrap.overflow-scroll {
         padding: 1rem; }
   header.isRelative nav.headerNavBar.dropdown-menu.navActive {
     transform: translateX(-40rem); }
-  header.isRelative .liNav:nth-of-type(2) input {
+  header.isRelative .liNav:nth-of-type(3) input {
     border-bottom: solid #6F7762 1px;
     height: 1rem;
     font-size: 16px;
-    width: 7rem;
+    width: 7.5rem;
     color: #EEEEEE;
     margin-bottom: 0.3rem; }
-  header.isRelative .liNav:nth-of-type(2) button {
+  header.isRelative .liNav:nth-of-type(3) button {
     width: 2rem;
     position: absolute;
-    top: 45.5%;
-    left: 60%; } }
+    top: 52%;
+    left: 62%; } }
 .isRelative {
   position: relative; }
 

@@ -102,20 +102,20 @@
       transform: translateX(-40rem);
     }
 
-    .liNav:nth-of-type(2) {
+    .liNav:nth-of-type(3) {
       input {
         border-bottom: solid $darkGreen 1px;
         height: 1rem;
         font-size: 16px;
-        width: 7rem;
+        width: 7.5rem;
         color: $white;
         margin-bottom: 0.3rem;
       }
       button {
         width: 2rem;
         position: absolute;
-        top: 45.5%;
-        left: 60%;
+        top: 52%;
+        left: 62%;
       }
     }
   }

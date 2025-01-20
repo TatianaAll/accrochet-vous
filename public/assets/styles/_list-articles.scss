@@ -47,6 +47,9 @@ article.articleInList {
         text-decoration: none;
       }
     }
+    div.buttonContainer.inCat {
+      margin-top: 2rem;
+    }
   }
   &::after {
     content: "";
@@ -56,4 +59,9 @@ article.articleInList {
     background-color: $lightGreen;
     margin: 1rem auto;
   }
+}
+.titleList {
+  margin-top: 2rem;
+  text-align: center;
+  color: $darkGreen;
 }

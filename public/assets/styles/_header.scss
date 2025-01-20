@@ -91,7 +91,7 @@ header.isRelative {
     border-top: none;
     border-left: none;
     border-right: none;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     background-color: transparent;
     color: $black;
     font-family: "Nunito Sans", sans-serif;
@@ -108,6 +108,7 @@ header.isRelative {
     border: none;
     width: 8%;
     transition: all 0.3s;
+    margin-top: 0.5rem;
 
     &:hover {
       transform: scale(120%);

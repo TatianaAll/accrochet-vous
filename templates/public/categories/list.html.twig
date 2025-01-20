@@ -4,6 +4,7 @@
 
 {% block body %}
   <section class="w80">
+    <h2 class="titleList">Les catégories de modèles proposés</h2>
     {% for category in categories %}
       <article class="articleInList isFlex">
         <div class="articleContent w70 isFlex flexBetween flexColumn">
@@ -14,7 +15,7 @@
                 ...
               {% endif %}
             </p>
-            <div class="buttonContainer">
+            <div class="buttonContainer inCat">
               <a href="{{ path("articles_category", {catId: category.id}) }}">Voir les modèles</a>
             </div>
           </div>
