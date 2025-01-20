@@ -105,16 +105,17 @@
     .liNav:nth-of-type(2) {
       input {
         border-bottom: solid $darkGreen 1px;
-        height: 1.5rem;
+        height: 1rem;
         font-size: 16px;
         width: 7rem;
         color: $white;
+        margin-bottom: 0.3rem;
       }
       button {
         width: 2rem;
         position: absolute;
-        top: 46%;
-        left: 26%;
+        top: 45.5%;
+        left: 60%;
       }
     }
   }

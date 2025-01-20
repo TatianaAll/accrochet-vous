@@ -3,6 +3,7 @@
 namespace App\Controller\public;
 
 use App\Repository\ArticleRepository;
+use App\Repository\CategoryRepository;
 use App\Repository\CommentRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -38,5 +39,13 @@ class ArticlesController extends AbstractController
       return $this->redirectToRoute('articles_list');
     }
     return $this->render('public/articles/show.html.twig', ['article'=>$article, "comments"=>$commentsPublished]);
+  }
+
+  #[Route(path: '/{catId}/articles', name: 'articles_category', requirements: ['catId'=>'\d+'], methods: ['GET'])]
+  public function articlesByCategory (int $catId, ArticleRepository $articleRepository,
+                                      CategoryRepository $categoryRepository): Response {
+    $articles = $articleRepository->getArticleByCategory($catId);
+    $category = $categoryRepository->find($catId);
+    return $this->render('public/articles/category.html.twig', ['articles'=>$articles, 'category'=>$category]);
   }
 }

@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Toutes les catégories {% endblock %}
+
+{% block body %}
+  <section class="w80">
+    {% for category in categories %}
+      <article class="articleInList isFlex">
+        <div class="articleContent w70 isFlex flexBetween flexColumn">
+          <div>
+            <h3>{{ category.name }}</h3>
+            <p class="white-space-wrap">
+              {{ category.description |slice(0,200) }} {% if category.description |length > 200 %}
+                ...
+              {% endif %}
+            </p>
+            <div class="buttonContainer">
+              <a href="{{ path("articles_category", {catId: category.id}) }}">Voir les modèles</a>
+            </div>
+          </div>
+        </div>
+      </article>
+    {% endfor %}
+  </section>
+
+{% endblock %}

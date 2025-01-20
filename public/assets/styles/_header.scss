@@ -19,8 +19,8 @@ header.isRelative {
     }
 
     .isAbsolute.logoHeader {
-      width: 12%;
-      top: 5px;
+      width: 10%;
+      top: 5%;
       left: 7%;
     }
   }
@@ -91,6 +91,7 @@ header.isRelative {
     border-top: none;
     border-left: none;
     border-right: none;
+    margin-bottom: 1rem;
     background-color: transparent;
     color: $black;
     font-family: "Nunito Sans", sans-serif;
@@ -105,7 +106,7 @@ header.isRelative {
   button {
     background-color: transparent;
     border: none;
-    width: 10%;
+    width: 8%;
     transition: all 0.3s;
 
     &:hover {

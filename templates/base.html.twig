@@ -40,6 +40,9 @@
         <a href="{{ path("articles_list") }}" class="linkNav">Les modèles</a>
       </li>
       <li class="liNav">
+        <a href="{{ path("categories_list") }}" class="linkNav">Les catégories</a>
+      </li>
+      <li class="liNav">
         <form method="get" action="{{ path("user_search") }}" class="linkNav">
           <input type="text" id="search" name="search" placeholder="Recherche" value="{{ app.request.get('search') }}"
                  class="inputForm">

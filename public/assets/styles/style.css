@@ -197,8 +197,8 @@ header.isRelative div.w80 {
       font-family: "Nunito", serif;
       text-align: center; }
   header.isRelative div.w80 .isAbsolute.logoHeader {
-    width: 12%;
-    top: 5px;
+    width: 10%;
+    top: 5%;
     left: 7%; }
 header.isRelative nav.headerNavBar.dropdown-menu {
   margin: auto;
@@ -252,6 +252,7 @@ header.isRelative nav.headerNavBar.dropdown-menu {
   border-top: none;
   border-left: none;
   border-right: none;
+  margin-bottom: 1rem;
   background-color: transparent;
   color: #181F1C;
   font-family: "Nunito Sans", sans-serif;
@@ -263,7 +264,7 @@ header.isRelative nav.headerNavBar.dropdown-menu {
 .liNav button {
   background-color: transparent;
   border: none;
-  width: 10%;
+  width: 8%;
   transition: all 0.3s; }
   .liNav button:hover {
     transform: scale(120%); }
@@ -1323,15 +1324,16 @@ section.w80 div.w60 p.white-space-wrap.overflow-scroll {
     transform: translateX(-40rem); }
   header.isRelative .liNav:nth-of-type(2) input {
     border-bottom: solid #6F7762 1px;
-    height: 1.5rem;
+    height: 1rem;
     font-size: 16px;
     width: 7rem;
-    color: #EEEEEE; }
+    color: #EEEEEE;
+    margin-bottom: 0.3rem; }
   header.isRelative .liNav:nth-of-type(2) button {
     width: 2rem;
     position: absolute;
-    top: 46%;
-    left: 26%; } }
+    top: 45.5%;
+    left: 60%; } }
 .isRelative {
   position: relative; }
 
