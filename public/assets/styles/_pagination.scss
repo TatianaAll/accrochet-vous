@@ -1,0 +1,15 @@
+@import "_services.scss";
+
+.pagination {
+  .current {
+    color: $black;
+    font-size: 18px;
+  }
+  .page, .next, .last {
+    a {
+      color: $darkLilac;
+      text-decoration: none;
+      font-size: 18px;
+    }
+  }
+}

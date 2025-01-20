@@ -38,6 +38,13 @@
         </div>
       </article>
     {% endfor %}
+    {% if app.user %}
+    <div class="center">
+      {{ knp_pagination_render(articles) }}
+    </div>
+    {% else %}
+    <p class="center">Il faut se <a href="{{ path('login') }}">connecter</a> pour voir les autres modèles</p>
+    {% endif %}
   </section>
 
 {% endblock %}
