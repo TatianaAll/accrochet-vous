@@ -111,16 +111,15 @@
       <li class="liFooter">
         Copyrights 2025 - Accrochet-vous
       </li>
-      <li class="liFooter notMobile">
-        <a>Contact</a>
+      {% if app.user %}
+        <li class="liFooter">
+          {% if 'ROLE_REDACTOR' in app.user.roles %}
+            <p>Vous êtes rédacteur, merci à vous !</p>
+          {% else %}
+            <a href="{{ path("user_asking_redactor") }}" class="linkFooter">Demander le status rédacteur</a>
+          {% endif %}
       </li>
-      <li class="liFooter">
-        {% if app.user is not null and 'ROLE_REDACTOR' in app.user.roles %}
-          <p>Vous êtes rédacteur, merci à vous !</p>
-        {% else %}
-          <a href="{{ path("user_asking_redactor") }}" class="linkFooter">Demander le status rédacteur</a>
-        {% endif %}
-      </li>
+      {% endif %}
     </ul>
   </nav>
 </footer>
