@@ -5,36 +5,43 @@
 {% block body %}
   <section class="w80">
     <h2>Résultat de la recherche "{{ search }}"</h2>
-    <h2>Articles correspondants</h2>
-    {% for article in articlesFound %}
-      <article class="articleInList isFlex">
-        <div class="imageContainerList">
-          <img src="{{ asset('assets/uploads/'~article.image) }}" alt="{{ article.title }}" class="w100">
-        </div>
-        <div class="articleContent w70">
-          <h3>{{ article.title }}</h3>
-          <p class="white-space-wrap overflow-scroll">{{ article.description }}</p>
-          <p>Date de création : {{ article.createdAt | date('d-m-Y H:i') }}</p>
-          {% if article.user %}
-            <p> Auteur : {{ article.user.username }}</p>
-          {% endif %}
-          <ul class="listCategory isFlex">
-            <li>{{ article.category.name }}</li>
-            {% for tag in article.tags %}
-              <li>{{ tag.name }}</li>
-            {% endfor %}
-          </ul>
-          <div class="buttonContainer">
-            <a href="{{ path("article_show", {id: article.id}) }}">Voir le modèle</a>
+    <h2 class="titleList">Articles correspondants</h2>
+    {% if articlesFound %}
+      {% for article in articlesFound %}
+        <article class="articleInList isFlex">
+          <div class="imageContainerList">
+            <img src="{{ asset('assets/uploads/'~article.image) }}" alt="{{ article.title }}" class="w100">
           </div>
-        </div>
-      </article>
-    {% endfor %}
+          <div class="articleContent w70">
+            <h3>{{ article.title }}</h3>
+            <p class="white-space-wrap overflow-scroll">{{ article.description }}</p>
+            <p>Date de création : {{ article.createdAt | date('d-m-Y H:i') }}</p>
+            {% if article.user %}
+              <p> Auteur : {{ article.user.username }}</p>
+            {% endif %}
+            <ul class="listCategory isFlex">
+              <li>{{ article.category.name }}</li>
+              {% for tag in article.tags %}
+                <li>{{ tag.name }}</li>
+              {% endfor %}
+            </ul>
+            <div class="buttonContainer">
+              <a href="{{ path("article_show", {id: article.id}) }}">Voir le modèle</a>
+            </div>
+          </div>
+        </article>
+      {% endfor %}
+    {% else %}
+    <p class="w70">Pas d'article correspondant à cette recherche</p>
+    {% endif %}
     {% for category in categoriesFound %}
-      <h2>Catégories correspondantes</h2>
+      <h2 class="titleList">Catégories correspondantes</h2>
       <article class="articleInList isFlex">
         <div class="articleContent w70">
           <h3>{{ category.name }}</h3>
+          <div class="buttonContainer">
+            <a href="{{ path("articles_category", {catId: category.id}) }}">Voir les modèles</a>
+          </div>
         </div>
       </article>
     {% endfor %}
