@@ -5,7 +5,6 @@ namespace App\Controller\public;
 use App\Repository\ArticleRepository;
 use App\Repository\CategoryRepository;
 use App\Repository\CommentRepository;
-use Doctrine\ORM\Tools\Pagination\Paginator;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,14 +15,12 @@ class ArticlesController extends AbstractController
 {
   #[Route(path: '/articles', name: 'articles_list', methods: ['GET'])]
   public function articlesPublishedList(ArticleRepository $articleRepository, PaginatorInterface $paginator, Request $request): Response {
-    $articles1 = $articleRepository->findBy(['status' => "published"]);
-    $articles = $paginator->paginate(
-      $articles1, // Requête contenant les données à paginer (ici nos articles)
-      $request->query->getInt('page', 1), // Numéro de la page en cours, passé dans l'URL, 1 si aucune page
-      5 // Nombre de résultats par page
-    );
+    $allArticlesPublished = $articleRepository->findBy(['status' => "published"]);
+    //pagination with PaginatorInterface and the methode paginate(articleToDisplay, page per default, number of article to display in 1 page)
+    $articlesToDisplay = $paginator->paginate($allArticlesPublished,
+      $request->query->getInt('page', 1), 5);
 
-    return $this->render('public/articles/list.html.twig', ['articles'=>$articles]);
+    return $this->render('public/articles/list.html.twig', ['articles'=>$articlesToDisplay]);
   }
 
   #[Route(path: '/article/{id}/show', name: 'article_show', requirements: ['id'=>'\d+'], methods: ['GET'])]

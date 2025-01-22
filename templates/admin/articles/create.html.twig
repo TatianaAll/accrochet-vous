@@ -13,8 +13,10 @@
       </div>
     </div>
     <div class="form-group mb-3">
-      {{ form_label(formView.description, 'Description', {'label_attr': {'class': 'form-label'}}) }}
-      {{ form_widget(formView.description, {'attr': {'class': 'form-control'}}) }}
+      {{ form_label(formView.description, 'Description', {'label_attr': {'class': 'form-label',}}) }}
+      {{ form_widget(formView.description, {'attr': {'id': 'trix-description', 'type':'hidden'} }) }}
+      <!-- Trix Editor -->
+      <trix-editor input="article_description" class="trix-editor"></trix-editor>
       <div class="{{ formView.description.vars.errors|length > 0 ? 'alert alert-warning ' }}">
         {{ form_errors(formView.description) }}
       </div>

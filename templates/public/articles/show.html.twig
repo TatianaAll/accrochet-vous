@@ -16,7 +16,7 @@
             {{ article.title }} écrit par {{ article.user.username }}
           </p>
         {% endif %}
-      <p class="white-space-wrap overflow-scroll">Description : {{ article.description }}</p>
+      <div class="white-space-wrap overflow-scroll">Description : {{ article.description | raw }}</div>
     </div>
     </article>
   </section>

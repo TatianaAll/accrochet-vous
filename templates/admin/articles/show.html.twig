@@ -18,7 +18,7 @@
             {{ article.user.username }}
           {% endif %}
         </p>
-        <p>Description : {{ article.description }}</p>
+        <p>Description : {{ article.description | raw }}</p>
         <ul>
           {% for tag in article.tags %}
             <li>{{ tag.name }}</li>

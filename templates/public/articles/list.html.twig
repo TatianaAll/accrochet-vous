@@ -12,11 +12,11 @@
         <div class="articleContent w70 isFlex flexBetween flexColumn">
           <div>
             <h3>{{ article.title }}</h3>
-            <p class="white-space-wrap">
-              {{ article.description |slice(0,200) }} {% if article.description |length > 200 %}
+            <div class="descriptionArticle">
+              {{ article.description |slice(0,200) |raw }} {% if article.description |length > 200 %}
                 ...
               {% endif %}
-            </p>
+            </div>
           </div>
           <div class="infoArticle">
             <p>Date de création : {{ article.createdAt | date('d-m-Y') }}</p>

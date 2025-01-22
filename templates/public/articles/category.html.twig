@@ -14,7 +14,7 @@
           <div>
             <h3>{{ article.title }}</h3>
             <p class="white-space-wrap">
-              {{ article.description |slice(0,200) }} {% if article.description |length > 200 %}
+              {{ article.description |slice(0,200) |raw }} {% if article.description |length > 200 %}
                 ...
               {% endif %}
             </p>
